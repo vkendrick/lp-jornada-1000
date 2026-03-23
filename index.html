@@ -35,7 +35,7 @@
     "offers": {
       "@type": "Offer",
       "priceCurrency": "BRL",
-      "price": "97.00",
+      "price": "47.90",
       "availability": "https://schema.org/InStock"
     }
   }
@@ -1010,10 +1010,10 @@
         <p class="pricing-subtitle">Mas o caminho para garanti-lo está ao seu alcance — por menos do que você imagina.</p>
       </div>
       <div class="pricing-card fade-up">
-        <div class="pricing-badge">🔥 OFERTA ESPECIAL — 50% OFF</div>
-        <p class="price-anchor">De R$ 197,00</p>
-        <div class="price-main"><sup>R$</sup>97</div>
-        <p class="price-installments">ou 12x de R$ 9,70 no cartão de crédito</p>
+        <div class="pricing-badge">🔥 OFERTA ESPECIAL — 70% OFF</div>
+        <p class="price-anchor">De R$ 147,90</p>
+        <div class="price-main"><sup>R$</sup>47,90</div>
+        <p class="price-installments">ou 5x de R$ 9,58 no cartão de crédito</p>
         <ul class="price-includes">
           <li><span class="price-check">✓</span> 📘 Guia completo: Os Primeiros 1000 Dias (6 módulos)</li>
           <li><span class="price-check">✓</span> Bônus: Guia de Suplementação Essencial</li>
@@ -1028,7 +1028,7 @@
            style="width:100%; font-size:1.1rem; padding:20px;"
            onclick="trackPurchaseClick()"
            target="_blank">
-          GARANTIR MEU ACESSO — R$ 97 →
+          GARANTIR MEU ACESSO — R$ 47,90 →
         </a>
 
         <div class="guarantee-box">
@@ -1140,7 +1140,7 @@
 
   <!-- ===== STICKY CTA (Mobile) ===== -->
   <div class="sticky-cta">
-    <a href="#pricing" class="btn-cta" onclick="trackClick('sticky_cta')">QUERO O GUIA — R$ 97 →</a>
+    <a href="#pricing" class="btn-cta" onclick="trackClick('sticky_cta')">QUERO O GUIA — R$ 47,90 →</a>
   </div>
 
   <!-- ===== JAVASCRIPT ===== -->
@@ -1170,10 +1170,10 @@
 
     function trackPurchaseClick() {
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'AddToCart', { content_name: 'Guia Primeiros 1000 Dias', content_category: 'Infoproduto', value: 97.00, currency: 'BRL' });
+        fbq('track', 'AddToCart', { content_name: 'Guia Primeiros 1000 Dias', content_category: 'Infoproduto', value: 47.90, currency: 'BRL' });
       }
       if (typeof gtag !== 'undefined') {
-        gtag('event', 'begin_checkout', { currency: 'BRL', value: 97.00, items: [{ item_name: 'Guia Primeiros 1000 Dias', price: 97.00 }] });
+        gtag('event', 'begin_checkout', { currency: 'BRL', value: 47.90, items: [{ item_name: 'Guia Primeiros 1000 Dias', price: 47.90 }] });
       }
     }
 
