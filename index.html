@@ -7,24 +7,17 @@
   <!-- ===== SEO META TAGS ===== -->
   <title>Os Primeiros 1000 Dias | Guia Completo de Nutrição para o Seu Bebê</title>
   <meta name="description" content="Guia digital completo de nutrição da gestação aos 2 anos. Passo a passo baseado em ciência para mães que querem dar ao filho o melhor começo. Acesso imediato." />
-  <meta name="keywords" content="primeiros 1000 dias bebê, alimentação infantil, introdução alimentar, nutrição na gravidez, saúde do bebê, guia alimentação bebê, aleitamento materno" />
-  <meta name="author" content="Primeiros 1000 Dias" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://1000.jornadamaternal.com/" />
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://1000.jornadamaternal.com/" />
   <meta property="og:title" content="Os Primeiros 1000 Dias | Guia Completo de Nutrição para o Seu Bebê" />
   <meta property="og:description" content="O mapa completo da nutrição do seu bebê: da gestação aos 2 anos. Ciência, praticidade e segurança para mães reais." />
   <meta property="og:image" content="https://1000.jornadamaternal.com/images/og-image.jpg" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Os Primeiros 1000 Dias | Guia Completo de Nutrição" />
-  <meta name="twitter:description" content="O mapa completo da nutrição do seu bebê: da gestação aos 2 anos." />
-
-  <!-- Schema.org Structured Data -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,10 +44,8 @@
     fbq('init', '1848994229133853');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/>
-  </noscript>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
 
   <!-- ===== GOOGLE ANALYTICS ===== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
@@ -84,35 +75,36 @@
     img { max-width: 100%; height: auto; display: block; }
     a { text-decoration: none; color: inherit; }
 
-    /* ===== PALETA VERDE — alinhada ao criativo ===== */
+    /* ===== PALETA ===== */
     :root {
-      --green-dark:   #1B4332;
-      --green-mid:    #2D6A4F;
-      --green-main:   #40916C;
-      --green-light:  #D8F3DC;
-      --green-pale:   #F0FAF2;
-      --accent:       #F5C842;
-      --dark:         #0D1F17;
-      --gray:         #6B7280;
-      --light-gray:   #F9FAFB;
-      --white:        #FFFFFF;
-      --border:       #D1E8D9;
+      --green-dark:  #1B4332;
+      --green-mid:   #2D6A4F;
+      --green-main:  #40916C;
+      --green-light: #D8F3DC;
+      --green-pale:  #F0FAF2;
+      --accent:      #F5C842;
+      --dark:        #0D1F17;
+      --gray:        #6B7280;
+      --light-gray:  #F9FAFB;
+      --white:       #FFFFFF;
+      --border:      #D1E8D9;
+      --red:         #C0392B;
     }
 
     /* ===== UTILITÁRIOS ===== */
-    .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+    .container  { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
     .section    { padding: 72px 0; }
-    .section-sm { padding: 52px 0; }
+    .section-sm { padding: 48px 0; }
     .text-center { text-align: center; }
 
     /* ===== TIPOGRAFIA ===== */
     h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; color: var(--dark); }
-    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; }
-    h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 700; }
-    h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 700; }
+    h1 { font-size: clamp(1.9rem, 5vw, 2.9rem); font-weight: 900; }
+    h2 { font-size: clamp(1.55rem, 4vw, 2.2rem); font-weight: 700; }
+    h3 { font-size: clamp(1.05rem, 3vw, 1.35rem); font-weight: 700; }
     p  { font-size: 1.05rem; color: var(--gray); }
 
-    /* ===== BOTÃO CTA VERDE ===== */
+    /* ===== BOTÃO CTA ===== */
     .btn-cta {
       display: inline-block;
       background: linear-gradient(135deg, #40916C, #2D6A4F);
@@ -142,16 +134,30 @@
       100% { box-shadow: 0 0 0 0 rgba(64,145,108,0); }
     }
 
-    /* ===== ANNOUNCEMENT BAR ===== */
-    .announcement-bar {
-      background: var(--green-dark);
+    /* ===== [FIX] URGENCY BAR — substituiu o announcement bar genérico ===== */
+    .urgency-bar {
+      background: var(--red);
       color: #fff;
       text-align: center;
-      padding: 10px 20px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      padding: 11px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
     }
-    .announcement-bar span { color: var(--accent); font-weight: 700; }
+    .urgency-bar strong { font-weight: 800; }
+    /* Contador regressivo */
+    #countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-left: 6px;
+      letter-spacing: 1px;
+    }
 
     /* ===== NAVBAR ===== */
     .navbar {
@@ -176,20 +182,18 @@
     .navbar-logo svg { width: 28px; height: 28px; }
     .navbar-cta { font-size: 0.88rem; padding: 10px 22px; }
 
-    /* ===== HERO ===== */
+    /* ===== HERO — [FIX] REMOVIDO BOTÃO DA PRIMEIRA DOBRA ===== */
     .hero {
       background: linear-gradient(150deg, var(--green-pale) 0%, #e8f5e9 60%, #c8e6c9 100%);
-      padding: 72px 0 56px;
+      padding: 64px 0 52px;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: -30%;
-      right: -15%;
-      width: 500px;
-      height: 500px;
+      top: -30%; right: -15%;
+      width: 500px; height: 500px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(64,145,108,0.1) 0%, transparent 70%);
       pointer-events: none;
@@ -197,7 +201,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 56px;
+      gap: 52px;
       align-items: center;
     }
     .hero-tag {
@@ -212,13 +216,10 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 50px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       border: 1px solid rgba(27,67,50,0.2);
     }
-    .hero h1 { margin-bottom: 16px; }
-    .hero h1 em { color: var(--green-main); font-style: normal; }
-
-    /* Linha de ancoragem do produto — NOVO */
+    /* [FIX] Âncora do produto — clareza do que é o produto */
     .product-anchor {
       display: inline-flex;
       align-items: center;
@@ -230,21 +231,48 @@
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--green-dark);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .product-anchor span { color: var(--gray); font-weight: 400; }
-
+    .hero h1 { margin-bottom: 16px; }
+    .hero h1 em { color: var(--green-main); font-style: normal; }
     .hero-sub {
       font-size: 1.05rem;
       color: #4a5568;
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       line-height: 1.8;
     }
+
+    /* [FIX] Scroll-down nudge — substitui o botão na hero */
+    .hero-scroll-nudge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .hero-scroll-nudge a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green-dark);
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-bottom: 2px solid var(--green-light);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .hero-scroll-nudge a:hover { border-color: var(--green-main); }
+    .hero-scroll-nudge svg { animation: bounce-down 1.5s infinite; }
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+
     .trust-badges {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 20px;
     }
     .trust-badge {
       display: flex;
@@ -259,15 +287,14 @@
     .hero-image-wrap { position: relative; }
     .hero-image-wrap img {
       width: 100%;
-      height: 500px;
+      height: 480px;
       object-fit: cover;
       border-radius: 24px;
       box-shadow: 0 28px 70px rgba(27,67,50,0.2);
     }
     .hero-float-badge {
       position: absolute;
-      bottom: -18px;
-      left: -16px;
+      bottom: -18px; left: -16px;
       background: #fff;
       border-radius: 16px;
       padding: 14px 18px;
@@ -277,19 +304,16 @@
       gap: 10px;
     }
     .hero-float-icon {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       background: var(--green-light);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1.3rem;
     }
     .hero-float-text { font-size: 0.78rem; color: var(--gray); }
     .hero-float-text strong { display: block; font-size: 0.95rem; color: var(--dark); }
 
-    /* ===== SOCIAL PROOF BAR ===== */
+    /* ===== [NOVO] DOBRA 3 — PROVA SOCIAL IMEDIATA ===== */
     .social-proof-bar {
       background: var(--green-dark);
       padding: 20px 0;
@@ -305,7 +329,7 @@
     .social-proof-item .number {
       display: block;
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: var(--accent);
     }
@@ -315,14 +339,40 @@
       line-height: 1.4;
     }
     .social-proof-divider {
-      width: 1px;
-      height: 36px;
+      width: 1px; height: 40px;
       background: rgba(255,255,255,0.2);
     }
 
+    /* ===== [NOVO] DOBRA 4 — MINI-DEPOIMENTO LOGO APÓS HERO ===== */
+    .mini-testimonial-bar {
+      background: var(--green-pale);
+      border-top: 2px solid var(--green-light);
+      border-bottom: 2px solid var(--green-light);
+      padding: 22px 0;
+    }
+    .mini-testimonial-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .mini-testimonial-stars { color: #F5C842; font-size: 1.1rem; letter-spacing: 2px; }
+    .mini-testimonial-text {
+      font-size: 0.97rem;
+      color: var(--dark);
+      font-style: italic;
+      max-width: 600px;
+    }
+    .mini-testimonial-author {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
     /* ===== DORES ===== */
-    .pain-section { background: #fff; }
-    .pain-section h2 { margin-bottom: 10px; }
+    .pain-section { background: var(--light-gray); }
     .pain-subtitle { color: var(--gray); margin-bottom: 44px; font-size: 1.05rem; }
     .pain-grid {
       display: grid;
@@ -331,83 +381,82 @@
       margin-bottom: 40px;
     }
     .pain-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      background: var(--green-pale);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px 22px;
-      transition: transform 0.2s;
+      transition: box-shadow 0.2s;
     }
-    .pain-card:hover { transform: translateY(-3px); }
-    .pain-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
-    .pain-card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--green-dark); }
+    .pain-card:hover { box-shadow: 0 6px 24px rgba(27,67,50,0.1); }
+    .pain-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .pain-card h3 { margin-bottom: 6px; font-size: 1rem; }
     .pain-card p  { font-size: 0.9rem; }
     .pain-bridge {
-      background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
-      border-radius: 20px;
-      padding: 32px 36px;
-      text-align: center;
+      background: var(--green-dark);
       color: #fff;
+      border-radius: 20px;
+      padding: 32px 40px;
+      text-align: center;
     }
-    .pain-bridge h3 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
-    .pain-bridge p  { color: rgba(255,255,255,0.82); font-size: 1rem; }
+    .pain-bridge h3 { color: var(--accent); font-size: 1.3rem; margin-bottom: 10px; }
+    .pain-bridge p  { color: rgba(255,255,255,0.8); font-size: 1rem; }
 
-    /* ===== AUTORIDADE — NOVO ===== */
-    .authority-section { background: var(--green-pale); }
+    /* ===== AUTORIDADE ===== */
+    .authority-section { background: #fff; }
     .authority-grid {
       display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 48px;
+      grid-template-columns: 340px 1fr;
+      gap: 56px;
       align-items: center;
     }
     .authority-photo-wrap { position: relative; }
     .authority-photo {
       width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(27,67,50,0.15);
       aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 16px 50px rgba(27,67,50,0.18);
     }
+    /* Placeholder para quando não há foto real */
     .authority-photo-placeholder {
       width: 100%;
       aspect-ratio: 3/4;
-      background: linear-gradient(135deg, var(--green-light), var(--green-main));
+      background: linear-gradient(135deg, var(--green-pale), var(--green-light));
       border-radius: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      font-size: 4rem;
-      box-shadow: 0 16px 50px rgba(27,67,50,0.18);
-    }
-    .authority-photo-placeholder p {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.8);
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      font-weight: 600;
       text-align: center;
-      padding: 0 16px;
+      padding: 20px;
+      border: 2px dashed var(--green-main);
     }
+    .authority-photo-placeholder span { font-size: 3rem; }
     .authority-credential {
       position: absolute;
-      bottom: -14px;
-      right: -14px;
+      bottom: -14px; right: -14px;
       background: var(--green-dark);
       color: #fff;
-      border-radius: 12px;
-      padding: 10px 16px;
       font-size: 0.78rem;
       font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 12px;
+      line-height: 1.5;
       text-align: center;
-      line-height: 1.4;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     .authority-tag {
       display: inline-block;
       background: var(--green-light);
       color: var(--green-dark);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -415,8 +464,8 @@
       border-radius: 50px;
       margin-bottom: 14px;
     }
-    .authority-content h2 { margin-bottom: 14px; }
-    .authority-content p  { margin-bottom: 16px; font-size: 1rem; line-height: 1.8; }
+    .authority-content h2 { margin-bottom: 16px; }
+    .authority-content p  { margin-bottom: 14px; font-size: 0.97rem; }
     .authority-stats {
       display: flex;
       gap: 28px;
@@ -427,75 +476,120 @@
     .authority-stat .num {
       display: block;
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 900;
-      color: var(--green-main);
+      color: var(--green-dark);
     }
-    .authority-stat .lbl { font-size: 0.8rem; color: var(--gray); }
+    .authority-stat .lbl { font-size: 0.78rem; color: var(--gray); }
 
     /* ===== SOLUÇÃO ===== */
-    .solution-section { background: #fff; }
-    .solution-intro { max-width: 680px; margin: 0 auto 44px; font-size: 1.05rem; line-height: 1.8; }
+    .solution-section { background: var(--green-pale); }
+    .solution-intro { color: var(--gray); max-width: 680px; margin: 0 auto 44px; font-size: 1.05rem; }
     .solution-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
     .solution-card {
-      background: var(--green-pale);
-      border: 1px solid var(--border);
+      background: #fff;
       border-radius: 18px;
       padding: 28px 22px;
       text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .solution-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(27,67,50,0.12);
+    .solution-card:hover { box-shadow: 0 8px 28px rgba(27,67,50,0.12); transform: translateY(-4px); }
+    .solution-card-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .solution-card h3   { margin-bottom: 8px; font-size: 1rem; }
+    .solution-card p    { font-size: 0.88rem; }
+
+    /* ===== [NOVO] DOBRA 7 — O QUE VOCÊ VAI RECEBER (ANTES DO PREÇO) ===== */
+    .whats-inside-section { background: #fff; }
+    .whats-inside-section h2 { margin-bottom: 8px; }
+    .whats-inside-subtitle { color: var(--gray); margin-bottom: 40px; font-size: 1.05rem; }
+    .modules-list { max-width: 720px; margin: 0 auto; }
+    .module-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .solution-card-icon { font-size: 2.2rem; margin-bottom: 12px; }
-    .solution-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--green-dark); }
-    .solution-card p  { font-size: 0.88rem; }
+    .module-item:last-child { border-bottom: none; }
+    .module-number {
+      width: 40px; height: 40px;
+      background: var(--green-dark);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .module-content h3 { font-size: 1rem; margin-bottom: 4px; }
+    .module-content p  { font-size: 0.88rem; }
+
+    /* ===== [NOVO] DOBRA 8 — TRANSFORMAÇÃO (ANTES/DEPOIS) ===== */
+    .transformation-section { background: var(--light-gray); }
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .transformation-card {
+      border-radius: 18px;
+      padding: 28px 24px;
+    }
+    .transformation-card.before {
+      background: #fff;
+      border: 2px solid #fecaca;
+    }
+    .transformation-card.after {
+      background: var(--green-pale);
+      border: 2px solid var(--green-light);
+    }
+    .transformation-card h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .transformation-card.before h3 { color: var(--red); }
+    .transformation-card.after  h3 { color: var(--green-dark); }
+    .transformation-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .transformation-item .icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
 
     /* ===== DEPOIMENTOS ===== */
-    .testimonials-section { background: var(--green-pale); }
-    .testimonials-section h2 { margin-bottom: 8px; }
+    .testimonials-section { background: #fff; }
     .testimonials-subtitle { color: var(--gray); margin-bottom: 44px; font-size: 1.05rem; }
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
     .testimonial-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 4px 24px rgba(27,67,50,0.08);
-      transition: transform 0.2s;
+      background: var(--light-gray);
+      border-radius: 18px;
+      padding: 28px 22px;
+      border: 1px solid var(--border);
+      text-align: left;
     }
-    .testimonial-card:hover { transform: translateY(-4px); }
-    .testimonial-stars { color: var(--accent); font-size: 0.95rem; margin-bottom: 10px; }
-    .testimonial-text {
-      font-size: 0.93rem;
-      color: #444;
-      line-height: 1.7;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
+    .testimonial-stars { color: #F5C842; font-size: 1.1rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testimonial-text  { font-size: 0.92rem; color: #444; line-height: 1.7; margin-bottom: 18px; font-style: italic; }
     .testimonial-author { display: flex; align-items: center; gap: 10px; }
-    .testimonial-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--green-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .testimonial-name { font-weight: 700; font-size: 0.88rem; color: var(--dark); }
-    .testimonial-role { font-size: 0.78rem; color: var(--gray); }
+    .testimonial-avatar { font-size: 1.8rem; }
+    .testimonial-name   { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .testimonial-role   { font-size: 0.78rem; color: var(--gray); }
 
     /* ===== PRICING ===== */
     .pricing-section {
@@ -505,7 +599,7 @@
     .pricing-section h2 { color: #fff; margin-bottom: 8px; }
     .pricing-subtitle { color: rgba(255,255,255,0.75); margin-bottom: 44px; font-size: 1.05rem; }
     .pricing-card {
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto;
       background: #fff;
       border-radius: 28px;
@@ -516,8 +610,7 @@
     }
     .pricing-badge {
       position: absolute;
-      top: -16px;
-      left: 50%;
+      top: -16px; left: 50%;
       transform: translateX(-50%);
       background: var(--accent);
       color: var(--dark);
@@ -529,12 +622,7 @@
       border-radius: 50px;
       white-space: nowrap;
     }
-    .price-anchor {
-      font-size: 1rem;
-      color: var(--gray);
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
+    .price-anchor { font-size: 1rem; color: var(--gray); text-decoration: line-through; margin-bottom: 4px; }
     .price-main {
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
@@ -556,6 +644,14 @@
     }
     .price-includes li:last-child { border-bottom: none; }
     .price-check { color: var(--green-main); font-weight: 700; font-size: 1.1rem; }
+    /* [FIX] Destaque para bônus na lista de preço */
+    .price-includes li.bonus-item {
+      background: var(--green-pale);
+      border-radius: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--green-light);
+      margin-bottom: 4px;
+    }
     .guarantee-box {
       background: var(--green-pale);
       border-radius: 14px;
@@ -570,9 +666,19 @@
     .guarantee-text { font-size: 0.85rem; color: #444; line-height: 1.6; }
     .guarantee-text strong { color: var(--green-dark); display: block; margin-bottom: 3px; }
 
+    /* [NOVO] Micro-copy abaixo do botão */
+    .cta-microcopy {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
     /* ===== FAQ ===== */
     .faq-section { background: #fff; }
-    .faq-section h2 { margin-bottom: 8px; }
     .faq-subtitle { color: var(--gray); margin-bottom: 44px; font-size: 1.05rem; }
     .faq-list { max-width: 740px; margin: 0 auto; }
     .faq-item {
@@ -601,13 +707,10 @@
     }
     .faq-question:hover { background: var(--green-pale); }
     .faq-icon {
-      width: 26px;
-      height: 26px;
+      width: 26px; height: 26px;
       background: var(--green-light);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       color: var(--green-dark);
       font-size: 1.1rem;
@@ -616,7 +719,7 @@
     }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
     .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .faq-item.open .faq-answer { max-height: 280px; }
+    .faq-item.open .faq-answer { max-height: 300px; }
     .faq-answer-inner {
       padding: 0 24px 20px;
       font-size: 0.93rem;
@@ -624,10 +727,27 @@
       line-height: 1.7;
     }
 
+    /* ===== [NOVO] DOBRA FINAL — CTA DUPLO COM URGÊNCIA ===== */
+    .final-cta-section {
+      background: linear-gradient(135deg, var(--green-dark), #0d2b1e);
+      padding: 72px 0;
+      text-align: center;
+    }
+    .final-cta-section h2 { color: #fff; margin-bottom: 14px; }
+    .final-cta-section p  { color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto 32px; }
+    .final-cta-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .final-cta-price del { font-size: 1.2rem; color: rgba(255,255,255,0.4); font-weight: 400; margin-right: 10px; }
+
     /* ===== PAYMENT METHODS ===== */
     .payment-section {
       background: var(--light-gray);
-      padding: 44px 0;
+      padding: 40px 0;
       text-align: center;
     }
     .payment-section h3 { font-size: 1.1rem; margin-bottom: 6px; }
@@ -687,9 +807,7 @@
     .sticky-cta {
       display: none;
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       z-index: 998;
       background: #fff;
       border-top: 1px solid var(--border);
@@ -700,25 +818,27 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .hero-grid         { grid-template-columns: 1fr; gap: 36px; }
-      .hero-image-wrap img { height: 340px; }
-      .hero-float-badge  { left: 8px; bottom: -10px; }
-      .pain-grid         { grid-template-columns: 1fr; }
-      .solution-grid     { grid-template-columns: repeat(2, 1fr); }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .authority-grid    { grid-template-columns: 1fr; }
+      .hero-grid           { grid-template-columns: 1fr; gap: 36px; }
+      .hero-image-wrap img { height: 320px; }
+      .hero-float-badge    { left: 8px; bottom: -10px; }
+      .pain-grid           { grid-template-columns: 1fr; }
+      .solution-grid       { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid   { grid-template-columns: 1fr; }
+      .authority-grid      { grid-template-columns: 1fr; }
       .authority-photo-placeholder { aspect-ratio: 4/3; }
       .social-proof-divider { display: none; }
+      .transformation-grid { grid-template-columns: 1fr; }
       .sticky-cta { display: block; }
       body { padding-bottom: 76px; }
     }
     @media (max-width: 600px) {
-      .section { padding: 56px 0; }
+      .section { padding: 52px 0; }
       .solution-grid { grid-template-columns: 1fr; }
       .pricing-card  { padding: 36px 20px; }
-      h1 { font-size: 1.85rem; }
-      h2 { font-size: 1.55rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
       .authority-stats { gap: 18px; }
+      .final-cta-price { font-size: 1.9rem; }
     }
 
     /* ===== ANIMATIONS ===== */
@@ -732,12 +852,17 @@
 </head>
 <body>
 
-  <!-- ===== ANNOUNCEMENT BAR ===== -->
-  <div class="announcement-bar">
-    🌱 Oferta por tempo limitado — <span>70% OFF</span> + Acesso Vitalício. Garanta antes que acabe!
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 1 — URGÊNCIA (Barra de topo)
+       Objetivo: criar senso de urgência imediato com contador
+  ════════════════════════════════════════════════════════════ -->
+  <div class="urgency-bar">
+    ⏳ Oferta especial expira em <span id="countdown">00:00</span> &nbsp;·&nbsp; <strong>70% OFF + 2 Bônus Grátis</strong>
   </div>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════════════ -->
   <nav class="navbar">
     <div class="container">
       <div class="navbar-logo">
@@ -749,11 +874,17 @@
         </svg>
         Primeiros 1000 Dias
       </div>
-      <a href="#pricing" class="btn-cta navbar-cta" onclick="trackClick('navbar_cta')">Quero o Guia</a>
+      <a href="#pricing" class="btn-cta navbar-cta" onclick="trackClick('navbar_cta')">Quero o Guia — R$47,90</a>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 2 — HERO
+       [FIX] Removido botão de compra imediata. Adicionado scroll-nudge
+       para forçar a pessoa a rolar e consumir a copy antes do checkout.
+       [FIX] Âncora do produto visível (Guia Digital) para evitar
+       confusão sobre o que está sendo vendido.
+  ════════════════════════════════════════════════════════════ -->
   <section class="hero">
     <div class="container">
       <div class="hero-grid">
@@ -762,7 +893,6 @@
             🌱 A fase mais importante da vida do seu filho já começou
           </span>
 
-          <!-- Ancoragem do produto — NOVO -->
           <div class="product-anchor">
             📘 Guia Digital &nbsp;·&nbsp; <span>Acesso imediato após a compra</span>
           </div>
@@ -771,9 +901,15 @@
           <p class="hero-sub">
             Da gestação aos 2 anos de vida — o guia completo, baseado em ciência, para mães que querem dar ao filho o melhor começo possível. Sem achismos, sem contradições.
           </p>
-          <a href="#pricing" class="btn-cta btn-pulse" onclick="trackClick('hero_cta')">
-            QUERO O GUIA AGORA →
-          </a>
+
+          <!-- [FIX] Scroll-nudge em vez de botão de compra direto -->
+          <div class="hero-scroll-nudge">
+            <a href="#pain" onclick="trackClick('hero_scroll_nudge')">
+              Descubra o que está em jogo
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+          </div>
+
           <div class="trust-badges">
             <span class="trust-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -803,7 +939,10 @@
     </div>
   </section>
 
-  <!-- ===== SOCIAL PROOF BAR ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 3 — PROVA SOCIAL (Números)
+       Objetivo: validar imediatamente que outras mães já compraram
+  ════════════════════════════════════════════════════════════ -->
   <div class="social-proof-bar">
     <div class="container">
       <div class="social-proof-inner">
@@ -830,8 +969,25 @@
     </div>
   </div>
 
-  <!-- ===== DORES ===== -->
-  <section class="section pain-section">
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 4 — MINI-DEPOIMENTO IMEDIATO
+       [NOVO] Prova social logo no início para aumentar tempo de leitura
+  ════════════════════════════════════════════════════════════ -->
+  <div class="mini-testimonial-bar">
+    <div class="container">
+      <div class="mini-testimonial-inner">
+        <div class="mini-testimonial-stars">★★★★★</div>
+        <p class="mini-testimonial-text">"Estava completamente perdida na introdução alimentar. Com este guia, ganhei segurança e minha filha hoje come de tudo!"</p>
+        <span class="mini-testimonial-author">— Mariana S., mãe da Sofia (1 ano) · São Paulo, SP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 5 — DORES
+       Objetivo: identificação emocional com o problema
+  ════════════════════════════════════════════════════════════ -->
+  <section class="section pain-section" id="pain">
     <div class="container">
       <div class="text-center fade-up">
         <h2>Você se sente perdida com tanta informação contraditória?</h2>
@@ -874,13 +1030,20 @@
     </div>
   </section>
 
-  <!-- ===== AUTORIDADE — SEÇÃO NOVA ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 6 — AUTORIDADE
+       Objetivo: quem criou e por que confiar
+  ════════════════════════════════════════════════════════════ -->
   <section class="section authority-section">
     <div class="container">
       <div class="authority-grid fade-up">
         <div class="authority-photo-wrap">
-          <!-- Substitua pela foto real da autora -->
-          <img src="images/autora.jpg" alt="Nome da Autora" class="authority-photo" />
+          <!-- Troque pela foto real: <img src="images/autora.jpg" alt="Melina Malkan" class="authority-photo" /> -->
+          <div class="authority-photo-placeholder">
+            <span>👩‍⚕️</span>
+            <strong>Melina Malkan</strong>
+            Nutricionista Materno-Infantil
+          </div>
           <div class="authority-credential">
             Nutricionista<br>CRN · Especialista<br>em Nutrição Infantil
           </div>
@@ -889,7 +1052,7 @@
           <span class="authority-tag">Quem criou este guia</span>
           <h2>Criado por quem entende de nutrição infantil de verdade</h2>
           <p>
-            Este guia foi desenvolvido por Melina Malkan nutricionista especializada em nutrição materno-infantil, com anos de experiência acompanhando gestantes, mães em amamentação e bebês na introdução alimentar.
+            Este guia foi desenvolvido por <strong>Melina Malkan</strong>, nutricionista especializada em nutrição materno-infantil, com anos de experiência acompanhando gestantes, mães em amamentação e bebês na introdução alimentar.
           </p>
           <p>
             O conteúdo reúne as mais recentes evidências científicas traduzidas em linguagem prática — porque mãe não precisa de artigo científico, precisa de um passo a passo que funciona na rotina real.
@@ -913,7 +1076,10 @@
     </div>
   </section>
 
-  <!-- ===== SOLUÇÃO ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 7 — SOLUÇÃO (Módulos)
+       Objetivo: mostrar o que está dentro do produto
+  ════════════════════════════════════════════════════════════ -->
   <section class="section solution-section">
     <div class="container text-center">
       <div class="fade-up">
@@ -957,7 +1123,100 @@
     </div>
   </section>
 
-  <!-- ===== DEPOIMENTOS ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 8 — O QUE VOCÊ VAI RECEBER (Detalhamento)
+       [NOVO] Detalha o conteúdo antes de mostrar o preço
+  ════════════════════════════════════════════════════════════ -->
+  <section class="section whats-inside-section">
+    <div class="container text-center">
+      <div class="fade-up">
+        <h2>O que está dentro do guia</h2>
+        <p class="whats-inside-subtitle">6 módulos completos que cobrem cada etapa dos primeiros 1000 dias, do jeito que você precisa — claro, prático e sem enrolação.</p>
+      </div>
+      <div class="modules-list fade-up">
+        <div class="module-item">
+          <div class="module-number">1</div>
+          <div class="module-content">
+            <h3>Nutrição na Gestação: Trimestre por Trimestre</h3>
+            <p>O que comer (e evitar) em cada fase da gravidez. Quais nutrientes são críticos para o desenvolvimento do cérebro e dos ossos do bebê. Lista de alimentos proibidos com explicação científica.</p>
+          </div>
+        </div>
+        <div class="module-item">
+          <div class="module-number">2</div>
+          <div class="module-content">
+            <h3>Aleitamento Materno: Como Produzir Leite de Qualidade</h3>
+            <p>A dieta da mãe que amamenta. Alimentos que aumentam a produção de leite. O que evitar para não causar cólicas no bebê. Suplementação durante a amamentação.</p>
+          </div>
+        </div>
+        <div class="module-item">
+          <div class="module-number">3</div>
+          <div class="module-content">
+            <h3>Introdução Alimentar Segura (6 a 12 Meses)</h3>
+            <p>Sinais de prontidão. Cronograma de introdução alimento por alimento. Como identificar e reagir a alergias. BLW vs. papinha: qual escolher para o seu bebê.</p>
+          </div>
+        </div>
+        <div class="module-item">
+          <div class="module-number">4</div>
+          <div class="module-content">
+            <h3>Nutrição no 2º Ano: Seletividade e Hábitos</h3>
+            <p>Por que o bebê recusa comida e o que fazer. Estratégias para apresentar vegetais sem conflito. Como criar hábitos alimentares saudáveis para a vida toda.</p>
+          </div>
+        </div>
+        <div class="module-item">
+          <div class="module-number">5</div>
+          <div class="module-content">
+            <h3>Suplementação: O Que Realmente Funciona</h3>
+            <p>Vitamina D, ferro, ômega-3, probióticos: quando suplementar, qual dose e qual marca. O que a indústria não quer que você saiba sobre suplementos infantis.</p>
+          </div>
+        </div>
+        <div class="module-item">
+          <div class="module-number">6</div>
+          <div class="module-content">
+            <h3>Riscos Ocultos: Metais Pesados e Ultraprocessados</h3>
+            <p>Quais alimentos "saudáveis" contêm metais pesados. Como reduzir a exposição. Lista completa de ultraprocessados disfarçados de alimentos infantis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 9 — TRANSFORMAÇÃO (Antes / Depois)
+       [NOVO] Visualização do estado atual vs. estado desejado
+  ════════════════════════════════════════════════════════════ -->
+  <section class="section transformation-section">
+    <div class="container text-center">
+      <div class="fade-up">
+        <h2>A diferença que este guia faz na sua vida</h2>
+        <p style="color:var(--gray); margin-bottom:40px;">De mãe ansiosa e perdida para mãe segura e confiante.</p>
+      </div>
+      <div class="transformation-grid fade-up">
+        <div class="transformation-card before">
+          <h3>❌ Sem o Guia</h3>
+          <div class="transformation-item"><span class="icon">😰</span> Medo de errar em cada refeição</div>
+          <div class="transformation-item"><span class="icon">🤯</span> Informações contraditórias em todo lugar</div>
+          <div class="transformation-item"><span class="icon">😔</span> Culpa quando o bebê recusa comida</div>
+          <div class="transformation-item"><span class="icon">😴</span> Horas perdidas pesquisando no Google</div>
+          <div class="transformation-item"><span class="icon">🚫</span> Sem saber quais alimentos são proibidos</div>
+          <div class="transformation-item"><span class="icon">💸</span> Gastando com suplementos desnecessários</div>
+        </div>
+        <div class="transformation-card after">
+          <h3>✅ Com o Guia</h3>
+          <div class="transformation-item"><span class="icon">😊</span> Segurança em cada fase da alimentação</div>
+          <div class="transformation-item"><span class="icon">📋</span> Um passo a passo claro e organizado</div>
+          <div class="transformation-item"><span class="icon">💪</span> Estratégias para lidar com a seletividade</div>
+          <div class="transformation-item"><span class="icon">⏱️</span> Respostas rápidas quando precisar</div>
+          <div class="transformation-item"><span class="icon">✔️</span> Tabela completa de alimentos por fase</div>
+          <div class="transformation-item"><span class="icon">💡</span> Suplementação inteligente e econômica</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 10 — DEPOIMENTOS (3 completos)
+       Objetivo: prova social com histórias reais
+  ════════════════════════════════════════════════════════════ -->
   <section class="section testimonials-section">
     <div class="container text-center">
       <div class="fade-up">
@@ -1002,7 +1261,11 @@
     </div>
   </section>
 
-  <!-- ===== PRICING ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 11 — PRICING (Oferta)
+       [FIX] Bônus destacados na lista de preço
+       [FIX] Micro-copy de segurança abaixo do botão
+  ════════════════════════════════════════════════════════════ -->
   <section class="section pricing-section" id="pricing">
     <div class="container text-center">
       <div class="fade-up">
@@ -1016,10 +1279,10 @@
         <p class="price-installments">ou 5x de R$ 9,58 no cartão de crédito</p>
         <ul class="price-includes">
           <li><span class="price-check">✓</span> 📘 Guia completo: Os Primeiros 1000 Dias (6 módulos)</li>
-          <li><span class="price-check">✓</span> Bônus: Guia de Suplementação Essencial</li>
-          <li><span class="price-check">✓</span> Bônus: Tabela de Alimentos e Metais Pesados</li>
           <li><span class="price-check">✓</span> Acesso vitalício em todos os dispositivos</li>
           <li><span class="price-check">✓</span> Atualizações futuras incluídas</li>
+          <li class="bonus-item"><span class="price-check">✓</span> 🎁 Bônus: Receitas Práticas para os 1000 Dias (20 receitas)</li>
+          <li class="bonus-item"><span class="price-check">✓</span> 🎁 Bônus: Tabela Nutricional Completa por Fase</li>
           <li><span class="price-check">✓</span> 7 dias de garantia incondicional</li>
         </ul>
 
@@ -1030,6 +1293,11 @@
            target="_blank">
           GARANTIR MEU ACESSO — R$ 47,90 →
         </a>
+
+        <!-- [FIX] Micro-copy de segurança -->
+        <p class="cta-microcopy">
+          🔒 Pagamento 100% seguro &nbsp;·&nbsp; Acesso imediato &nbsp;·&nbsp; Cancele em 7 dias se não gostar
+        </p>
 
         <div class="guarantee-box">
           <div class="guarantee-icon">🛡️</div>
@@ -1042,7 +1310,10 @@
     </div>
   </section>
 
-  <!-- ===== FAQ ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 12 — FAQ
+       Objetivo: eliminar objeções finais antes da compra
+  ════════════════════════════════════════════════════════════ -->
   <section class="section faq-section">
     <div class="container text-center">
       <div class="fade-up">
@@ -1056,7 +1327,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <div class="faq-answer-inner">O guia foi desenvolvido pensando em mães com rotina corrida. O conteúdo é direto ao ponto, organizado por etapas e com linguagem acessível. Você consulta apenas o módulo relevante para o momento que está vivendo.</div>
+            <div class="faq-answer-inner">O guia foi desenvolvido pensando em mães com rotina corrida. O conteúdo é direto ao ponto, organizado por etapas e com linguagem acessível. Você consulta apenas o módulo relevante para o momento que está vivendo — não precisa ler tudo de uma vez.</div>
           </div>
         </div>
         <div class="faq-item">
@@ -1095,11 +1366,48 @@
             <div class="faq-answer-inner">O acesso é imediato! Assim que o pagamento for confirmado, você receberá um e-mail com o link de acesso. O conteúdo fica disponível para sempre — em qualquer dispositivo, quando quiser.</div>
           </div>
         </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Serve para quem está grávida ou só para quem já tem bebê?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Serve para as duas situações! O guia começa pela pré-concepção e gestação, passa pelo aleitamento e vai até os 2 anos. Quanto antes você começar, melhor — mas nunca é tarde para aplicar as orientações.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PAYMENT METHODS ===== -->
+  <!-- ═══════════════════════════════════════════════════════════
+       DOBRA 13 — CTA FINAL (Fechamento)
+       [NOVO] Segunda chamada para ação com preço e urgência
+  ════════════════════════════════════════════════════════════ -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="fade-up">
+        <h2>Cada dia que passa é um dia a menos na janela de oportunidade.</h2>
+        <p>Os primeiros 1000 dias não voltam. Mas você ainda pode agir agora e garantir o melhor começo para o seu filho.</p>
+        <div class="final-cta-price">
+          <del>R$ 147,90</del> R$ 47,90
+        </div>
+        <a href="https://pay.kiwify.com.br/53I8SFY"
+           class="btn-cta btn-pulse"
+           style="font-size:1.15rem; padding:22px 56px;"
+           onclick="trackPurchaseClick()"
+           target="_blank">
+          QUERO GARANTIR O FUTURO DO MEU FILHO →
+        </a>
+        <p class="cta-microcopy" style="color:rgba(255,255,255,0.5); margin-top:14px;">
+          🔒 Pagamento seguro &nbsp;·&nbsp; Acesso imediato &nbsp;·&nbsp; 7 dias de garantia
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FORMAS DE PAGAMENTO
+  ════════════════════════════════════════════════════════════ -->
   <section class="payment-section">
     <div class="container">
       <h3>Formas de pagamento aceitas</h3>
@@ -1126,9 +1434,7 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-logo">
-          🌱 Primeiros 1000 Dias
-        </div>
+        <div class="footer-logo">🌱 Primeiros 1000 Dias</div>
         <div class="footer-divider"></div>
         <p class="footer-disclaimer">
           Este produto é um infoproduto digital de caráter educativo e informativo. Não substitui o acompanhamento médico, nutricional ou pediátrico profissional. Sempre consulte um médico ou nutricionista para orientações personalizadas. Os resultados podem variar de pessoa para pessoa.
@@ -1145,16 +1451,19 @@
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
-    // Animações fade-up
+    // ── Animações fade-up ──────────────────────────────────────
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
     fadeElements.forEach(el => observer.observe(el));
 
-    // FAQ accordion
+    // ── FAQ toggle ─────────────────────────────────────────────
     function toggleFaq(btn) {
       const item = btn.closest('.faq-item');
       const isOpen = item.classList.contains('open');
@@ -1162,39 +1471,49 @@
       if (!isOpen) item.classList.add('open');
     }
 
-    // Pixel helpers
-    function trackClick(location) {
-      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_name: 'Primeiros 1000 Dias', content_category: location });
-      if (typeof gtag !== 'undefined') gtag('event', 'click_cta', { event_category: 'CTA', event_label: location });
+    // ── Contador regressivo (20 minutos, reinicia por sessão) ──
+    function startCountdown() {
+      const KEY = 'p1000_countdown_end';
+      let end = sessionStorage.getItem(KEY);
+      if (!end) {
+        end = Date.now() + 20 * 60 * 1000; // 20 minutos
+        sessionStorage.setItem(KEY, end);
+      }
+      const el = document.getElementById('countdown');
+      function tick() {
+        const diff = Math.max(0, end - Date.now());
+        const m = String(Math.floor(diff / 60000)).padStart(2, '0');
+        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        el.textContent = m + ':' + s;
+        if (diff > 0) setTimeout(tick, 1000);
+        else el.textContent = '00:00';
+      }
+      tick();
     }
+    startCountdown();
 
+    // ── Tracking helpers ───────────────────────────────────────
+    function trackClick(label) {
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: label });
+      if (typeof gtag !== 'undefined') gtag('event', 'click_cta', { event_label: label });
+    }
     function trackPurchaseClick() {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'AddToCart', { content_name: 'Guia Primeiros 1000 Dias', content_category: 'Infoproduto', value: 47.90, currency: 'BRL' });
-      }
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'begin_checkout', { currency: 'BRL', value: 47.90, items: [{ item_name: 'Guia Primeiros 1000 Dias', price: 47.90 }] });
-      }
+      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
+      if (typeof gtag !== 'undefined') gtag('event', 'begin_checkout', { currency: 'BRL', value: 47.90 });
     }
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    // ── Scroll depth tracking (GA4) ────────────────────────────
+    const scrollMilestones = { 25: false, 50: false, 75: false, 90: false };
+    window.addEventListener('scroll', () => {
+      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      [25, 50, 75, 90].forEach(m => {
+        if (pct >= m && !scrollMilestones[m]) {
+          scrollMilestones[m] = true;
+          if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { depth: m });
+          if (m === 50 && typeof fbq !== 'undefined') fbq('track', 'ViewContent');
+        }
       });
-    });
-
-    // Sticky CTA — esconder quando pricing visível
-    const pricingSection = document.getElementById('pricing');
-    const stickyCta = document.querySelector('.sticky-cta');
-    if (pricingSection && stickyCta) {
-      const pricingObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { stickyCta.style.display = entry.isIntersecting ? 'none' : 'block'; });
-      }, { threshold: 0.3 });
-      pricingObserver.observe(pricingSection);
-    }
+    }, { passive: true });
   </script>
-
 </body>
 </html>
