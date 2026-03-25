@@ -34,9 +34,9 @@
     a{text-decoration:none;color:inherit}
 
     :root{
-      --green-dark:#1B4332;--green-mid:#2D6A4F;--green-main:#40916C;
-      --green-light:#D8F3DC;--green-pale:#F0FAF2;--accent:#F5C842;
-      --dark:#0D1F17;--gray:#6B7280;--light-gray:#F9FAFB;--border:#D1E8D9;
+      --green-dark:#1E6B3A;--green-mid:#2E8B4A;--green-main:#4CAF6F;
+      --green-light:#C8EDD4;--green-pale:#F2FAF4;--accent:#F5A623;
+      --dark:#14321E;--gray:#5C6B62;--light-gray:#F7FCF8;--border:#C3E6CB;
     }
 
     .container{max-width:1060px;margin:0 auto;padding:0 24px}
@@ -51,15 +51,15 @@
 
     /* CTA Button */
     .btn-cta{
-      display:inline-block;background:linear-gradient(135deg,#40916C,#2D6A4F);
+      display:inline-block;background:linear-gradient(135deg,#4CAF6F,#2E8B4A);
       color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;
       letter-spacing:.5px;padding:18px 40px;border-radius:50px;border:none;
       cursor:pointer;transition:all .3s ease;box-shadow:0 8px 30px rgba(45,106,79,.35);
       text-transform:uppercase;text-align:center
     }
-    .btn-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(45,106,79,.5);background:linear-gradient(135deg,#2D6A4F,#1B4332)}
+    .btn-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(46,139,74,.5);background:linear-gradient(135deg,#2E8B4A,#1E6B3A)}
     .btn-pulse{animation:pulse-green 2s infinite}
-    @keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(64,145,108,.5)}70%{box-shadow:0 0 0 18px rgba(64,145,108,0)}100%{box-shadow:0 0 0 0 rgba(64,145,108,0)}}
+    @keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(76,175,111,.55)}70%{box-shadow:0 0 0 18px rgba(76,175,111,0)}100%{box-shadow:0 0 0 0 rgba(76,175,111,0)}}
 
     /* ── DOBRA 1: Urgency Bar ── */
     .urgency-bar{
@@ -88,12 +88,12 @@
 
     /* ── DOBRA 2: Hero ── */
     .hero{
-      background:linear-gradient(150deg,var(--green-pale) 0%,#e8f5e9 60%,#c8e6c9 100%);
+      background:linear-gradient(150deg,#F2FAF4 0%,#E6F5EA 55%,#D0EAD8 100%);
       padding:60px 0 48px;position:relative;overflow:hidden
     }
     .hero::before{
       content:'';position:absolute;top:-30%;right:-15%;width:500px;height:500px;
-      border-radius:50%;background:radial-gradient(circle,rgba(64,145,108,.1) 0%,transparent 70%);pointer-events:none
+      border-radius:50%;background:radial-gradient(circle,rgba(76,175,111,.13) 0%,transparent 70%);pointer-events:none
     }
     .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
     .hero-tag{
@@ -138,7 +138,7 @@
     .hero-float-text strong{display:block;font-size:.92rem;color:var(--dark)}
 
     /* ── DOBRA 3: Social Proof Bar ── */
-    .social-proof-bar{background:var(--green-dark);padding:18px 0}
+    .social-proof-bar{background:linear-gradient(135deg,#1E6B3A 0%,#2E8B4A 100%);padding:18px 0}
     .social-proof-inner{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap}
     .social-proof-item{text-align:center}
     .social-proof-item .number{display:block;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--accent)}
@@ -163,7 +163,7 @@
     .pain-card h3{margin-bottom:4px;font-size:.95rem}
     .pain-card p{font-size:.87rem}
     .pain-bridge{
-      background:var(--green-dark);color:#fff;border-radius:18px;
+      background:linear-gradient(135deg,#1E6B3A,#2E8B4A);color:#fff;border-radius:18px;
       padding:26px 36px;text-align:center
     }
     .pain-bridge h3{color:var(--accent);font-size:1.2rem;margin-bottom:8px}
@@ -227,7 +227,7 @@
     .testimonial-role{font-size:.76rem;color:var(--gray)}
 
     /* ── DOBRA 8: Pricing ── */
-    .pricing-section{background:linear-gradient(150deg,var(--green-dark) 0%,var(--green-mid) 100%);padding:72px 0}
+    .pricing-section{background:linear-gradient(150deg,#1E6B3A 0%,#2E8B4A 60%,#3AA05E 100%);padding:72px 0}
     .pricing-section h2{color:#fff;margin-bottom:8px}
     .pricing-subtitle{color:rgba(255,255,255,.75);margin-bottom:36px;font-size:1rem}
     .pricing-card{
@@ -297,7 +297,7 @@
       padding:9px 16px;font-size:.81rem;font-weight:600;color:var(--gray);
       display:flex;align-items:center;gap:6px
     }
-    footer{background:var(--dark);color:rgba(255,255,255,.55);padding:30px 0 18px;font-size:.81rem}
+    footer{background:#14321E;color:rgba(255,255,255,.55);padding:30px 0 18px;font-size:.81rem}
     .footer-inner{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
     .footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px}
     .footer-divider{width:100%;height:1px;background:rgba(255,255,255,.1)}
@@ -635,14 +635,37 @@
     tick();
   })();
 
-  // Tracking
+  // Botoes de ancora (navbar + sticky) -> ViewContent (sinal de interesse no produto)
   function trackClick(label) {
-    if(typeof fbq!=='undefined') fbq('track','Lead',{content_name:label});
-    if(typeof gtag!=='undefined') gtag('event','click_cta',{event_label:label});
+    if(typeof fbq!=='undefined') fbq('track','ViewContent',{
+      content_name:'Guia Primeiros 1000 Dias',
+      content_type:'product',
+      value:47.90,
+      currency:'BRL'
+    });
+    if(typeof gtag!=='undefined') gtag('event','view_item',{event_label:label,value:47.90,currency:'BRL'});
   }
+  // Botao principal de checkout -> AddToCart + InitiateCheckout (funil completo para o algoritmo)
   function trackPurchaseClick() {
-    if(typeof fbq!=='undefined') fbq('track','InitiateCheckout');
-    if(typeof gtag!=='undefined') gtag('event','begin_checkout',{currency:'BRL',value:47.90});
+    if(typeof fbq!=='undefined') {
+      fbq('track','AddToCart',{
+        content_name:'Guia Primeiros 1000 Dias',
+        content_type:'product',
+        value:47.90,
+        currency:'BRL'
+      });
+      fbq('track','InitiateCheckout',{
+        content_name:'Guia Primeiros 1000 Dias',
+        num_items:1,
+        value:47.90,
+        currency:'BRL'
+      });
+    }
+    if(typeof gtag!=='undefined') gtag('event','begin_checkout',{
+      currency:'BRL',
+      value:47.90,
+      items:[{item_name:'Guia Primeiros 1000 Dias',price:47.90,quantity:1}]
+    });
   }
 
   // Scroll depth (GA4)
