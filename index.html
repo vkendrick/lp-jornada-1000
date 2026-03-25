@@ -14,17 +14,41 @@
   <meta property="og:image" content="https://1000.jornadamaternal.com/images/og-image.jpg" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Guia Os Primeiros 1000 Dias","offers":{"@type":"Offer","priceCurrency":"BRL","price":"47.90","availability":"https://schema.org/InStock"}}</script>
 
-  <!-- Facebook Pixel -->
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1848994229133853');fbq('track','PageView');</script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
+  <!-- [PERF] Preload da imagem hero (LCP) — carrega antes de tudo -->
+  <link rel="preload" as="image" href="images/hero-mother.webp" type="image/webp" fetchpriority="high">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WKFW0D82N');</script>
-
+  <!-- [PERF] Preconnect para recursos externos críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+
+  <!-- [PERF] Fonte com display=swap — não bloqueia renderização -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+  <!-- [PERF] Facebook Pixel — carregado após load, não bloqueia LCP -->
+  <script>
+    window.fbq=window.fbq||function(){(window._fbq_q=window._fbq_q||[]).push(arguments)};
+    window._fbq_loaded=false;
+    function _loadFbq(){
+      if(window._fbq_loaded)return;window._fbq_loaded=true;
+      var s=document.createElement('script');s.async=true;
+      s.src='https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(s);
+      s.onload=function(){
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init','1848994229133853');fbq('track','PageView');
+        if(window._fbq_q){window._fbq_q.forEach(function(a){fbq.apply(null,a)});}
+      };
+    }
+    window.addEventListener('load',function(){setTimeout(_loadFbq,800);});
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
+
+  <!-- [PERF] Google Analytics — defer não bloqueia renderização -->
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WKFW0D82N');</script>
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -128,6 +152,7 @@
     .trust-badge svg{width:15px;height:15px;color:var(--green-main)}
 
     .hero-image-wrap{position:relative}
+    .hero-image-wrap img,.hero-image-wrap picture{width:100%;display:block}
     .hero-image-wrap img{width:100%;height:460px;object-fit:cover;border-radius:22px;box-shadow:0 28px 70px rgba(27,67,50,.2)}
     .hero-float-badge{
       position:absolute;bottom:-16px;left:-14px;background:#fff;border-radius:14px;
@@ -380,7 +405,11 @@
         </div>
       </div>
       <div class="hero-image-wrap fade-up">
-        <img src="images/hero-mother.jpg" alt="Mãe feliz alimentando bebê saudável — Primeiros 1000 Dias" loading="eager"/>
+        <!-- [PERF] WebP com fallback JPG — fetchpriority=high para LCP -->
+        <picture>
+          <source srcset="images/hero-mother.webp" type="image/webp">
+          <img src="images/hero-mother.jpg" alt="Mãe feliz alimentando bebê saudável — Primeiros 1000 Dias" loading="eager" fetchpriority="high" width="900" height="507" decoding="sync">
+        </picture>
         <div class="hero-float-badge">
           <div class="hero-float-icon">🏆</div>
           <div class="hero-float-text"><strong>+3.200 Mães</strong>já transformaram a saúde dos seus filhos</div>
@@ -433,9 +462,14 @@
   <div class="container">
     <div class="authority-grid fade-up">
       <div class="authority-photo-wrap">
-        <!-- Troque pelo <img src="images/autora.jpg" alt="Melina Malkan" class="authority-photo" /> quando tiver a foto -->
         <div class="authority-photo-placeholder">
-          <span><img src="images/autora.jpg" alt="Nome da Autora" class="authority-photo" /></span>
+          <span>
+          <!-- [PERF] Foto da autora — lazy loading pois está abaixo do fold -->
+          <picture>
+            <source srcset="images/autora.webp" type="image/webp">
+            <img src="images/autora.jpg" alt="Melina Malkan — Nutricionista Materno-Infantil" class="authority-photo" loading="lazy" width="498" height="676" decoding="async">
+          </picture>
+          </span>
           <strong>Melina Malkan</strong>
           Nutricionista Materno-Infantil
         </div>
