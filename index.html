@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -46,9 +47,30 @@
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
 
-  <!-- [PERF] Google Analytics — defer não bloqueia renderização -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7WKFW0D82N');</script>
+  <!-- [PERF] Google Analytics — carregado após load, não bloqueia LCP -->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    // Fila de eventos disparados antes do GA4 carregar
+    window._gtag_q=[];
+    var _gtag_orig=gtag;
+    gtag=function(){window._gtag_q.push(arguments);};
+    window._gtag_loaded=false;
+    function _loadGtag(){
+      if(window._gtag_loaded)return;window._gtag_loaded=true;
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
+      s.onload=function(){
+        gtag=_gtag_orig;
+        gtag('js',new Date());
+        gtag('config','G-7WKFW0D82N',{send_page_view:true});
+        // Drena a fila de eventos acumulados
+        if(window._gtag_q){window._gtag_q.forEach(function(a){gtag.apply(null,a)});window._gtag_q=[];}
+      };
+      document.head.appendChild(s);
+    }
+    window.addEventListener('load',function(){setTimeout(_loadGtag,1000);});
+  </script>
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -717,3 +739,4 @@
 </script>
 </body>
 </html>
+Landing Page para Infoproduto: Alimentação nos Primeiros 1000 Dias - Manus
