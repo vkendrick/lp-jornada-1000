@@ -27,8 +27,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
+  <!-- [PERF] Facebook Pixel — carregado após load, não bloqueia LCP -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
+    
+    fbq('init', '1848994229133853');
+    fbq('track', 'PageView');
+    
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }, 800);
+    });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
+
+  <!-- [PERF] Google Analytics — carregado após load, não bloqueia LCP -->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    // Fila de eventos disparados antes do GA4 carregar
+    window._gtag_q=[];
+    var _gtag_orig=gtag;
+    gtag=function(){window._gtag_q.push(arguments);};
+    window._gtag_loaded=false;
+    function _loadGtag(){
+      if(window._gtag_loaded)return;window._gtag_loaded=true;
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
+      s.onload=function(){
+        gtag=_gtag_orig;
+        gtag('js',new Date());
+        gtag('config','G-7WKFW0D82N',{send_page_view:true});
+        // Drena a fila de eventos acumulados
+        if(window._gtag_q){window._gtag_q.forEach(function(a){gtag.apply(null,a)});window._gtag_q=[];}
+      };
+      document.head.appendChild(s);
+    }
+    window.addEventListener('load',function(){setTimeout(_loadGtag,1000);});
+  </script>
+
   <style>
-    /* ========== TODO O CSS ORIGINAL PERMANECE EXATAMENTE IGUAL ========== */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;color:#2d2d2d;background:#fff;line-height:1.7;overflow-x:hidden}
@@ -114,6 +159,7 @@
     .hero h1 em{color:var(--green-main);font-style:normal}
     .hero-sub{font-size:1rem;color:#4a5568;margin-bottom:24px;line-height:1.8}
 
+    /* [FIX] Scroll-nudge — sem botão de compra na hero */
     .hero-scroll-nudge{margin-top:4px}
     .hero-scroll-nudge a{
       display:inline-flex;align-items:center;gap:7px;color:var(--green-dark);
@@ -252,6 +298,7 @@
     }
     .price-includes li:last-child{border-bottom:none}
     .price-check{color:var(--green-main);font-weight:700;font-size:1.05rem}
+    /* [FIX] Bônus destacados */
     .price-includes li.bonus-item{
       background:var(--green-pale);border-radius:8px;padding:7px 10px;
       border:1px solid var(--green-light);margin-bottom:3px
@@ -263,6 +310,7 @@
     .guarantee-icon{font-size:1.6rem;flex-shrink:0}
     .guarantee-text{font-size:.83rem;color:#444;line-height:1.6}
     .guarantee-text strong{color:var(--green-dark);display:block;margin-bottom:2px}
+    /* [FIX] Micro-copy de segurança */
     .cta-microcopy{font-size:.78rem;color:var(--gray);margin-top:9px;display:flex;align-items:center;justify-content:center;gap:5px}
 
     /* ── DOBRA 9: FAQ ── */
@@ -353,7 +401,10 @@
   </div>
 </nav>
 
-<!-- ═══ DOBRA 2 — HERO ════════════════════════════════════════════ -->
+<!-- ═══ DOBRA 2 — HERO ════════════════════════════════════════════
+     [FIX] Sem botão de compra. Scroll-nudge força leitura da copy.
+     [FIX] Âncora "Guia Digital" evita confusão sobre o produto.
+════════════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
@@ -377,6 +428,7 @@
         </div>
       </div>
       <div class="hero-image-wrap fade-up">
+        <!-- [PERF] WebP com fallback JPG — fetchpriority=high para LCP -->
         <picture>
           <source srcset="images/hero-mother.webp" type="image/webp">
           <img src="images/hero-mother.jpg" alt="Mãe feliz alimentando bebê saudável — Primeiros 1000 Dias" loading="eager" fetchpriority="high" width="900" height="507" decoding="sync">
@@ -435,6 +487,7 @@
       <div class="authority-photo-wrap">
         <div class="authority-photo-placeholder">
           <span>
+          <!-- [PERF] Foto da autora — lazy loading pois está abaixo do fold -->
           <picture>
             <source srcset="images/autora.webp" type="image/webp">
             <img src="images/autora.jpg" alt="Melina Malkan — Nutricionista Materno-Infantil" class="authority-photo" loading="lazy" width="498" height="676" decoding="async">
@@ -505,7 +558,10 @@
   </div>
 </section>
 
-<!-- ═══ DOBRA 8 — PRICING ═════════════════════════════════════════ -->
+<!-- ═══ DOBRA 8 — PRICING ═════════════════════════════════════════
+     [FIX] Bônus destacados visualmente na lista.
+     [FIX] Micro-copy de segurança abaixo do botão.
+════════════════════════════════════════════════════════════════ -->
 <section class="section pricing-section" id="pricing">
   <div class="container text-center">
     <div class="fade-up">
@@ -608,66 +664,6 @@
 </div>
 
 <script>
-  // ================== STUBS PARA FACEBOOK PIXEL (CARREGAMENTO LAZY) ==================
-  // Cria o stub que enfileira chamadas
-  window.fbq = window.fbq || function() {
-    (window._fbq = window._fbq || []).push(arguments);
-  };
-  window._fbq = window._fbq || [];
-  // Inicia o pixel com PageView (enfileirado)
-  fbq('init', '1848994229133853');
-  fbq('track', 'PageView');
-
-  let fbLoaded = false;
-  function loadFacebook() {
-    if (fbLoaded) return;
-    fbLoaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-    s.onload = function() {
-      // Processa eventos enfileirados
-      if (window._fbq) {
-        for (var i = 0; i < window._fbq.length; i++) {
-          fbq.apply(null, window._fbq[i]);
-        }
-        window._fbq = [];
-      }
-    };
-    document.head.appendChild(s);
-  }
-
-  // ================== STUBS PARA GOOGLE ANALYTICS ==================
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function() { dataLayer.push(arguments); };
-  let gaLoaded = false;
-  function loadGA() {
-    if (gaLoaded) return;
-    gaLoaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
-    s.onload = function() {
-      gtag('js', new Date());
-      gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
-    };
-    document.head.appendChild(s);
-  }
-
-  // ================== GATILHOS: primeiro scroll, clique ou timeout ==================
-  let triggered = false;
-  function triggerAll() {
-    if (triggered) return;
-    triggered = true;
-    loadFacebook();
-    loadGA();
-  }
-  window.addEventListener('scroll', triggerAll, { once: true, passive: true });
-  window.addEventListener('click', triggerAll, { once: true });
-  // Fallback: carrega após 2 segundos se o usuário não interagir
-  setTimeout(triggerAll, 2000);
-
-  // ================== FUNÇÕES ORIGINAIS (PERMANECEM IGUAIS) ==================
   // Fade-up
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -682,7 +678,7 @@
     if (!open) item.classList.add('open');
   }
 
-  // Contador regressivo (20 min)
+  // Contador regressivo (20 min por sessão)
   (function() {
     const KEY = 'p1000_end';
     let end = +sessionStorage.getItem(KEY);
@@ -696,54 +692,48 @@
     tick();
   })();
 
-  // Eventos de rastreamento (usam os stubs, que agora são persistentes até o SDK carregar)
+  // Botoes de ancora (navbar + sticky) -> ViewContent (sinal de interesse no produto)
   function trackClick(label) {
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'ViewContent', {
-        content_name: 'Guia Primeiros 1000 Dias',
-        content_type: 'product',
-        value: 47.90,
-        currency: 'BRL'
-      });
-    }
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'view_item', { event_label: label, value: 47.90, currency: 'BRL' });
-    }
+    if(typeof fbq!=='undefined') fbq('track','ViewContent',{
+      content_name:'Guia Primeiros 1000 Dias',
+      content_type:'product',
+      value:47.90,
+      currency:'BRL'
+    });
+    if(typeof gtag!=='undefined') gtag('event','view_item',{event_label:label,value:47.90,currency:'BRL'});
   }
-
+  // Botao principal de checkout -> AddToCart + InitiateCheckout (funil completo para o algoritmo)
   function trackPurchaseClick() {
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'AddToCart', {
-        content_name: 'Guia Primeiros 1000 Dias',
-        content_type: 'product',
-        value: 47.90,
-        currency: 'BRL'
+    if(typeof fbq!=='undefined') {
+      fbq('track','AddToCart',{
+        content_name:'Guia Primeiros 1000 Dias',
+        content_type:'product',
+        value:47.90,
+        currency:'BRL'
       });
-      fbq('track', 'InitiateCheckout', {
-        content_name: 'Guia Primeiros 1000 Dias',
-        num_items: 1,
-        value: 47.90,
-        currency: 'BRL'
-      });
-    }
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'begin_checkout', {
-        currency: 'BRL',
-        value: 47.90,
-        items: [{ item_name: 'Guia Primeiros 1000 Dias', price: 47.90, quantity: 1 }]
+      fbq('track','InitiateCheckout',{
+        content_name:'Guia Primeiros 1000 Dias',
+        num_items:1,
+        value:47.90,
+        currency:'BRL'
       });
     }
+    if(typeof gtag!=='undefined') gtag('event','begin_checkout',{
+      currency:'BRL',
+      value:47.90,
+      items:[{item_name:'Guia Primeiros 1000 Dias',price:47.90,quantity:1}]
+    });
   }
 
-  // Scroll depth
+  // Scroll depth (GA4)
   const milestones = {25:false,50:false,75:false,90:false};
   window.addEventListener('scroll', () => {
     const pct = Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
     [25,50,75,90].forEach(m => {
       if(pct>=m && !milestones[m]) {
         milestones[m]=true;
-        if(typeof gtag !== 'undefined') gtag('event','scroll_depth',{depth:m});
-        if(m===50 && typeof fbq !== 'undefined') fbq('track','ViewContent');
+        if(typeof gtag!=='undefined') gtag('event','scroll_depth',{depth:m});
+        if(m===50 && typeof fbq!=='undefined') fbq('track','ViewContent');
       }
     });
   },{passive:true});
