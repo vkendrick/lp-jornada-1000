@@ -27,89 +27,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-  <!-- [PERF] Facebook Pixel OTIMIZADO: carrega sob demanda (scroll ou clique) com stub -->
+  <!-- Facebook Pixel (snippet oficial com stub e async) -->
   <script>
-    // Stub que acumula chamadas antes do SDK carregar
-    window._fbq_q = [];
-    window.fbq = function() { window._fbq_q.push(arguments); };
-
-    // Inicia e enfileira PageView
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1848994229133853');
     fbq('track', 'PageView');
-
-    let fbLoaded = false;
-
-    function loadFB() {
-      if (fbLoaded) return;
-      fbLoaded = true;
-
-      // Remove o stub ANTES de carregar o SDK (o stub será substituído após o carregamento)
-      // Mas mantemos a fila para o onload
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      s.onload = function() {
-        // Agora que o SDK real está disponível, substitui o stub e processa a fila
-        delete window.fbq;
-        delete window._fbq;
-        if (window._fbq_q && window._fbq_q.length) {
-          window._fbq_q.forEach(function(args) {
-            fbq.apply(null, args);
-          });
-          window._fbq_q = [];
-        }
-      };
-      document.head.appendChild(s);
-    }
-
-    // Carrega no primeiro scroll ou clique
-    window.addEventListener('scroll', loadFB, { once: true });
-    window.addEventListener('click', loadFB, { once: true });
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
 
-  <!-- [PERF] Google Analytics OTIMIZADO: carrega sob demanda -->
+  <!-- Google Analytics (async padrão) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-
-    // Stub que acumula chamadas
-    window._gtag_q = [];
-    var _gtag_orig = gtag;
-    gtag = function() { window._gtag_q.push(arguments); };
-
-    let gaLoaded = false;
-
-    function _loadGtag() {
-      if (gaLoaded) return;
-      gaLoaded = true;
-
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
-      s.onload = function() {
-        // Substitui o stub pelo original e envia dados acumulados
-        gtag = _gtag_orig;
-        gtag('js', new Date());
-        gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
-        if (window._gtag_q) {
-          window._gtag_q.forEach(function(args) {
-            gtag.apply(null, args);
-          });
-          window._gtag_q = [];
-        }
-      };
-      document.head.appendChild(s);
-    }
-
-    function triggerGA() {
-      if (gaLoaded) return;
-      _loadGtag();
-    }
-
-    // Carrega no primeiro scroll ou clique
-    window.addEventListener('scroll', triggerGA, { once: true });
-    window.addEventListener('click', triggerGA, { once: true });
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
   </script>
 
   <style>
@@ -692,13 +624,13 @@
 </div>
 
 <script>
-  // Fade-up
+  // Fade-up animation
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // FAQ
+  // FAQ toggle
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const open = item.classList.contains('open');
@@ -706,7 +638,7 @@
     if (!open) item.classList.add('open');
   }
 
-  // Contador regressivo (20 min por sessão)
+  // Countdown timer (20 min)
   (function() {
     const KEY = 'p1000_end';
     let end = +sessionStorage.getItem(KEY);
@@ -720,10 +652,9 @@
     tick();
   })();
 
-  // Eventos de rastreamento com stubs (garante envio mesmo se SDK ainda não carregou)
+  // Event tracking functions (use fbq and gtag directly; they are already available globally)
   function trackClick(label) {
-    // Usa o stub fbq (já existe globalmente)
-    if(typeof fbq !== 'undefined') {
+    if (typeof fbq !== 'undefined') {
       fbq('track', 'ViewContent', {
         content_name: 'Guia Primeiros 1000 Dias',
         content_type: 'product',
@@ -731,13 +662,13 @@
         currency: 'BRL'
       });
     }
-    if(typeof gtag !== 'undefined') {
+    if (typeof gtag !== 'undefined') {
       gtag('event', 'view_item', { event_label: label, value: 47.90, currency: 'BRL' });
     }
   }
 
   function trackPurchaseClick() {
-    if(typeof fbq !== 'undefined') {
+    if (typeof fbq !== 'undefined') {
       fbq('track', 'AddToCart', {
         content_name: 'Guia Primeiros 1000 Dias',
         content_type: 'product',
@@ -751,7 +682,7 @@
         currency: 'BRL'
       });
     }
-    if(typeof gtag !== 'undefined') {
+    if (typeof gtag !== 'undefined') {
       gtag('event', 'begin_checkout', {
         currency: 'BRL',
         value: 47.90,
@@ -760,18 +691,18 @@
     }
   }
 
-  // Scroll depth (GA4 e FB) - usando stubs
+  // Scroll depth tracking
   const milestones = {25:false,50:false,75:false,90:false};
   window.addEventListener('scroll', () => {
-    const pct = Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
+    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
     [25,50,75,90].forEach(m => {
-      if(pct>=m && !milestones[m]) {
-        milestones[m]=true;
-        if(typeof gtag !== 'undefined') gtag('event','scroll_depth',{depth:m});
-        if(m===50 && typeof fbq !== 'undefined') fbq('track','ViewContent');
+      if (scrollPercent >= m && !milestones[m]) {
+        milestones[m] = true;
+        if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { depth: m });
+        if (m === 50 && typeof fbq !== 'undefined') fbq('track', 'ViewContent');
       }
     });
-  },{passive:true});
+  }, { passive: true });
 </script>
 </body>
 </html>
