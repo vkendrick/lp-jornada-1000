@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -30,20 +29,22 @@
 
   <!-- [PERF] Facebook Pixel — carregado após load, não bloqueia LCP -->
   <script>
-    window.fbq=window.fbq||function(){(window._fbq_q=window._fbq_q||[]).push(arguments)};
-    window._fbq_loaded=false;
-    function _loadFbq(){
-      if(window._fbq_loaded)return;window._fbq_loaded=true;
-      var s=document.createElement('script');s.async=true;
-      s.src='https://connect.facebook.net/en_US/fbevents.js';
-      document.head.appendChild(s);
-      s.onload=function(){
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init','1848994229133853');fbq('track','PageView');
-        if(window._fbq_q){window._fbq_q.forEach(function(a){fbq.apply(null,a)});}
-      };
-    }
-    window.addEventListener('load',function(){setTimeout(_loadFbq,800);});
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
+    
+    fbq('init', '1848994229133853');
+    fbq('track', 'PageView');
+    
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }, 800);
+    });
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
 
@@ -739,4 +740,3 @@
 </script>
 </body>
 </html>
-Landing Page para Infoproduto: Alimentação nos Primeiros 1000 Dias - Manus
