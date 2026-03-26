@@ -14,37 +14,20 @@
   <meta property="og:image" content="https://1000.jornadamaternal.com/images/og-image.jpg" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Guia Os Primeiros 1000 Dias","offers":{"@type":"Offer","priceCurrency":"BRL","price":"47.90","availability":"https://schema.org/InStock"}}</script>
 
-  <!-- [PERF] Preload da imagem hero (LCP) — carrega antes de tudo -->
+  <!-- Preload da imagem hero (LCP) -->
   <link rel="preload" as="image" href="images/hero-mother.webp" type="image/webp" fetchpriority="high">
 
-  <!-- [PERF] Preconnect para recursos externos críticos -->
+  <!-- Preconnect para domínios de terceiros (opcional, pode ser removido se não for usar) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
-  <!-- [PERF] Fonte com display=swap — não bloqueia renderização -->
+  <!-- Fonte com display=swap -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
-  <!-- Facebook Pixel (snippet oficial com stub e async) -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1848994229133853');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1848994229133853&ev=PageView&noscript=1"/></noscript>
-
-  <!-- Google Analytics (async padrão) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
-  </script>
-
   <style>
+    /* ========== TODO O CSS PERMANECE IGUAL ========== */
+    /* (copie exatamente o CSS da versão anterior para manter o layout) */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;color:#2d2d2d;background:#fff;line-height:1.7;overflow-x:hidden}
@@ -67,7 +50,6 @@
     h3{font-size:clamp(1rem,3vw,1.25rem);font-weight:700}
     p{font-size:1.02rem;color:var(--gray)}
 
-    /* CTA Button */
     .btn-cta{
       display:inline-block;background:linear-gradient(135deg,#4CAF6F,#2E8B4A);
       color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;
@@ -79,136 +61,69 @@
     .btn-pulse{animation:pulse-green 2s infinite}
     @keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(76,175,111,.55)}70%{box-shadow:0 0 0 18px rgba(76,175,111,0)}100%{box-shadow:0 0 0 0 rgba(76,175,111,0)}}
 
-    /* ── DOBRA 1: Urgency Bar ── */
-    .urgency-bar{
-      background:#C0392B;color:#fff;text-align:center;
-      padding:10px 20px;font-size:.88rem;font-weight:600
-    }
+    .urgency-bar{background:#C0392B;color:#fff;text-align:center;padding:10px 20px;font-size:.88rem;font-weight:600}
     .urgency-bar strong{font-weight:800}
-    #countdown{
-      display:inline-flex;align-items:center;background:rgba(0,0,0,.25);
-      border-radius:6px;padding:1px 9px;font-weight:800;font-size:.95rem;
-      margin-left:5px;letter-spacing:1px
-    }
+    #countdown{display:inline-flex;align-items:center;background:rgba(0,0,0,.25);border-radius:6px;padding:1px 9px;font-weight:800;font-size:.95rem;margin-left:5px;letter-spacing:1px}
 
-    /* ── Navbar ── */
-    .navbar{
-      position:sticky;top:0;z-index:999;background:rgba(255,255,255,.97);
-      backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:13px 0
-    }
+    .navbar{position:sticky;top:0;z-index:999;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:13px 0}
     .navbar .container{display:flex;justify-content:space-between;align-items:center}
-    .navbar-logo{
-      display:flex;align-items:center;gap:8px;
-      font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:var(--green-dark)
-    }
+    .navbar-logo{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:var(--green-dark)}
     .navbar-logo svg{width:26px;height:26px}
     .navbar-cta{font-size:.85rem;padding:9px 20px}
 
-    /* ── DOBRA 2: Hero ── */
-    .hero{
-      background:linear-gradient(150deg,#F2FAF4 0%,#E6F5EA 55%,#D0EAD8 100%);
-      padding:60px 0 48px;position:relative;overflow:hidden
-    }
-    .hero::before{
-      content:'';position:absolute;top:-30%;right:-15%;width:500px;height:500px;
-      border-radius:50%;background:radial-gradient(circle,rgba(76,175,111,.13) 0%,transparent 70%);pointer-events:none
-    }
+    .hero{background:linear-gradient(150deg,#F2FAF4 0%,#E6F5EA 55%,#D0EAD8 100%);padding:60px 0 48px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-30%;right:-15%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(76,175,111,.13) 0%,transparent 70%);pointer-events:none}
     .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-    .hero-tag{
-      display:inline-flex;align-items:center;gap:6px;background:var(--green-light);
-      color:var(--green-dark);font-size:.8rem;font-weight:700;letter-spacing:1.2px;
-      text-transform:uppercase;padding:5px 13px;border-radius:50px;margin-bottom:14px;
-      border:1px solid rgba(27,67,50,.2)
-    }
-    .product-anchor{
-      display:inline-flex;align-items:center;gap:8px;background:#fff;
-      border:1.5px solid var(--border);border-radius:10px;padding:7px 14px;
-      font-size:.86rem;font-weight:600;color:var(--green-dark);margin-bottom:16px
-    }
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);font-size:.8rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:5px 13px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(27,67,50,.2)}
+    .product-anchor{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:7px 14px;font-size:.86rem;font-weight:600;color:var(--green-dark);margin-bottom:16px}
     .product-anchor span{color:var(--gray);font-weight:400}
     .hero h1{margin-bottom:14px}
     .hero h1 em{color:var(--green-main);font-style:normal}
     .hero-sub{font-size:1rem;color:#4a5568;margin-bottom:24px;line-height:1.8}
-
     .hero-scroll-nudge{margin-top:4px}
-    .hero-scroll-nudge a{
-      display:inline-flex;align-items:center;gap:7px;color:var(--green-dark);
-      font-size:.9rem;font-weight:600;border-bottom:2px solid var(--green-light);
-      padding-bottom:2px;transition:border-color .2s
-    }
+    .hero-scroll-nudge a{display:inline-flex;align-items:center;gap:7px;color:var(--green-dark);font-size:.9rem;font-weight:600;border-bottom:2px solid var(--green-light);padding-bottom:2px;transition:border-color .2s}
     .hero-scroll-nudge a:hover{border-color:var(--green-main)}
     .hero-scroll-nudge svg{animation:bounce-down 1.5s infinite}
     @keyframes bounce-down{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-
     .trust-badges{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px}
     .trust-badge{display:flex;align-items:center;gap:5px;font-size:.8rem;font-weight:600;color:var(--gray)}
     .trust-badge svg{width:15px;height:15px;color:var(--green-main)}
-
     .hero-image-wrap{position:relative}
     .hero-image-wrap img,.hero-image-wrap picture{width:100%;display:block}
     .hero-image-wrap img{width:100%;height:460px;object-fit:cover;border-radius:22px;box-shadow:0 28px 70px rgba(27,67,50,.2)}
-    .hero-float-badge{
-      position:absolute;bottom:-16px;left:-14px;background:#fff;border-radius:14px;
-      padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px
-    }
+    .hero-float-badge{position:absolute;bottom:-16px;left:-14px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px}
     .hero-float-icon{width:38px;height:38px;background:var(--green-light);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
     .hero-float-text{font-size:.76rem;color:var(--gray)}
     .hero-float-text strong{display:block;font-size:.92rem;color:var(--dark)}
 
-    /* ── DOBRA 3: Social Proof Bar ── */
     .social-proof-bar{background:linear-gradient(135deg,#1E6B3A 0%,#2E8B4A 100%);padding:18px 0}
     .social-proof-inner{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap}
     .social-proof-item{text-align:center}
     .social-proof-item .number{display:block;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--accent)}
     .social-proof-item .label{font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.4}
     .social-proof-divider{width:1px;height:38px;background:rgba(255,255,255,.2)}
-    .social-proof-quote{
-      width:100%;border-top:1px solid rgba(255,255,255,.15);margin-top:14px;padding-top:14px;
-      text-align:center;font-size:.85rem;color:rgba(255,255,255,.8);font-style:italic;
-      max-width:600px;margin-left:auto;margin-right:auto
-    }
+    .social-proof-quote{width:100%;border-top:1px solid rgba(255,255,255,.15);margin-top:14px;padding-top:14px;text-align:center;font-size:.85rem;color:rgba(255,255,255,.8);font-style:italic;max-width:600px;margin-left:auto;margin-right:auto}
     .social-proof-quote strong{color:var(--accent);font-style:normal;font-weight:700}
 
-    /* ── DOBRA 4: Dores ── */
     .pain-section{background:var(--light-gray)}
     .pain-subtitle{color:var(--gray);margin-bottom:36px;font-size:1rem}
     .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
-    .pain-card{
-      background:#fff;border-radius:14px;padding:20px;
-      display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border)
-    }
+    .pain-card{background:#fff;border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start;border:1px solid var(--border)}
     .pain-icon{font-size:1.6rem;flex-shrink:0}
     .pain-card h3{margin-bottom:4px;font-size:.95rem}
     .pain-card p{font-size:.87rem}
-    .pain-bridge{
-      background:linear-gradient(135deg,#1E6B3A,#2E8B4A);color:#fff;border-radius:18px;
-      padding:26px 36px;text-align:center
-    }
+    .pain-bridge{background:linear-gradient(135deg,#1E6B3A,#2E8B4A);color:#fff;border-radius:18px;padding:26px 36px;text-align:center}
     .pain-bridge h3{color:var(--accent);font-size:1.2rem;margin-bottom:8px}
     .pain-bridge p{color:rgba(255,255,255,.8);font-size:.97rem}
 
-    /* ── DOBRA 5: Autoridade (compacta, horizontal) ── */
     .authority-section{background:#fff}
     .authority-grid{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center}
     .authority-photo-wrap{position:relative}
     .authority-photo{width:100%;border-radius:18px;box-shadow:0 20px 60px rgba(27,67,50,.15);aspect-ratio:3/4;object-fit:cover}
-    .authority-photo-placeholder{
-      width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--green-pale),var(--green-light));
-      border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:10px;color:var(--green-dark);font-size:.88rem;font-weight:600;text-align:center;
-      padding:20px;border:2px dashed var(--green-main)
-    }
+    .authority-photo-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,var(--green-pale),var(--green-light));border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--green-dark);font-size:.88rem;font-weight:600;text-align:center;padding:20px;border:2px dashed var(--green-main)}
     .authority-photo-placeholder span{font-size:2.8rem}
-    .authority-credential{
-      position:absolute;bottom:-12px;right:-12px;background:var(--green-dark);color:#fff;
-      font-size:.76rem;font-weight:700;padding:9px 14px;border-radius:10px;
-      line-height:1.5;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.2)
-    }
-    .authority-tag{
-      display:inline-block;background:var(--green-light);color:var(--green-dark);
-      font-size:.76rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-      padding:4px 12px;border-radius:50px;margin-bottom:12px
-    }
+    .authority-credential{position:absolute;bottom:-12px;right:-12px;background:var(--green-dark);color:#fff;font-size:.76rem;font-weight:700;padding:9px 14px;border-radius:10px;line-height:1.5;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+    .authority-tag{display:inline-block;background:var(--green-light);color:var(--green-dark);font-size:.76rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:12px}
     .authority-content h2{margin-bottom:14px}
     .authority-content p{margin-bottom:12px;font-size:.95rem}
     .authority-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:20px}
@@ -216,27 +131,19 @@
     .authority-stat .num{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green-dark)}
     .authority-stat .lbl{font-size:.76rem;color:var(--gray)}
 
-    /* ── DOBRA 6: Solução ── */
     .solution-section{background:var(--green-pale)}
     .solution-intro{color:var(--gray);max-width:660px;margin:0 auto 36px;font-size:1rem}
     .solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .solution-card{
-      background:#fff;border-radius:16px;padding:24px 18px;text-align:center;
-      border:1px solid var(--border);transition:box-shadow .2s,transform .2s
-    }
+    .solution-card{background:#fff;border-radius:16px;padding:24px 18px;text-align:center;border:1px solid var(--border);transition:box-shadow .2s,transform .2s}
     .solution-card:hover{box-shadow:0 8px 28px rgba(27,67,50,.12);transform:translateY(-3px)}
     .solution-card-icon{font-size:2rem;margin-bottom:12px}
     .solution-card h3{margin-bottom:6px;font-size:.95rem}
     .solution-card p{font-size:.85rem}
 
-    /* ── DOBRA 7: Depoimentos ── */
     .testimonials-section{background:#fff}
     .testimonials-subtitle{color:var(--gray);margin-bottom:36px;font-size:1rem}
     .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .testimonial-card{
-      background:var(--light-gray);border-radius:16px;padding:24px 20px;
-      border:1px solid var(--border);text-align:left
-    }
+    .testimonial-card{background:var(--light-gray);border-radius:16px;padding:24px 20px;border:1px solid var(--border);text-align:left}
     .testimonial-stars{color:#F5C842;font-size:1rem;margin-bottom:10px;letter-spacing:2px}
     .testimonial-text{font-size:.89rem;color:#444;line-height:1.7;margin-bottom:16px;font-style:italic}
     .testimonial-author{display:flex;align-items:center;gap:9px}
@@ -244,86 +151,53 @@
     .testimonial-name{font-weight:700;font-size:.88rem;color:var(--dark)}
     .testimonial-role{font-size:.76rem;color:var(--gray)}
 
-    /* ── DOBRA 8: Pricing ── */
     .pricing-section{background:linear-gradient(150deg,#1E6B3A 0%,#2E8B4A 60%,#3AA05E 100%);padding:72px 0}
     .pricing-section h2{color:#fff;margin-bottom:8px}
     .pricing-subtitle{color:rgba(255,255,255,.75);margin-bottom:36px;font-size:1rem}
-    .pricing-card{
-      max-width:500px;margin:0 auto;background:#fff;border-radius:26px;
-      padding:40px 36px;box-shadow:0 24px 80px rgba(0,0,0,.25);position:relative;text-align:center
-    }
-    .pricing-badge{
-      position:absolute;top:-15px;left:50%;transform:translateX(-50%);
-      background:var(--accent);color:var(--dark);font-size:.78rem;font-weight:800;
-      letter-spacing:1px;text-transform:uppercase;padding:5px 20px;border-radius:50px;white-space:nowrap
-    }
+    .pricing-card{max-width:500px;margin:0 auto;background:#fff;border-radius:26px;padding:40px 36px;box-shadow:0 24px 80px rgba(0,0,0,.25);position:relative;text-align:center}
+    .pricing-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--dark);font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 20px;border-radius:50px;white-space:nowrap}
     .price-anchor{font-size:.97rem;color:var(--gray);text-decoration:line-through;margin-bottom:4px}
     .price-main{font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:900;color:var(--green-dark);line-height:1}
     .price-main sup{font-size:1.3rem;vertical-align:top;margin-top:10px;display:inline-block}
     .price-installments{font-size:.9rem;color:var(--gray);margin-top:5px;margin-bottom:24px}
     .price-includes{list-style:none;text-align:left;margin-bottom:28px}
-    .price-includes li{
-      display:flex;align-items:center;gap:10px;padding:7px 0;
-      font-size:.91rem;color:#444;border-bottom:1px solid var(--border)
-    }
+    .price-includes li{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:.91rem;color:#444;border-bottom:1px solid var(--border)}
     .price-includes li:last-child{border-bottom:none}
     .price-check{color:var(--green-main);font-weight:700;font-size:1.05rem}
-    .price-includes li.bonus-item{
-      background:var(--green-pale);border-radius:8px;padding:7px 10px;
-      border:1px solid var(--green-light);margin-bottom:3px
-    }
-    .guarantee-box{
-      background:var(--green-pale);border-radius:12px;padding:16px 18px;
-      display:flex;gap:10px;align-items:flex-start;margin-top:20px;text-align:left
-    }
+    .price-includes li.bonus-item{background:var(--green-pale);border-radius:8px;padding:7px 10px;border:1px solid var(--green-light);margin-bottom:3px}
+    .guarantee-box{background:var(--green-pale);border-radius:12px;padding:16px 18px;display:flex;gap:10px;align-items:flex-start;margin-top:20px;text-align:left}
     .guarantee-icon{font-size:1.6rem;flex-shrink:0}
     .guarantee-text{font-size:.83rem;color:#444;line-height:1.6}
     .guarantee-text strong{color:var(--green-dark);display:block;margin-bottom:2px}
     .cta-microcopy{font-size:.78rem;color:var(--gray);margin-top:9px;display:flex;align-items:center;justify-content:center;gap:5px}
 
-    /* ── DOBRA 9: FAQ ── */
     .faq-section{background:#fff}
     .faq-subtitle{color:var(--gray);margin-bottom:36px;font-size:1rem}
     .faq-list{max-width:720px;margin:0 auto}
     .faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;transition:box-shadow .2s}
     .faq-item:hover{box-shadow:0 4px 18px rgba(27,67,50,.1)}
-    .faq-question{
-      width:100%;background:none;border:none;padding:18px 22px;
-      display:flex;justify-content:space-between;align-items:center;cursor:pointer;
-      font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--dark);text-align:left;gap:12px
-    }
+    .faq-question{width:100%;background:none;border:none;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:var(--dark);text-align:left;gap:12px}
     .faq-question:hover{background:var(--green-pale)}
-    .faq-icon{
-      width:24px;height:24px;background:var(--green-light);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;flex-shrink:0;
-      color:var(--green-dark);font-size:1rem;font-weight:700;transition:transform .3s
-    }
+    .faq-icon{width:24px;height:24px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-dark);font-size:1rem;font-weight:700;transition:transform .3s}
     .faq-item.open .faq-icon{transform:rotate(45deg)}
     .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease}
     .faq-item.open .faq-answer{max-height:280px}
     .faq-answer-inner{padding:0 22px 18px;font-size:.91rem;color:var(--gray);line-height:1.7}
 
-    /* ── Payment + Footer ── */
     .payment-section{background:var(--light-gray);padding:36px 0;text-align:center}
     .payment-section h3{font-size:1rem;margin-bottom:5px}
     .payment-section p{font-size:.86rem;margin-bottom:20px}
     .payment-methods{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-    .payment-method{
-      background:#fff;border:1px solid var(--border);border-radius:9px;
-      padding:9px 16px;font-size:.81rem;font-weight:600;color:var(--gray);
-      display:flex;align-items:center;gap:6px
-    }
+    .payment-method{background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 16px;font-size:.81rem;font-weight:600;color:var(--gray);display:flex;align-items:center;gap:6px}
     footer{background:#14321E;color:rgba(255,255,255,.55);padding:30px 0 18px;font-size:.81rem}
     .footer-inner{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
     .footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px}
     .footer-divider{width:100%;height:1px;background:rgba(255,255,255,.1)}
     .footer-disclaimer{max-width:560px;font-size:.74rem;color:rgba(255,255,255,.3);line-height:1.6}
 
-    /* Sticky CTA mobile */
     .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:#fff;border-top:1px solid var(--border);padding:9px 16px;box-shadow:0 -4px 18px rgba(0,0,0,.1)}
     .sticky-cta .btn-cta{width:100%;font-size:.91rem;padding:12px 18px}
 
-    /* Responsive */
     @media(max-width:900px){
       .hero-grid{grid-template-columns:1fr;gap:32px}
       .hero-image-wrap img{height:300px}
@@ -346,7 +220,6 @@
       .authority-stats{gap:16px}
     }
 
-    /* Animations */
     .fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
     .fade-up.visible{opacity:1;transform:translateY(0)}
   </style>
@@ -406,7 +279,7 @@
   </div>
 </section>
 
-<!-- ═══ DOBRA 3 — PROVA SOCIAL (Números) ═════════════════════════ -->
+<!-- ═══ DOBRA 3 — PROVA SOCIAL ════════════════════════════════════ -->
 <div class="social-proof-bar">
   <div class="container">
     <div class="social-proof-inner">
@@ -606,7 +479,6 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -618,19 +490,79 @@
   </div>
 </footer>
 
-<!-- Sticky CTA mobile -->
 <div class="sticky-cta">
   <a href="#pricing" class="btn-cta" onclick="trackClick('sticky_cta')">QUERO O GUIA — R$ 47,90 →</a>
 </div>
 
 <script>
-  // Fade-up animation
+  // ================== STUBS PARA PIXEL E GA (CARREGAMENTO LAZY) ==================
+  (function() {
+    // --- Facebook Pixel Stub ---
+    window.fbq = window.fbq || function() {
+      (window._fbq = window._fbq || []).push(arguments);
+    };
+    window._fbq = window._fbq || [];
+    // Inicia o pixel com PageView (enfileirado)
+    fbq('init', '1848994229133853');
+    fbq('track', 'PageView');
+
+    let fbLoaded = false;
+    function loadFacebook() {
+      if (fbLoaded) return;
+      fbLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      s.onload = function() {
+        // Processa os eventos enfileirados
+        if (window._fbq) {
+          for (var i = 0; i < window._fbq.length; i++) {
+            fbq.apply(null, window._fbq[i]);
+          }
+          window._fbq = [];
+        }
+      };
+      document.head.appendChild(s);
+    }
+
+    // --- Google Analytics Stub ---
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() { dataLayer.push(arguments); };
+    let gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
+      };
+      document.head.appendChild(s);
+    }
+
+    // Gatilhos: primeiro scroll, primeiro clique, ou timeout de 3 segundos
+    let triggered = false;
+    function triggerAll() {
+      if (triggered) return;
+      triggered = true;
+      loadFacebook();
+      loadGA();
+    }
+    window.addEventListener('scroll', triggerAll, { once: true, passive: true });
+    window.addEventListener('click', triggerAll, { once: true });
+    setTimeout(triggerAll, 3000); // fallback caso o usuário não interaja
+  })();
+
+  // ================== OUTROS SCRIPTS (sem reflows desnecessários) ==================
+  // Fade-up
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // FAQ toggle
+  // FAQ
   function toggleFaq(btn) {
     const item = btn.closest('.faq-item');
     const open = item.classList.contains('open');
@@ -638,7 +570,7 @@
     if (!open) item.classList.add('open');
   }
 
-  // Countdown timer (20 min)
+  // Countdown
   (function() {
     const KEY = 'p1000_end';
     let end = +sessionStorage.getItem(KEY);
@@ -652,7 +584,7 @@
     tick();
   })();
 
-  // Event tracking functions (use fbq and gtag directly; they are already available globally)
+  // Eventos de rastreamento (usam os stubs que já estão definidos)
   function trackClick(label) {
     if (typeof fbq !== 'undefined') {
       fbq('track', 'ViewContent', {
@@ -691,18 +623,18 @@
     }
   }
 
-  // Scroll depth tracking
+  // Scroll depth
   const milestones = {25:false,50:false,75:false,90:false};
   window.addEventListener('scroll', () => {
-    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    const pct = Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
     [25,50,75,90].forEach(m => {
-      if (scrollPercent >= m && !milestones[m]) {
-        milestones[m] = true;
-        if (typeof gtag !== 'undefined') gtag('event', 'scroll_depth', { depth: m });
-        if (m === 50 && typeof fbq !== 'undefined') fbq('track', 'ViewContent');
+      if(pct>=m && !milestones[m]) {
+        milestones[m]=true;
+        if(typeof gtag !== 'undefined') gtag('event','scroll_depth',{depth:m});
+        if(m===50 && typeof fbq !== 'undefined') fbq('track','ViewContent');
       }
     });
-  }, { passive: true });
+  },{passive:true});
 </script>
 </body>
 </html>
