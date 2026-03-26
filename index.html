@@ -13,7 +13,7 @@
   <meta property="og:description" content="O mapa completo da nutrição do seu bebê: da gestação aos 2 anos. Ciência, praticidade e segurança para mães reais." />
   <meta property="og:image" content="https://1000.jornadamaternal.com/images/og-image.jpg" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Guia Os Primeiros 1000 Dias","offers":{"@type":"Offer","priceCurrency":"BRL","price":"47.90","availability":"https://schema.org/InStock"}}</script>
-  <meta name="facebook-domain-verification" content="j97hvfwrzbg6iym59lz9f837jahk2h" />
+
   <!-- [PERF] Preload da imagem hero (LCP) — carrega antes de tudo -->
   <link rel="preload" as="image" href="images/hero-mother.webp" type="image/webp" fetchpriority="high">
 
@@ -29,20 +29,34 @@
 
   <!-- [PERF] Facebook Pixel — carregado após load, não bloqueia LCP -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
-    
+    // Stub leve: acumula chamadas fbq() antes do SDK carregar
+    window._fbq_q = [];
+    window.fbq = function() { window._fbq_q.push(arguments); };
+
+    // Enfileira init e PageView imediatamente
     fbq('init', '1848994229133853');
     fbq('track', 'PageView');
-    
+
     window.addEventListener('load', function() {
       setTimeout(function() {
+        // CRÍTICO: remover o stub ANTES de carregar o SDK
+        // O SDK verifica 'if(f.fbq)return' — se o stub ainda existir, ele aborta
+        delete window.fbq;
+        delete window._fbq;
+
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
+        s.onload = function() {
+          // SDK carregou e criou o fbq real — agora processar a fila acumulada
+          if (window._fbq_q && window._fbq_q.length) {
+            window._fbq_q.forEach(function(args) {
+              fbq.apply(null, args);
+            });
+            window._fbq_q = [];
+          }
+        };
+        document.head.appendChild(s);
       }, 800);
     });
   </script>
@@ -474,7 +488,7 @@
       <div class="pain-card"><div class="pain-icon">🤯</div><div><h3>Excesso de informação sem direção</h3><p>Está exausta tentando decifrar o que é mito e o que é verdade entre tantos conteúdos contraditórios na internet.</p></div></div>
     </div>
     <div class="pain-bridge fade-up">
-      <h3>Você não está sozinha — e não precisa continuar assim.</h3> 
+      <h3>Você não está sozinha — e não precisa continuar assim.</h3>
       <p>A desinformação é o maior inimigo das mães modernas. Existe um caminho claro, seguro e baseado em ciência para você seguir com confiança.</p>
     </div>
   </div>
