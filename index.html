@@ -81,9 +81,24 @@
     a{text-decoration:none;color:inherit}
 
     :root{
-      --green-dark:#1E6B3A;--green-mid:#2E8B4A;--green-main:#4CAF6F;
-      --green-light:#C8EDD4;--green-pale:#F2FAF4;--accent:#F5A623;
-      --dark:#14321E;--gray:#5C6B62;--light-gray:#F7FCF8;--border:#C3E6CB;
+      /* Paleta Verde Sálvia — acolhedora e materno-infantil */
+      --green-dark:#4A7C59;   /* sálvia médio — textos, navbar */
+      --green-mid:#5E9E72;    /* sálvia claro — barras, gradientes */
+      --green-main:#7BBF8E;   /* menta suave — destaques, ícones */
+      --green-light:#D4EAD9;  /* verde muito claro — tags, badges */
+      --green-pale:#F4F9F6;   /* quase branco esverdeado — fundos */
+      --dark:#2D4A38;         /* verde noite suave — títulos */
+      --gray:#6B7C72;         /* cinza esverdeado — textos secundários */
+      --light-gray:#F6FAF7;   /* fundo seções alternadas */
+      --border:#C5DEC9;       /* borda suave */
+      /* Paleta da roda alimentar */
+      --orange:#E8650A;       /* Naranja — CTA principal */
+      --orange-light:#FFF0E6;
+      --orange-hover:#C9540A;
+      --yellow:#F5C842;       /* Amarillo — estrelas, destaques */
+      --red:#C0392B;          /* Rojo — urgência */
+      --purple:#6B3FA0;       /* Morado — ícone dor 1 */
+      --accent:#E8650A;
     }
 
     .container{max-width:1060px;margin:0 auto;padding:0 24px}
@@ -96,17 +111,17 @@
     h3{font-size:clamp(1rem,3vw,1.25rem);font-weight:700}
     p{font-size:1.02rem;color:var(--gray)}
 
-    /* CTA Button */
+    /* CTA Button — Laranja (Naranja) para máxima conversão */
     .btn-cta{
-      display:inline-block;background:linear-gradient(135deg,#4CAF6F,#2E8B4A);
+      display:inline-block;background:linear-gradient(135deg,#F07520,#E8650A);
       color:#fff;font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:700;
       letter-spacing:.5px;padding:18px 40px;border-radius:50px;border:none;
-      cursor:pointer;transition:all .3s ease;box-shadow:0 8px 30px rgba(45,106,79,.35);
+      cursor:pointer;transition:all .3s ease;box-shadow:0 8px 30px rgba(232,101,10,.40);
       text-transform:uppercase;text-align:center
     }
-    .btn-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(46,139,74,.5);background:linear-gradient(135deg,#2E8B4A,#1E6B3A)}
-    .btn-pulse{animation:pulse-green 2s infinite}
-    @keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(76,175,111,.55)}70%{box-shadow:0 0 0 18px rgba(76,175,111,0)}100%{box-shadow:0 0 0 0 rgba(76,175,111,0)}}
+    .btn-cta:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(232,101,10,.55);background:linear-gradient(135deg,#E8650A,#C9540A)}
+    .btn-pulse{animation:pulse-orange 2s infinite}
+    @keyframes pulse-orange{0%{box-shadow:0 0 0 0 rgba(232,101,10,.55)}70%{box-shadow:0 0 0 18px rgba(232,101,10,0)}100%{box-shadow:0 0 0 0 rgba(232,101,10,0)}}
 
     /* ── DOBRA 1: Urgency Bar ── */
     .urgency-bar{
@@ -135,19 +150,19 @@
 
     /* ── DOBRA 2: Hero ── */
     .hero{
-      background:linear-gradient(150deg,#F2FAF4 0%,#E6F5EA 55%,#D0EAD8 100%);
+      background:linear-gradient(150deg,#F4F9F6 0%,#EAF4EE 55%,#D8EBE0 100%);
       padding:60px 0 48px;position:relative;overflow:hidden
     }
     .hero::before{
       content:'';position:absolute;top:-30%;right:-15%;width:500px;height:500px;
-      border-radius:50%;background:radial-gradient(circle,rgba(76,175,111,.13) 0%,transparent 70%);pointer-events:none
+      border-radius:50%;background:radial-gradient(circle,rgba(123,191,142,.13) 0%,transparent 70%);pointer-events:none
     }
     .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
     .hero-tag{
       display:inline-flex;align-items:center;gap:6px;background:var(--green-light);
       color:var(--green-dark);font-size:.8rem;font-weight:700;letter-spacing:1.2px;
       text-transform:uppercase;padding:5px 13px;border-radius:50px;margin-bottom:14px;
-      border:1px solid rgba(27,67,50,.2)
+      border:1px solid rgba(74,124,89,.2)
     }
     .product-anchor{
       display:inline-flex;align-items:center;gap:8px;background:#fff;
@@ -176,7 +191,7 @@
 
     .hero-image-wrap{position:relative}
     .hero-image-wrap img,.hero-image-wrap picture{width:100%;display:block}
-    .hero-image-wrap img{width:100%;height:460px;object-fit:cover;border-radius:22px;box-shadow:0 28px 70px rgba(27,67,50,.2)}
+    .hero-image-wrap img{width:100%;height:460px;object-fit:cover;border-radius:22px;box-shadow:0 28px 70px rgba(74,124,89,.18)}
     .hero-float-badge{
       position:absolute;bottom:-16px;left:-14px;background:#fff;border-radius:14px;
       padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px
@@ -186,10 +201,10 @@
     .hero-float-text strong{display:block;font-size:.92rem;color:var(--dark)}
 
     /* ── DOBRA 3: Social Proof Bar ── */
-    .social-proof-bar{background:linear-gradient(135deg,#1E6B3A 0%,#2E8B4A 100%);padding:18px 0}
+    .social-proof-bar{background:linear-gradient(135deg,#4A7C59 0%,#5E9E72 100%);padding:18px 0}
     .social-proof-inner{display:flex;justify-content:center;align-items:center;gap:36px;flex-wrap:wrap}
     .social-proof-item{text-align:center}
-    .social-proof-item .number{display:block;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--accent)}
+    .social-proof-item .number{display:block;font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--yellow)}
     .social-proof-item .label{font-size:.76rem;color:rgba(255,255,255,.7);line-height:1.4}
     .social-proof-divider{width:1px;height:38px;background:rgba(255,255,255,.2)}
     .social-proof-quote{
@@ -197,7 +212,7 @@
       text-align:center;font-size:.85rem;color:rgba(255,255,255,.8);font-style:italic;
       max-width:600px;margin-left:auto;margin-right:auto
     }
-    .social-proof-quote strong{color:var(--accent);font-style:normal;font-weight:700}
+    .social-proof-quote strong{color:var(--yellow);font-style:normal;font-weight:700}
 
     /* ── DOBRA 4: Dores ── */
     .pain-section{background:var(--light-gray)}
@@ -211,10 +226,10 @@
     .pain-card h3{margin-bottom:4px;font-size:.95rem}
     .pain-card p{font-size:.87rem}
     .pain-bridge{
-      background:linear-gradient(135deg,#1E6B3A,#2E8B4A);color:#fff;border-radius:18px;
+      background:linear-gradient(135deg,#4A7C59,#5E9E72);color:#fff;border-radius:18px;
       padding:26px 36px;text-align:center
     }
-    .pain-bridge h3{color:var(--accent);font-size:1.2rem;margin-bottom:8px}
+    .pain-bridge h3{color:var(--yellow);font-size:1.2rem;margin-bottom:8px}
     .pain-bridge p{color:rgba(255,255,255,.8);font-size:.97rem}
 
     /* ── DOBRA 5: Autoridade (compacta, horizontal) ── */
@@ -243,7 +258,7 @@
     .authority-content p{margin-bottom:12px;font-size:.95rem}
     .authority-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:20px}
     .authority-stat{text-align:center}
-    .authority-stat .num{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--green-dark)}
+    .authority-stat .num{display:block;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--orange)}
     .authority-stat .lbl{font-size:.76rem;color:var(--gray)}
 
     /* ── DOBRA 6: Solução ── */
@@ -267,7 +282,7 @@
       background:var(--light-gray);border-radius:16px;padding:24px 20px;
       border:1px solid var(--border);text-align:left
     }
-    .testimonial-stars{color:#F5C842;font-size:1rem;margin-bottom:10px;letter-spacing:2px}
+    .testimonial-stars{color:var(--yellow);font-size:1rem;margin-bottom:10px;letter-spacing:2px}
     .testimonial-text{font-size:.89rem;color:#444;line-height:1.7;margin-bottom:16px;font-style:italic}
     .testimonial-author{display:flex;align-items:center;gap:9px}
     .testimonial-avatar{font-size:1.6rem}
@@ -275,7 +290,7 @@
     .testimonial-role{font-size:.76rem;color:var(--gray)}
 
     /* ── DOBRA 8: Pricing ── */
-    .pricing-section{background:linear-gradient(150deg,#1E6B3A 0%,#2E8B4A 60%,#3AA05E 100%);padding:72px 0}
+    .pricing-section{background:linear-gradient(150deg,#4A7C59 0%,#5E9E72 60%,#6DB585 100%);padding:72px 0}
     .pricing-section h2{color:#fff;margin-bottom:8px}
     .pricing-subtitle{color:rgba(255,255,255,.75);margin-bottom:36px;font-size:1rem}
     .pricing-card{
@@ -284,8 +299,9 @@
     }
     .pricing-badge{
       position:absolute;top:-15px;left:50%;transform:translateX(-50%);
-      background:var(--accent);color:var(--dark);font-size:.78rem;font-weight:800;
-      letter-spacing:1px;text-transform:uppercase;padding:5px 20px;border-radius:50px;white-space:nowrap
+      background:var(--orange);color:#fff;font-size:.78rem;font-weight:800;
+      letter-spacing:1px;text-transform:uppercase;padding:5px 20px;border-radius:50px;white-space:nowrap;
+      box-shadow:0 4px 16px rgba(232,101,10,.45)
     }
     .price-anchor{font-size:.97rem;color:var(--gray);text-decoration:line-through;margin-bottom:4px}
     .price-main{font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:900;color:var(--green-dark);line-height:1}
@@ -345,7 +361,7 @@
       padding:9px 16px;font-size:.81rem;font-weight:600;color:var(--gray);
       display:flex;align-items:center;gap:6px
     }
-    footer{background:#14321E;color:rgba(255,255,255,.55);padding:30px 0 18px;font-size:.81rem}
+    footer{background:#2D4A38;color:rgba(255,255,255,.55);padding:30px 0 18px;font-size:.81rem}
     .footer-inner{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
     .footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;display:flex;align-items:center;gap:6px}
     .footer-divider{width:100%;height:1px;background:rgba(255,255,255,.1)}
@@ -468,10 +484,10 @@
       <p class="pain-subtitle">A maternidade traz um amor inexplicável — mas também muitas dúvidas, medos e uma ansiedade que ninguém te preparou para enfrentar.</p>
     </div>
     <div class="pain-grid fade-up">
-      <div class="pain-card"><div class="pain-icon">😰</div><div><h3>Medo de errar na alimentação</h3><p>Você tem medo de comer algo na gravidez que possa prejudicar o desenvolvimento do bebê, mas não sabe em quem confiar.</p></div></div>
-      <div class="pain-card"><div class="pain-icon">😟</div><div><h3>Ansiedade com a introdução alimentar</h3><p>Fica ansiosa só de pensar no risco de engasgos, alergias e em como apresentar os alimentos de forma segura.</p></div></div>
-      <div class="pain-card"><div class="pain-icon">😔</div><div><h3>Culpa quando o bebê recusa a comida</h3><p>Sente que está falhando como mãe quando o bebê não come bem ou não ganha o peso esperado pelo pediatra.</p></div></div>
-      <div class="pain-card"><div class="pain-icon">🤯</div><div><h3>Excesso de informação sem direção</h3><p>Está exausta tentando decifrar o que é mito e o que é verdade entre tantos conteúdos contraditórios na internet.</p></div></div>
+      <div class="pain-card" style="border-left:4px solid #6B3FA0"><div class="pain-icon" style="background:#F3EEFF;border-radius:10px;padding:6px">😰</div><div><h3>Medo de errar na alimentação</h3><p>Você tem medo de comer algo na gravidez que possa prejudicar o desenvolvimento do bebê, mas não sabe em quem confiar.</p></div></div>
+      <div class="pain-card" style="border-left:4px solid #E8650A"><div class="pain-icon" style="background:#FFF0E6;border-radius:10px;padding:6px">😟</div><div><h3>Ansiedade com a introdução alimentar</h3><p>Fica ansiosa só de pensar no risco de engasgos, alergias e em como apresentar os alimentos de forma segura.</p></div></div>
+      <div class="pain-card" style="border-left:4px solid #C0392B"><div class="pain-icon" style="background:#FDECEA;border-radius:10px;padding:6px">😔</div><div><h3>Culpa quando o bebê recusa a comida</h3><p>Sente que está falhando como mãe quando o bebê não come bem ou não ganha o peso esperado pelo pediatra.</p></div></div>
+      <div class="pain-card" style="border-left:4px solid #F5C842"><div class="pain-icon" style="background:#FFFBEA;border-radius:10px;padding:6px">🤯</div><div><h3>Excesso de informação sem direção</h3><p>Está exausta tentando decifrar o que é mito e o que é verdade entre tantos conteúdos contraditórios na internet.</p></div></div>
     </div>
     <div class="pain-bridge fade-up">
       <h3>Você não está sozinha — e não precisa continuar assim.</h3>
@@ -521,12 +537,12 @@
       <p class="solution-intro">Da concepção até os 2 anos, esses dias são a <strong>janela de oportunidade de ouro</strong>. É quando o cérebro, o sistema imunológico e o metabolismo do seu filho são programados para o resto da vida.</p>
     </div>
     <div class="solution-grid fade-up">
-      <div class="solution-card"><div class="solution-card-icon">🤰</div><h3>Pré-concepção e Gravidez</h3><p>Cuidados nutricionais essenciais para preparar seu corpo e garantir o desenvolvimento ideal desde o início.</p></div>
-      <div class="solution-card"><div class="solution-card-icon">🤱</div><h3>Aleitamento Materno</h3><p>Como nutrir seu corpo para produzir o leite mais rico e nutritivo possível para o seu bebê.</p></div>
-      <div class="solution-card"><div class="solution-card-icon">🥣</div><h3>Introdução Alimentar</h3><p>O passo a passo seguro para apresentar os alimentos no 1º ano sem medo de engasgos ou alergias.</p></div>
-      <div class="solution-card"><div class="solution-card-icon">🌱</div><h3>Nutrição no 2º Ano</h3><p>Como lidar com a seletividade alimentar e criar hábitos saudáveis que durarão a vida toda.</p></div>
-      <div class="solution-card"><div class="solution-card-icon">💊</div><h3>Suplementação Inteligente</h3><p>O que realmente importa suplementar, quando e como — sem exageros e sem carências.</p></div>
-      <div class="solution-card"><div class="solution-card-icon">🛡️</div><h3>Proteção contra Riscos Ocultos</h3><p>Metais pesados, ultraprocessados e outros perigos que a maioria das mães desconhece.</p></div>
+      <div class="solution-card" style="border-top:3px solid #6B3FA0"><div class="solution-card-icon" style="background:#F3EEFF;border-radius:12px;padding:8px;display:inline-block">🤰</div><h3>Pré-concepção e Gravidez</h3><p>Cuidados nutricionais essenciais para preparar seu corpo e garantir o desenvolvimento ideal desde o início.</p></div>
+      <div class="solution-card" style="border-top:3px solid #E8650A"><div class="solution-card-icon" style="background:#FFF0E6;border-radius:12px;padding:8px;display:inline-block">🤱</div><h3>Aleitamento Materno</h3><p>Como nutrir seu corpo para produzir o leite mais rico e nutritivo possível para o seu bebê.</p></div>
+      <div class="solution-card" style="border-top:3px solid #F5C842"><div class="solution-card-icon" style="background:#FFFBEA;border-radius:12px;padding:8px;display:inline-block">🥣</div><h3>Introdução Alimentar</h3><p>O passo a passo seguro para apresentar os alimentos no 1º ano sem medo de engasgos ou alergias.</p></div>
+      <div class="solution-card" style="border-top:3px solid #2E8B4A"><div class="solution-card-icon" style="background:#F2FAF4;border-radius:12px;padding:8px;display:inline-block">🌱</div><h3>Nutrição no 2º Ano</h3><p>Como lidar com a seletividade alimentar e criar hábitos saudáveis que durarão a vida toda.</p></div>
+      <div class="solution-card" style="border-top:3px solid #C0392B"><div class="solution-card-icon" style="background:#FDECEA;border-radius:12px;padding:8px;display:inline-block">💊</div><h3>Suplementação Inteligente</h3><p>O que realmente importa suplementar, quando e como — sem exageros e sem carências.</p></div>
+      <div class="solution-card" style="border-top:3px solid #1E6B3A"><div class="solution-card-icon" style="background:#C8EDD4;border-radius:12px;padding:8px;display:inline-block">🛡️</div><h3>Proteção contra Riscos Ocultos</h3><p>Metais pesados, ultraprocessados e outros perigos que a maioria das mães desconhece.</p></div>
     </div>
   </div>
 </section>
