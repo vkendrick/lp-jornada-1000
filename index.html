@@ -6,12 +6,12 @@
   <title>Os Primeiros 1000 Dias | Guia Completo de Nutrição para o Seu Bebê</title>
   <meta name="description" content="Guia digital completo de nutrição da gestação aos 2 anos. Passo a passo baseado em ciência para mães que querem dar ao filho o melhor começo. Acesso imediato." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://jornadamaternal.com/" />
+  <link rel="canonical" href="https://1000.jornadamaternal.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jornadamaternal.com/" />
+  <meta property="og:url" content="https://1000.jornadamaternal.com/" />
   <meta property="og:title" content="Os Primeiros 1000 Dias | Guia Completo de Nutrição para o Seu Bebê" />
   <meta property="og:description" content="O mapa completo da nutrição do seu bebê: da gestação aos 2 anos. Ciência, praticidade e segurança para mães reais." />
-  <meta property="og:image" content="https://jornadamaternal.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://1000.jornadamaternal.com/images/og-image.jpg" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Guia Os Primeiros 1000 Dias","offers":{"@type":"Offer","priceCurrency":"BRL","price":"47.90","availability":"https://schema.org/InStock"}}</script>
 
   <!-- [PERF] Preload da imagem hero (LCP) — carrega antes de tudo -->
@@ -29,18 +29,25 @@
 
   <!-- [PERF] Facebook Pixel — carregado após load, não bloqueia LCP -->
   <script>
+    // Stub oficial do Facebook — enfileira chamadas antes do SDK carregar
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
     
+    // init enfileirado — será processado quando o SDK carregar
     fbq('init', '1848994229133853');
-    fbq('track', 'PageView');
+    // NÃO chamamos fbq('track','PageView') aqui — o SDK dispara automaticamente
+    // um PageView ao inicializar, evitando o disparo duplo
     
     window.addEventListener('load', function() {
       setTimeout(function() {
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        s.onload = function() {
+          // SDK carregado — dispara PageView uma única vez
+          fbq('track', 'PageView');
+        };
         var x = document.getElementsByTagName('script')[0];
         x.parentNode.insertBefore(s, x);
       }, 800);
