@@ -757,17 +757,39 @@ function trackPurchaseClick() {
 }
 
   // Scroll depth (GA4)
-  const milestones = {25:false,50:false,75:false,90:false};
-  window.addEventListener('scroll', () => {
-    const pct = Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
-    [25,50,75,90].forEach(m => {
-      if(pct>=m && !milestones[m]) {
-        milestones[m]=true;
-        if(typeof gtag!=='undefined') gtag('event','scroll_depth',{depth:m});
-        if(m===50 && typeof fbq!=='undefined') fbq('track','ViewContent');
+// Monitoramento de Rolagem (GA4 + Meta)
+const milestones = { 25: false, 50: false, 75: false, 90: false };
+
+window.addEventListener('scroll', () => {
+  // Cálculo preciso da porcentagem de rolagem
+  const scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+
+  [25, 50, 75, 90].forEach(m => {
+    if (scrollPct >= m && !milestones[m]) {
+      milestones[m] = true;
+
+      // 1. Envia para o Google Analytics (Todos os marcos)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'scroll_depth', { 
+          depth: m,
+          non_interaction: true // Indica que não foi um clique, para não sujar a taxa de rejeição
+        });
       }
-    });
-  },{passive:true});
+
+      // 2. Envia para o Meta (Apenas no marco de 50%)
+      // Isso qualifica o pixel: "Este usuário leu pelo menos metade da página"
+      if (m === 50 && typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+          content_name: 'Guia Primeiros 1000 Dias',
+          content_type: 'product',
+          value: 47.90,
+          currency: 'BRL'
+        });
+      }
+    }
+  });
+}, { passive: true });
+  
 </script>
 </body>
 </html>
