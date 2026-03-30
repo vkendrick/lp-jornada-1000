@@ -726,27 +726,35 @@
     if(typeof gtag!=='undefined') gtag('event','view_item',{event_label:label,value:47.90,currency:'BRL'});
   }
   // Botao principal de checkout -> AddToCart + InitiateCheckout (funil completo para o algoritmo)
-  function trackPurchaseClick() {
-    if(typeof fbq!=='undefined') {
-      fbq('track','AddToCart',{
-        content_name:'Guia Primeiros 1000 Dias',
-        content_type:'product',
-        value:47.90,
-        currency:'BRL'
-      });
-      fbq('track','InitiateCheckout',{
-        content_name:'Guia Primeiros 1000 Dias',
-        num_items:1,
-        value:47.90,
-        currency:'BRL'
-      });
-    }
-    if(typeof gtag!=='undefined') gtag('event','begin_checkout',{
-      currency:'BRL',
-      value:47.90,
-      items:[{item_name:'Guia Primeiros 1000 Dias',price:47.90,quantity:1}]
+function trackPurchaseClick() {
+  const eventData = {
+    content_name: 'Guia Primeiros 1000 Dias',
+    content_type: 'product',
+    value: 47.90,
+    currency: 'BRL',
+    num_items: 1
+  };
+
+  // Envia para o Meta (Facebook)
+  if (typeof fbq !== 'undefined') {
+    // Disparamos AddToCart e InitiateCheckout
+    fbq('track', 'AddToCart', eventData);
+    fbq('track', 'InitiateCheckout', eventData);
+  }
+
+  // Envia para o Google Analytics
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'begin_checkout', {
+      currency: 'BRL',
+      value: 47.90,
+      items: [{
+        item_name: 'Guia Primeiros 1000 Dias',
+        price: 47.90,
+        quantity: 1
+      }]
     });
   }
+}
 
   // Scroll depth (GA4)
   const milestones = {25:false,50:false,75:false,90:false};
