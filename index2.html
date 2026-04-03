@@ -296,17 +296,21 @@
     .fade-up.visible{opacity:1;transform:translateY(0)}
 
     .video-container {
-      width: 360%;
-      max-width: 180px; /* Limita a largura máxima no desktop */
-      margin: 0 auto;   /* Centraliza o vídeo */
-    }
+  width: 100%;          /* Ocupa a largura disponível do celular */
+  max-width: 360px;     /* Tamanho ideal para vídeo vertical */
+  margin: 20px auto;    /* Centraliza e dá um espaço em cima/baixo */
+  display: flex;        /* Garante que o conteúdo interno se alinhe */
+  justify-content: center;
+}
 
-    video {
-      width: 100%;      /* Faz o vídeo ocupar toda a largura do container */
-      height: auto;     /* Mantém a proporção 9:16 automaticamente */
-      border-radius: 15px; /* Opcional: para arredondar as bordas como na imagem */
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Opcional: sombra suave */
-    }
+video {
+  width: 100%;          /* Preenche o container de 360px */
+  height: auto;         /* Mantém a proporção original do arquivo mp4 */
+  display: block;       /* Remove espaços vazios abaixo do vídeo */
+  border-radius: 15px; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 
   </style>
 </head>
@@ -355,7 +359,7 @@
         <!-- Vídeo (substitua VIDEO_ID pelo ID do YouTube) -->
       
       <div class="video-container">
-        <video controls playsinline poster="assets/images/thumbnail.jpg" loading="lazy">
+        <video controls playsinline poster="assets/images/thumbnail.jpg" preload="metadata>
           <source src="assets/videos/JornadaMaternal.mp4" type="video/mp4">
           Seu navegador não suporta o formato de vídeo.
         </video>
