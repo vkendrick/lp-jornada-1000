@@ -294,6 +294,20 @@
     }
     .fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
     .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    .video-container {
+      width: 100%;
+      max-width: 360px; /* Limita a largura máxima no desktop */
+      margin: 0 auto;   /* Centraliza o vídeo */
+    }
+
+    video {
+      width: 100%;      /* Faz o vídeo ocupar toda a largura do container */
+      height: auto;     /* Mantém a proporção 9:16 automaticamente */
+      border-radius: 15px; /* Opcional: para arredondar as bordas como na imagem */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Opcional: sombra suave */
+    }
+
   </style>
 </head>
 <body>
