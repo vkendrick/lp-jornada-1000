@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa do ambiente de sono | Código do Sono</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f6f1ea;--surface:#fffdfa;--ink:#1d2b43;--muted:#5c6d84;--line:rgba(29,43,67,.12);--brand:#dd8d69;--deep:#162440;--shadow:0 20px 60px rgba(20,32,57,.12)}
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#f8f5ef,#f2ece4);color:var(--ink);font-family:'Manrope',sans-serif}
+    .shell{width:min(980px,calc(100% - 28px));margin:0 auto;padding:28px 0 54px}.cover,.section{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow)}
+    .cover{overflow:hidden;margin-bottom:24px}.cover img{width:100%;display:block;max-height:360px;object-fit:cover}.cover-copy{padding:34px}.eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800;color:#c56f49;margin-bottom:16px}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;line-height:.96;letter-spacing:-.03em;color:var(--deep);margin:0} h1{font-size:clamp(44px,7vw,76px)} h2{font-size:clamp(32px,5vw,52px);margin-bottom:14px} h3{font-size:30px;margin-bottom:10px}
+    p{color:var(--muted);line-height:1.85;font-size:17px}.section{padding:30px;margin-top:22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:24px;border-radius:22px;background:#fff;border:1px solid var(--line)}
+    .room-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.tip{padding:18px 20px;border-radius:22px;background:rgba(221,141,105,.1);color:var(--ink);line-height:1.8;border:1px solid rgba(221,141,105,.18)}
+    @media(max-width:760px){.grid,.room-grid{grid-template-columns:1fr}.shell{width:min(980px,calc(100% - 20px))}.cover-copy,.section{padding:22px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="cover">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663087520375/jTeJdmm4qXa3uFYmLWP5Lm/codigo-sono-capa-principal-dgx9Gvqm2pRDd5xCrvuT4j.webp" alt="Capa editorial Código do Sono" />
+      <div class="cover-copy">
+        <span class="eyebrow">Bônus prático</span>
+        <h1>Mapa do ambiente de sono</h1>
+        <p>O quarto não precisa ser perfeito para ajudar o sono. Ele precisa reduzir ruídos desnecessários, excesso de estímulo e interrupções evitáveis. Este mapa organiza os pontos mais importantes para que o ambiente trabalhe a favor da rotina.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Os quatro pontos que mais interferem</h2>
+      <div class="room-grid">
+        <div class="card"><h3>Luz</h3><p>À noite, a iluminação ideal é suave e previsível. Luz forte no momento de desacelerar costuma prolongar a agitação e dificultar a transição para o sono.</p></div>
+        <div class="card"><h3>Som</h3><p>O ambiente deve evitar ruídos bruscos e mudanças repentinas. O mais importante é a sensação geral de continuidade, e não o silêncio absoluto.</p></div>
+        <div class="card"><h3>Temperatura</h3><p>Excesso de calor ou frio tende a aumentar desconforto e despertares. Vale observar se a roupa, a manta e a ventilação estão coerentes com a noite.</p></div>
+        <div class="card"><h3>Estímulo visual</h3><p>Muita movimentação, excesso de objetos muito chamativos ou telas ligadas perto da hora de dormir podem manter o corpo em alerta por mais tempo.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Checklist do quarto antes de dormir</h2>
+      <div class="grid">
+        <div class="card"><h3>Antes do ritual</h3><p>Deixe o espaço organizado, resolva trocas e apoios que possam gerar saídas e entradas repetidas, diminua a intensidade da luz e prepare tudo o que a noite vai pedir.</p></div>
+        <div class="card"><h3>Durante a transição</h3><p>Ao entrar no quarto, evite conversas longas, brincadeiras agitadas, barulhos de fundo, telas ou movimentos que mudem o tom da rotina no último momento.</p></div>
+      </div>
+      <div class="tip" style="margin-top:18px;">Muitas vezes o que mais ajuda não é adicionar elementos novos, mas retirar excessos. Um ambiente simples e coerente costuma funcionar melhor do que um quarto cheio de estímulos competindo entre si.</div>
+    </section>
+
+    <section class="section">
+      <h2>Mapa rápido de ajustes</h2>
+      <div class="room-grid">
+        <div class="card"><h3>Se o bebê parece acelerar no quarto</h3><p>Revise iluminação, ritmo da entrada no ambiente, tom de voz e a quantidade de estímulos ainda acontecendo nos minutos anteriores.</p></div>
+        <div class="card"><h3>Se desperta com facilidade</h3><p>Observe interrupções sonoras, troca de temperatura ao longo da noite e desconfortos que poderiam ser resolvidos antes do adormecer.</p></div>
+        <div class="card"><h3>Se o momento de deitar virou luta</h3><p>Veja se o cansaço já passou do ponto, se a transição começou tarde demais ou se o ritual ficou longo, variável e difícil de repetir.</p></div>
+        <div class="card"><h3>Se nada parece funcionar</h3><p>Retorne ao básico: quarto mais simples, sequência mais previsível, menos mudanças ao mesmo tempo e observação por alguns dias antes de concluir.</p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
