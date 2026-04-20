@@ -21,18 +21,62 @@
   <link rel="dns-prefetch" href="//connect.facebook.net">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="dns-prefetch" href="//www.clarity.ms">
-  <link rel="preload" as="image" href="assets/hero-produto-1120.webp" type="image/webp" fetchpriority="high">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="image" href="https://d2xsxph8kpxj0f.cloudfront.net/310519663087520375/jTeJdmm4qXa3uFYmLWP5Lm/codigo-sono-editorial-ref-hRzWeK76vH9VPGKR4NpvRq.webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w4g1dbeei0");
+  </script>
+  
+  <!-- Facebook Pixel — carregado após load, não bloqueia LCP -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
-    window.fbq = window.fbq || function(){ (window.fbq.q = window.fbq.q || []).push(arguments); };
-    window.clarity = window.clarity || function(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
+    fbq('init', '4250535778552762');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        s.onload = function() { fbq('track', 'PageView'); };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }, 800);
+    });
   </script>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=4250535778552762&ev=PageView&noscript=2"/></noscript>
+
+
+  <!-- Google Analytics — carregado após load -->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window._gtag_q=[];
+    var _gtag_orig=gtag;
+    gtag=function(){window._gtag_q.push(arguments);};
+    window._gtag_loaded=false;
+    function _loadGtag(){
+      if(window._gtag_loaded)return;window._gtag_loaded=true;
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
+      s.onload=function(){
+        gtag=_gtag_orig;
+        gtag('js',new Date());
+        gtag('config','G-7WKFW0D82N',{send_page_view:true});
+        if(window._gtag_q){window._gtag_q.forEach(function(a){gtag.apply(null,a)});window._gtag_q=[];}
+      };
+      document.head.appendChild(s);
+    }
+    window.addEventListener('load',function(){setTimeout(_loadGtag,1000);});
+  </script>
+
+
 
   <style>
     :root {
@@ -65,11 +109,6 @@
         linear-gradient(180deg, #f8f5ef 0%, #f3ede5 100%);
     }
     img { max-width: 100%; display: block; }
-    main > section:not(.hero):not(.strip) { content-visibility: auto; contain-intrinsic-size: 900px; }
-    .proof-grid img, .media-frame img { height: auto; }
-    @supports not (content-visibility: auto) {
-      main > section:not(.hero):not(.strip) { contain: layout style paint; }
-    }
     a { color: inherit; text-decoration: none; }
     .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
     .announcement {
@@ -86,9 +125,8 @@
 
     .header {
       position: sticky; top: 0; z-index: 20;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: rgba(255, 252, 247, 0.82);
+      backdrop-filter: blur(20px);
+      background: rgba(255, 252, 247, 0.85);
       border-bottom: 1px solid rgba(29,43,67,0.08);
     }
     .header .container {
@@ -392,12 +430,12 @@
 
       function bootTracking() {
         var cfg = window.CODIGO_SONO_CONFIG || {};
-        if (cfg.ga4Id) {
+        if (cfg.ga4Id && cfg.ga4Id !== 'G-7WKFW0D82N') {
           loadScript('https://www.googletagmanager.com/gtag/js?id=' + cfg.ga4Id);
           window.gtag('js', new Date());
           window.gtag('config', cfg.ga4Id, { page_title: document.title, page_path: location.pathname });
         }
-        if (cfg.metaPixelId) {
+        if (cfg.metaPixelId && cfg.metaPixelId !== '4250535778552762') {
           !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
           n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -407,7 +445,7 @@
           fbq('track', 'PageView');
           fbq('track', 'ViewContent', { content_name: 'Código do Sono', content_category: 'landing_page' });
         }
-        if (cfg.clarityId) {
+        if (cfg.clarityId && cfg.clarityId !== 'w4g1dbeei0') {
           (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/' + i;
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, 'clarity', 'script', cfg.clarityId);
@@ -415,9 +453,9 @@
       }
 
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(bootTracking, { timeout: 3500 });
+        requestIdleCallback(bootTracking, { timeout: 2500 });
       } else {
-        window.addEventListener('load', function(){ setTimeout(bootTracking, 1800); }, { once: true });
+        window.addEventListener('load', function(){ setTimeout(bootTracking, 1200); }, { once: true });
       }
     })();
   </script>
@@ -469,7 +507,7 @@
 
         <div class="visual-wrap">
           <div class="hero-frame">
-            <img loading="eager" fetchpriority="high" decoding="async" width="1120" height="751" src="assets/hero-produto-1120.webp" alt="Mockup editorial do Código do Sono com tablet, smartphone e guia impresso" />
+            <img loading="eager" fetchpriority="high" decoding="async" width="1060" height="548" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663087520375/jTeJdmm4qXa3uFYmLWP5Lm/codigo-sono-editorial-ref-hRzWeK76vH9VPGKR4NpvRq.webp" alt="Mockup editorial do Código do Sono com tablet, smartphone e guia impresso" />
            </div>
           <div class="float-card float-top">
             <small>Mecanismo do protocolo</small>
@@ -540,7 +578,7 @@
           </div>
         </div>
         <div class="media-frame">
-    <img src="assets/hero-ambiente-960.webp" alt="Mãe observando o bebê dormir em um ambiente calmo e noturno" width="960" height="536" loading="lazy" decoding="async" fetchpriority="low">
+    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663087520375/jTeJdmm4qXa3uFYmLWP5Lm/codigo-sono-hero-clean_84e8a5e3.png" alt="Mãe observando o bebê dormir em um ambiente calmo e noturno" width="1080" height="513" fetchpriority="high">
        
         </div>
       </div>
@@ -574,9 +612,9 @@
             </div>
           </div>
           <div class="proof-grid">
-            <div class="proof-item"><img src="images/mae1.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="proof-item"><img src="images/mae2.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy" decoding="async" fetchpriority="low"></div>
-            <div class="proof-item"><img src="images/mae3.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy" decoding="async" fetchpriority="low"></div>
+            <div class="proof-item"><img src="images/mae1.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy"></div>
+            <div class="proof-item"><img src="images/mae2.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy"></div>
+            <div class="proof-item"><img src="images/mae3.webp" alt="Foto da Mamae" width="334" height="344" loading="lazy"></div>
 
           </div>
         </div>
