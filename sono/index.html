@@ -361,7 +361,7 @@
       metaPixelId: '4250535778552762',
       clarityId: 'w4g1dbeei0',
       currency: 'BRL',
-      purchaseValue: 47.90,
+      purchaseValue: 67.90,
       debug: false
     };
   </script>
@@ -628,9 +628,9 @@
             <small>Hoje você leva o protocolo + 4 bônus</small>
             <div class="price-row">
               <span class="old-price">de R$ 225,00</span>
-              <span class="new-price">R$ 47,90</span>
+              <span class="new-price">R$ 67,90</span>
             </div>
-            <div class="installments"><strong>Em vez de pagar R$ 225,00</strong>, você entra hoje por apenas R$ 47,90.</div>
+            <div class="installments"><strong>Em vez de pagar R$ 225,00</strong>, você entra hoje por apenas R$ 67,90.</div>
             <div class="installments">ou 3x de R$ 15,97 sem juros</div>
           </div>
 
@@ -744,8 +744,8 @@
       document.querySelectorAll('[data-checkout-link]').forEach(function(el){
         el.addEventListener('click', function(){
           try {
-            if (window.gtag) gtag('event', 'begin_checkout', { currency: cfg.currency || 'BRL', value: cfg.purchaseValue || 47.90, item_name: 'Código do Sono' });
-            if (window.fbq) fbq('track', 'InitiateCheckout', { currency: cfg.currency || 'BRL', value: cfg.purchaseValue || 47.90, content_name: 'Código do Sono' });
+            if (window.gtag) gtag('event', 'begin_checkout', { currency: cfg.currency || 'BRL', value: cfg.purchaseValue || 67.90, item_name: 'Código do Sono' });
+            if (window.fbq) fbq('track', 'InitiateCheckout', { currency: cfg.currency || 'BRL', value: cfg.purchaseValue || 67.90, content_name: 'Código do Sono' });
           } catch (e) {}
           trackAction('cta_checkout_click', { source: 'landing_offer' });
         });
