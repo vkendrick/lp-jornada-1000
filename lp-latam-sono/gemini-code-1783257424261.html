@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Planilla de Seguimiento</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #FAF8F5; padding: 30px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 850px; background: #FFFFFF; padding: 30px; border-radius: 12px; border: 1px solid #EBE7E0; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0F172A; padding-bottom: 16px; margin-bottom: 20px; }
+        h1 { font-size: 22px; color: #0F172A; text-transform: uppercase; letter-spacing: 0.5px; }
+        .instructions { background: #F8FAFC; padding: 12px; border-radius: 8px; font-size: 12.5px; color: #475569; margin-bottom: 20px; line-height: 1.4; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #1E3A8A; color: white; font-size: 11px; text-transform: uppercase; font-weight: 700; padding: 10px 6px; text-align: center; border: 1px solid #1E3A8A; }
+        td { height: 38px; border: 1px solid #CBD5E1; padding: 4px; text-align: center; font-size: 13px; }
+        td:first-child { font-weight: bold; background: #F1F5F9; color: #1E293B; width: 45px; }
+        .col-wide { width: 95px; }
+        .col-notes { width: 220px; text-align: left; padding-left: 8px; }
+        .footer-text { text-align: center; margin-top: 20px; font-size: 11px; color: #94A3B8; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <span style="font-size: 10px; uppercase; font-weight:700; color:#718096; letter-spacing:1px;">Herramienta de Acompañamiento</span>
+            <h1>Planilla de Seguimiento</h1>
+        </div>
+        <div style="font-size: 11px; color: #64748B; border: 1px solid #CBD5E1; padding: 6px 12px; border-radius: 4px; font-weight:500;">
+            14 Días del Protocolo
+        </div>
+    </div>
+
+    <div class="instructions">
+        <strong>💡 Instrucciones rápidas:</strong> Anota los despertares al momento (no confíes en la memoria de las 3 a.m.)[cite: 4]. Registra duraciones reales de siesta[cite: 4]. Usa la columna de Notas para registrar eventos como brotes de dientes, viajes o malestares[cite: 4].
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Día</th>
+                <th class="col-wide">Hora de dormir</th>
+                <th>Despertares (N.º / Hora)</th>
+                <th class="col-wide">Hora despertar</th>
+                <th class="col-wide">Siesta 1</th>
+                <th class="col-wide">Siesta 2</th>
+                <th class="col-notes">Notas / Eventos (Dientes, viajes, etc.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Generación de filas del 1 al 14 listos para imprimir y rellenar -->
+            <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+            <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td class="col-notes"></td></tr>
+        </tbody>
+    </table>
+
+    <div class="footer-text">
+        Compara la semana 1 con la semana 2 — el progreso real se ve en la tendencia[cite: 4]. Imprime una nueva planilla ante una regresión[cite: 4].
+    </div>
+</div>
+</body>
+</html>

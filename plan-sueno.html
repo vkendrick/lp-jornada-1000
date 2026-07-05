@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método Sueño a Medida — Diagnóstico personalizado</title>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w4g1dbeei0");
+  </script>
+  
+  <!-- Facebook Pixel — carregado após load, não bloqueia LCP -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
+    fbq('init', '1019837753974051');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        s.onload = function() { fbq('track', 'PageView'); };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }, 800);
+    });
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1019837753974051&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Google Analytics — carregado após load -->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    window._gtag_q=[];
+    var _gtag_orig=gtag;
+    gtag=function(){window._gtag_q.push(arguments);};
+    window._gtag_loaded=false;
+    function _loadGtag(){
+      if(window._gtag_loaded)return;window._gtag_loaded=true;
+      var s=document.createElement('script');s.async=true;
+      s.src='https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
+      s.onload=function(){
+        gtag=_gtag_orig;
+        gtag('js',new Date());
+        gtag('config','G-7WKFW0D82N',{send_page_view:true});
+        if(window._gtag_q){window._gtag_q.forEach(function(a){gtag.apply(null,a)});window._gtag_q=[];}
+      };
+      document.head.appendChild(s);
+    }
+    window.addEventListener('load',function(){setTimeout(_loadGtag,1000);});
+  </script>
+
+
+
+<style>
+  :root{
+    --ink-deep: #1B2138;
+    --ink-plum: #2D2A4A;
+    --ink-plum-soft: #37345A;
+    --moon-gold: #E8B769;
+    --moon-gold-soft: #F2CD8F;
+    --paper: #F5F3EE;
+    --paper-dim: #D1CFDB; /* Contraste levemente melhorado para leitura no escuro */
+    --muted: #8B8FA3;
+    --good: #7FA88F;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: radial-gradient(120% 140% at 50% 0%, var(--ink-plum) 0%, var(--ink-deep) 60%);
+    color: var(--paper);
+    font-family: var(--font-body);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding: 32px 16px 64px;
+  }
+
+  .app{
+    width:100%;
+    max-width: 640px;
+  }
+
+  /* --- Starfield ambiance --- */
+  .stars{
+    position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
+  }
+  .star{
+    position:absolute; width:2px; height:2px; background: var(--paper-dim); border-radius:50%;
+    opacity:0.35; animation: twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:.15;} 50%{opacity:.7;} }
+
+  /* --- Moon phase progress (signature element) --- */
+  .moon-track{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin: 8px 0 36px;
+  }
+  .moon{
+    width:22px; height:22px; border-radius:50%;
+    background: var(--ink-plum-soft);
+    box-shadow: inset 4px -2px 0 0 var(--ink-deep);
+    transition: all .5s ease;
+    opacity:.4;
+  }
+  .moon.active{
+    background: var(--moon-gold-soft);
+    box-shadow: inset 4px -2px 0 0 rgba(0,0,0,0.15);
+    opacity:1;
+    transform: scale(1.15);
+  }
+  .moon.done{
+    background: var(--moon-gold);
+    box-shadow: none;
+    opacity:.85;
+  }
+
+  .card{
+    background: rgba(245,243,238,0.04);
+    border: 1px solid rgba(245,243,238,0.09);
+    border-radius: 20px;
+    padding: 40px 32px;
+    backdrop-filter: blur(6px);
+    animation: rise .5s ease;
+  }
+  @keyframes rise{ from{ opacity:0; transform: translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .hero-illust{ width:100%; max-width:280px; display:block; margin: 0 auto 20px; }
+  .q-icon{ width:56px; height:56px; margin-bottom:18px; }
+
+  .eyebrow{
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--moon-gold); font-weight:600; margin-bottom:14px;
+  }
+
+  h1{
+    font-family: var(--font-display);
+    font-weight:600; font-size: clamp(28px, 5vw, 40px);
+    line-height:1.15; margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  h1 em{ font-style:italic; color: var(--moon-gold-soft); }
+
+  h2{
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 24px; margin: 0 0 22px; line-height:1.3;
+  }
+
+  p.lede{
+    color: var(--paper-dim); font-size:16px; line-height:1.6; margin: 0 0 28px;
+  }
+
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    text-align:left;
+    background: rgba(245,243,238,0.03);
+    border: 1px solid rgba(245,243,238,0.14);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    cursor:pointer;
+    transition: all .2s ease;
+  }
+  .opt:hover{
+    border-color: var(--moon-gold);
+    background: rgba(232,183,105,0.08);
+    transform: translateX(2px);
+  }
+  .opt:focus-visible{ outline: 2px solid var(--moon-gold); outline-offset:2px; }
+  .opt.selected{
+    border-color: var(--moon-gold);
+    background: rgba(232,183,105,0.14);
+  }
+
+  .btn-primary{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background: var(--moon-gold);
+    color: var(--ink-deep);
+    border:none; padding: 16px 28px; border-radius: 12px;
+    font-family: var(--font-body); font-weight:700; font-size:15.5px;
+    cursor:pointer; width:100%;
+    transition: transform .15s ease, background .2s ease;
+  }
+  .btn-primary:hover{ background: var(--moon-gold-soft); transform: translateY(-1px); }
+  .btn-primary:focus-visible{ outline: 2px solid var(--paper); outline-offset:2px; }
+  .btn-primary:disabled{ opacity:.4; cursor:not-allowed; transform:none; }
+
+  .btn-ghost{
+    background:none; border:none; color: var(--muted); font-family: var(--font-body);
+    font-size:13px; cursor:pointer; margin-top:24px; text-align:center; width:100%;
+    text-decoration: underline; text-underline-offset:3px; opacity: 0.6;
+  }
+  .btn-ghost:hover{ color: var(--paper); opacity: 1; }
+
+  input[type="email"], input[type="text"]{
+    width:100%; padding:16px 18px; border-radius:12px;
+    background: rgba(245,243,238,0.05); border:1px solid rgba(245,243,238,0.18);
+    color: var(--paper); font-family: var(--font-body); font-size:15.5px;
+    margin-bottom:14px;
+  }
+  input::placeholder{ color: var(--muted); }
+  input:focus{ outline:2px solid var(--moon-gold); border-color: transparent; }
+
+  .stat-eyebrow{
+    text-align:center; font-size:12px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; color: var(--moon-gold); margin: 26px 0 10px;
+  }
+  .stat-row{ display:flex; gap:12px; margin: 0 0 8px; flex-wrap:wrap; }
+  .stat{
+    flex:1; min-width:150px;
+    background: linear-gradient(180deg, rgba(232,183,105,0.14), rgba(232,183,105,0.04));
+    border: 1.5px solid rgba(232,183,105,0.4);
+    border-radius: 16px; padding: 18px 16px;
+    text-align:center;
+  }
+  .stat .icon{ font-size:20px; margin-bottom:6px; display:block; }
+  .stat .num{ font-family: var(--font-display); font-weight:700; font-size:32px; color: var(--moon-gold-soft); line-height:1.1; }
+  .stat .lbl{ font-size:12.5px; color: var(--paper); opacity:0.85; margin-top:6px; font-weight:600; }
+
+  .plan-block{
+    border-left: 2px solid var(--moon-gold);
+    padding: 4px 0 4px 18px; margin: 18px 0;
+  }
+  .plan-block h3{
+    font-family: var(--font-display); font-size:17px; margin:0 0 6px; color: var(--moon-gold-soft);
+  }
+  .plan-block p{ margin:0; color: var(--paper-dim); font-size:15px; line-height:1.6; }
+
+  .pas-block{
+    background: rgba(232,183,105,0.06); border: 1px solid rgba(232,183,105,0.2);
+    border-radius: 14px; padding: 18px 20px; margin: 20px 0;
+  }
+  .pas-block p{ margin: 0 0 10px; color: var(--paper-dim); font-size: 14.5px; line-height: 1.6; }
+  .pas-block p:last-child{ margin-bottom: 0; }
+  .pas-block strong { color: var(--moon-gold-soft); }
+
+  .bonus-list{ margin: 18px 0; display:flex; flex-direction:column; gap:8px; }
+  .bonus-item{ font-size: 14.5px; color: var(--paper-dim); }
+
+  .locked{
+    position:relative; margin-top:8px; padding: 22px 20px;
+    border-radius:14px; background: rgba(0,0,0,0.18);
+    border: 1px dashed rgba(245,243,238,0.22);
+  }
+  .locked .blur-text{ filter: blur(4px); user-select:none; color: var(--paper-dim); font-size:14.5px; line-height:1.7;}
+  .lock-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12.5px; font-weight:600; color: var(--ink-deep);
+    background: var(--moon-gold); padding:5px 12px; border-radius:999px;
+    margin-bottom:12px;
+  }
+
+  .price-row{ display:flex; align-items:baseline; gap:10px; margin: 18px 0 6px; }
+  .price-old{ color: var(--muted); text-decoration: line-through; font-size:16px; }
+  .price-new{ font-family: var(--font-display); font-size:34px; color: var(--moon-gold-soft); }
+  .price-note{ color: var(--muted); font-size:13px; margin-bottom:22px; }
+
+  .footer-note{
+    text-align:center; color: var(--muted); font-size:12.5px; margin-top:22px; line-height:1.6;
+  }
+
+  .value-stack{
+    margin: 4px 0 20px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 4px 16px;
+  }
+  .value-row{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(245,243,238,0.08);
+    font-size: 14.5px;
+  }
+  .value-row:last-of-type{ border-bottom:none; }
+  .value-row span:first-child{ color: var(--paper-dim); }
+  .value-row span:last-child{ color: var(--paper-dim); font-variant-numeric: tabular-nums; text-decoration: line-through; opacity:0.7; }
+  .value-row.total{
+    border-top: 1px solid rgba(245,243,238,0.16);
+    border-bottom:none;
+    margin-top: 2px;
+    padding-top: 14px;
+  }
+  .value-row.total span:first-child{ color: var(--paper); font-weight:700; }
+  .value-row.total span:last-child{ color: var(--moon-gold-soft); font-weight:700; font-size:17px; text-decoration:none; opacity:1; }
+
+  .offer-card{
+    background: linear-gradient(180deg, rgba(232,183,105,0.1), rgba(232,183,105,0.03));
+    border: 2px solid var(--moon-gold);
+    border-radius: 20px;
+    padding: 26px 22px 22px;
+    margin: 24px 0 16px;
+    box-shadow: 0 0 0 1px rgba(232,183,105,0.15), 0 12px 40px -12px rgba(232,183,105,0.35);
+  }
+
+  .offer-glow-badge{
+    display:block; text-align:center;
+    background: var(--moon-gold); color: var(--ink-deep);
+    font-weight:800; font-size:12.5px; letter-spacing:0.03em;
+    padding: 8px 14px; border-radius: 999px; margin-bottom:18px;
+    animation: pulseGlow 1.8s ease-in-out infinite;
+  }
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow: 0 0 0 0 rgba(232,183,105,0.55); }
+    50%{ box-shadow: 0 0 0 8px rgba(232,183,105,0); }
+  }
+
+  .btn-offer{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    background: linear-gradient(180deg, var(--moon-gold-soft), var(--moon-gold));
+    color: var(--ink-deep); border:none; padding: 20px 28px; border-radius: 14px;
+    font-family: var(--font-body); font-weight:800; font-size:18px;
+    cursor:pointer; width:100%; margin-top:6px;
+    box-shadow: 0 10px 26px -8px rgba(232,183,105,0.6);
+    animation: pulseBtn 2.2s ease-in-out infinite;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .btn-offer:hover{ transform: translateY(-2px); }
+  @keyframes pulseBtn{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.015); }
+  }
+
+  .currency-note{
+    font-size: 11.5px; color: var(--muted); line-height:1.5;
+    margin: -8px 0 18px; text-align:center;
+  }
+
+  .global-row{
+    margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid rgba(245,243,238,0.1);
+    text-align:center;
+  }
+  .global-label{
+    font-size: 11px; color: var(--muted); text-transform:uppercase;
+    letter-spacing: 0.04em; margin-bottom: 12px;
+  }
+  
+  /* --- Flags System --- */
+  .flags-row{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; align-items:center; }
+  .flag-img{ width: 26px; height: 18px; object-fit: cover; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); opacity: 0.9; }
+
+  .offer-microrow{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    margin-top:14px; font-size:12px; color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .offer-glow-badge, .btn-offer{ animation:none; }
+  }
+
+  .before-after{ display:flex; gap:12px; margin: 22px 0 26px; }
+  .ba-col{ flex:1; background: rgba(245,243,238,0.03); border:1px solid rgba(245,243,238,0.1); border-radius:12px; padding:14px 16px; }
+  .ba-label{ font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px; }
+  .ba-before{ color:#C98A7A; }
+  .ba-after{ color: var(--good); }
+  .ba-item{ font-size:13.5px; color: var(--paper-dim); margin-bottom:6px; line-height:1.4; }
+
+  .qualify-block{ margin: 22px 0; display:flex; flex-direction:column; gap:16px; }
+  .qualify-col h4{ font-size:13px; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 8px; }
+  .qualify-yes h4{ color: var(--good); }
+  .qualify-no h4{ color:#C98A7A; }
+  .qualify-col div.qitem{ font-size:14px; color: var(--paper-dim); margin-bottom:5px; }
+
+  .pillars-row{ display:flex; flex-wrap:wrap; gap:8px; margin: 4px 0 24px; }
+  .pillar{
+    font-size: 12.5px; color: var(--moon-gold-soft); border: 1px solid rgba(232,183,105,0.3);
+    padding: 6px 12px; border-radius: 999px; background: rgba(232,183,105,0.06);
+  }
+
+  .badge-row{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .badge{
+    font-size:12px; color: var(--paper-dim); border:1px solid rgba(245,243,238,0.16);
+    padding:5px 11px; border-radius:999px;
+  }
+
+  @media (max-width: 480px){
+    .card{ padding: 30px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="app">
+  <div class="moon-track" id="moonTrack"></div>
+  <div class="card" id="card"></div>
+</div>
+
+<script>
+/* ---------- Starfield ---------- */
+const starsEl = document.getElementById('stars');
+for(let i=0;i<50;i++){
+  const s = document.createElement('div');
+  s.className='star';
+  s.style.left = Math.random()*100+'%';
+  s.style.top = Math.random()*100+'%';
+  s.style.animationDelay = (Math.random()*4)+'s';
+  starsEl.appendChild(s);
+}
+
+/* ---------- State ---------- */
+const state = { step: 0, answers: {}, email: '' };
+
+const TOTAL_MOON_STEPS = 6; // 5 questions + email capture
+
+const icons = {
+  edad: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="26" stroke="#E8B769" stroke-width="2" opacity="0.4"/><path d="M28 14v14l9 6" stroke="#F2CD8F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  problema: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 10c-8 0-14 7-14 15 0 6 3 9 5 12h18c2-3 5-6 5-12 0-8-6-15-14-15Z" stroke="#F2CD8F" stroke-width="2.2"/><path d="M23 44h10M25 48h6" stroke="#E8B769" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  alimentacion: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 12v14c0 5 4 8 10 8s10-3 10-8V12" stroke="#F2CD8F" stroke-width="2.2" stroke-linecap="round"/><path d="M28 34v14" stroke="#E8B769" stroke-width="2.2" stroke-linecap="round"/><path d="M18 12h20" stroke="#F2CD8F" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  lugar: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 46V22l18-10 18 10v24" stroke="#F2CD8F" stroke-width="2.2" stroke-linejoin="round"/><path d="M22 46V32h12v14" stroke="#E8B769" stroke-width="2.2" stroke-linejoin="round"/></svg>`,
+  tolerancia: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 44c9-6 16-13 16-21a10 10 0 0 0-16-8 10 10 0 0 0-16 8c0 8 7 15 16 21Z" stroke="#F2CD8F" stroke-width="2.2" stroke-linejoin="round"/></svg>`,
+};
+
+const questions = [
+  {
+    key: 'edad',
+    title: '¿Qué edad tiene tu bebé?',
+    lede: 'Cada etapa tiene ventanas de sueño distintas — por eso empezamos por aquí.',
+    options: [
+      {v:'0-3', l:'0 a 3 meses'},
+      {v:'4-6', l:'4 a 6 meses'},
+      {v:'7-12', l:'7 a 12 meses'},
+      {v:'13-24', l:'13 a 24 meses'},
+    ]
+  },
+  {
+    key: 'problema',
+    title: '¿Cuál es el mayor problema ahora mismo?',
+    lede: 'Sé específica — esto define qué parte del protocolo priorizamos primero.',
+    options: [
+      {v:'despertares', l:'Se despierta muchas veces por la noche'},
+      {v:'tarda', l:'Tarda horas en quedarse dormido'},
+      {v:'brazos', l:'Solo duerme en brazos o pecho'},
+      {v:'siestas', l:'Duerme bien de noche, pero las siestas son un caos'},
+    ]
+  },
+  {
+    key: 'alimentacion',
+    title: '¿Cómo se alimenta tu bebé actualmente?',
+    lede: 'La alimentación nocturna cambia por completo el enfoque del plan.',
+    options: [
+      {v:'pecho', l:'Lactancia materna'},
+      {v:'biberon', l:'Biberón / fórmula'},
+      {v:'mixta', l:'Mixta, con alimentación complementaria'},
+    ]
+  },
+  {
+    key: 'lugar',
+    title: '¿Dónde duerme tu bebé?',
+    lede: 'El entorno de sueño es la mitad del trabalho — literalmente.',
+    options: [
+      {v:'cuarto-propio', l:'Cuna en su propio cuarto'},
+      {v:'cuarto-padres', l:'Cuna en el cuarto de los padres'},
+      {v:'colecho', l:'Colecho'},
+    ]
+  },
+  {
+    key: 'tolerancia',
+    title: '¿Qué tan cómoda te sientes dejándolo protestar un poco mientras aprende?',
+    lede: 'No hay respuesta incorrecta — esto solo ajusta el ritmo del plan a tu estilo.',
+    options: [
+      {v:'nada', l:'Nada cómoda, prefiero un método sin llanto'},
+      {v:'poco', l:'Un poco está bien, si es breve y acompañado'},
+      {v:'rapido', l:'Prefiero resultados rápidos, aunque proteste más'},
+    ]
+  },
+];
+
+/* ---------- Plan logic (personalization engine) ---------- */
+function buildPlan(a){
+  const edadTxt = {
+    '0-3': 'recién nacido en formación de ritmo circadiano',
+    '4-6': 'en plena consolidación de rutina de sueño',
+    '7-12': 'con capacidad real de aprender a dormir de forma independiente',
+    '13-24': 'en edad de transición hacia rutinas más estables',
+  }[a.edad];
+
+  const ventana = {
+    '0-3': '45–90 minutos',
+    '4-6': '1h 30–2h 15',
+    '7-12': '2h 30–3h 30',
+    '13-24': '4–6 horas (siesta única en transición)',
+  }[a.edad];
+
+  const enfoquePrincipal = {
+    despertares: 'reducir los despertares nocturnos ajustando las asociaciones de sueño',
+    tarda: 'acortar el tiempo para conciliar el sueño trabajando la ventana de sueño exacta',
+    brazos: 'hacer la transición gradual de brazos/pecho a la cuna sin sobresaltos',
+    siestas: 'estabilizar las siestas diurnas para que el sueño nocturno no se descompense',
+  }[a.problema];
+
+  // Adicionado copy dinâmica e ultra-personalizada para agitar a dor de acordo com o problema do lead
+  const pasDinamica = {
+    despertares: '<strong>Los despertares constantes están fragmentando tu propio descanso.</strong> No es solo que tu bebé se despierte; es que tú llevas meses sin dormir más de dos horas seguidas. El cansancio acumulado afecta tu paciencia, tu energía diaria y te hace sentir que estás operando en piloto automático.',
+    tarda: '<strong>Esas horas eternas intentando que se duerma te están robando la noche.</strong> Entrar a la habitación sabiendo que te espera una batalla de una o dos horas genera una ansiedad silenciosa antes de empezar. Terminas el día agotada, frustrada y sin un solo minuto libre para ti.',
+    brazos: '<strong>Estar atrapada siendo la única forma en que tu bebé duerme es físicamente agotador.</strong> El miedo a moverte y que se despierte al segundo de tocar la cuna te obliga a quedarte en posiciones incómodas. Tu cuerpo duele, tu espalda sufre y sientes que tu bebé depende al 100% de tu agotamiento físico.',
+    siestas: '<strong>Un día sin siestas previsibles se convierte en un caos impredecible.</strong> Al no poder planificar nada porque no sabes cuándo ni cuánto dormirá, vives en un estado de alerta constante. Llegar a la noche con un bebé sobrecansado solo empeora la situación familiar.'
+  }[a.problema] || '<strong>No son solo las noches difíciles.</strong> Es el cansancio acumulado, la falta de energía, la sensación de que ya probaste de todo y nada funciona.';
+
+  const alimentacionTxt = {
+    pecho: 'mantendremos las tomas necesarias por edad, distinguiendo hambre real de hábito de succión para dormir',
+    biberon: 'ajustaremos horarios de biberón para que no compitan con las señales de sueño',
+    mixta: 'aprovecharemos la alimentación complementaria para anclar mejor las rutinas de la tarde-noche',
+  }[a.alimentacion];
+
+  const lugarTxt = {
+    'cuarto-propio': 'trabajaremos el entorno de su cuarto (luz, ruido blanco, temperatura) como palanca principal',
+    'cuarto-padres': 'usaremos ajustes discretos que funcionan incluso compartiendo habitación',
+    'colecho': 'el plan respeta el colecho — no vamos a pedirte que cambies algo con lo que no estás cómoda',
+  }[a.lugar];
+
+  const ritmoTxt = {
+    nada: 'ritmo gradual, sin dejarlo llorar solo, con acompañamiento progresivo',
+    poco: 'ritmo intermedio, con protestas breves acompañadas de cerca',
+    rapido: 'ritmo acelerado, priorizando resultados en los primeros días',
+  }[a.tolerancia];
+
+  return { edadTxt, ventana, enfoquePrincipal, alimentacionTxt, lugarTxt, ritmoTxt, pasDinamica };
+}
+
+/* ---------- Render ---------- */
+function renderMoons(){
+  const track = document.getElementById('moonTrack');
+  track.innerHTML = '';
+  const shown = Math.min(state.step, TOTAL_MOON_STEPS);
+  for(let i=0;i<TOTAL_MOON_STEPS;i++){
+    const m = document.createElement('div');
+    m.className = 'moon' + (i < shown ? ' done' : '') + (i === shown ? ' active' : '');
+    track.appendChild(m);
+  }
+}
+
+function render(){
+  renderMoons();
+  const card = document.getElementById('card');
+
+  if(state.step === 0){
+    // Otimização para tráfego pago (Pixel - Quiz Iniciado)
+    if(window.fbq) fbq('trackCustom', 'QuizStarted');
+
+    card.innerHTML = `
+      <svg class="hero-illust" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#E8B769" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#E8B769" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="140" cy="55" r="70" fill="url(#glow)"/>
+        <circle cx="196" cy="30" r="17" fill="#F2CD8F"/>
+        <circle cx="190" cy="24" r="14" fill="#2D2A4A"/>
+        <path d="M40 118 Q60 78 100 78 Q140 78 150 110 Q152 118 145 118 Z" fill="#37345A"/>
+        <circle cx="95" cy="88" r="26" fill="#F5F3EE"/>
+        <path d="M74 82 Q95 66 116 82 Q116 74 95 70 Q74 74 74 82 Z" fill="#8B5E3C"/>
+        <circle cx="86" cy="90" r="2.4" fill="#2D2A4A"/>
+        <circle cx="104" cy="90" r="2.4" fill="#2D2A4A"/>
+        <path d="M90 98 Q95 102 100 98" stroke="#2D2A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <g opacity="0.8">
+          <circle cx="46" cy="34" r="1.6" fill="#C9C6D6"/>
+          <circle cx="222" cy="70" r="1.6" fill="#C9C6D6"/>
+          <circle cx="60" cy="20" r="1.2" fill="#C9C6D6"/>
+          <circle cx="240" cy="40" r="1.2" fill="#C9C6D6"/>
+        </g>
+      </svg>
+      <div class="eyebrow">Diagnóstico gratuito · 2 minutos</div>
+      <h1>¿Tu bebé sigue despertándose<br>varias veces cada noche?</h1>
+      <p class="lede">Responde 5 preguntas y descubre tu plan inicial del <strong>Método Sueño a Medida</strong> — ajustado a la edad, alimentación y temperamento de tu bebé. No genérico, no copiado.</p>
+      <div class="pillars-row">
+        <span class="pillar">🕐 Ritmo</span>
+        <span class="pillar">🌙 Entorno</span>
+        <span class="pillar">👀 Lectura de señales</span>
+        <span class="pillar">🔁 Constancia</span>
+      </div>
+      <div class="badge-row">
+        <span class="badge">Sin dejar llorar solo, si tú lo prefieres</span>
+        <span class="badge">Ajustado a la alimentación de tu bebé</span>
+        <span class="badge">Resultado inmediato</span>
+      </div>
+
+      <div class="before-after">
+        <div class="ba-col">
+          <div class="ba-label ba-before">Antes</div>
+          <div class="ba-item">Despertares constantes</div>
+          <div class="ba-item">Dependencia de brazos o pecho</div>
+          <div class="ba-item">Cansancio acumulado</div>
+        </div>
+        <div class="ba-col">
+          <div class="ba-label ba-after">Después</div>
+          <div class="ba-item">Rutina previsible</div>
+          <div class="ba-item">Bebé durmiéndose por sí mismo</div>
+          <div class="ba-item">Más energía para toda la familia</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="nextStep()">Empezar mi diagnóstico →</button>
+    `;
+    return;
+  }
+
+  if(state.step >= 1 && state.step <= questions.length){
+    const q = questions[state.step - 1];
+    card.innerHTML = `
+      ${icons[q.key]}
+      <div class="eyebrow">Pregunta ${state.step} de ${questions.length}</div>
+      <h2>${q.title}</h2>
+      <p class="lede">${q.lede}</p>
+      <div class="options">
+        ${q.options.map(o => `<button class="opt" onclick="selectOption('${q.key}','${o.v}')">${o.l}</button>`).join('')}
+      </div>
+    `;
+    return;
+  }
+
+  if(state.step === questions.length + 1){
+    card.innerHTML = `
+      <div class="eyebrow">Último paso</div>
+      <h2>¿Adónde enviamos tu plan?</h2>
+      <p class="lede">Tu informe inicial personalizado está listo. Introduce tu correo para guardarlo y ver los resultados en la siguiente pantalla.</p>
+      <input type="email" id="emailInput" placeholder="tu@email.com" />
+      <button class="btn-primary" onclick="submitEmail()">Ver mi plan personalizado →</button>
+    `;
+    return;
+  }
+
+  // Result step
+  renderResult(card);
+}
+
+function selectOption(key, value){
+  state.answers[key] = value;
+  nextStep();
+}
+
+function nextStep(){
+  state.step++;
+  render();
+}
+
+const SHEET_WEBHOOK_URL = '';
+
+function sendToSheet(data){
+  if(!SHEET_WEBHOOK_URL) return;
+  fetch(SHEET_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(() => {});
+}
+
+function submitEmail(){
+  const input = document.getElementById('emailInput');
+  const val = input.value.trim();
+  if(!val || !val.includes('@')){
+    input.style.borderColor = '#D97757';
+    input.focus();
+    return;
+  }
+  state.email = val;
+  
+  // Otimização para tráfego pago (Pixel - Lead Convertido)
+  if(window.fbq) fbq('track', 'Lead');
+
+  sendToSheet({
+    email: val,
+    edad: state.answers.edad || '',
+    problema: state.answers.problema || '',
+    alimentacion: state.answers.alimentacion || '',
+    lugar: state.answers.lugar || '',
+    tolerancia: state.answers.tolerancia || '',
+    fecha: new Date().toISOString(),
+  });
+  nextStep();
+}
+
+function triggerCheckout(){
+  // Otimização para tráfego pago (Pixel - Iniciou Checkout)
+  if(window.fbq) fbq('track', 'InitiateCheckout');
+  
+  alert('Aquí conectas tu checkout (Hotmart / Kiwify / Stripe).');
+}
+
+function renderResult(card){
+  const a = state.answers;
+  const plan = buildPlan(a);
+
+  card.innerHTML = `
+    <div class="eyebrow">Tu diagnóstico está listo</div>
+    <h2>Plan inicial para un bebé ${plan.edadTxt}</h2>
+
+    <div class="stat-eyebrow">🎯 Calculado según tus respuestas</div>
+    <div class="stat-row">
+      <div class="stat">
+        <span class="icon">⏱️</span>
+        <div class="num">${plan.ventana}</div>
+        <div class="lbl">Ventana de sueño estimada</div>
+      </div>
+      <div class="stat">
+        <span class="icon">📅</span>
+        <div class="num">14 días</div>
+        <div class="lbl">Duración típica del ajuste</div>
+      </div>
+    </div>
+
+    <div class="plan-block">
+      <h3>Foco principal</h3>
+      <p>Vamos a ${plan.enfoquePrincipal}.</p>
+    </div>
+    <div class="plan-block">
+      <h3>Alimentación</h3>
+      <p>${plan.alimentacionTxt[0].toUpperCase()}${plan.alimentacionTxt.slice(1)}.</p>
+    </div>
+    <div class="plan-block">
+      <h3>Entorno de sueño</h3>
+      <p>${plan.lugarTxt[0].toUpperCase()}${plan.lugarTxt.slice(1)}.</p>
+    </div>
+    <div class="plan-block">
+      <h3>Ritmo del plan</h3>
+      <p>Elegiste un ${plan.ritmoTxt}.</p>
+    </div>
+
+    <div class="pas-block">
+      <p>${plan.pasDinamica}</p>
+      <p>La buena noticia: con el enfoque correcto —no genérico, ajustado a tu bebé— esto se puede ordenar en días, no en meses.</p>
+    </div>
+
+    <div class="locked">
+      <span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span>
+      <p class="blur-text">
+        Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.
+        Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.
+        Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.
+        Día 10–14: mantenimiento y plan para regresiones futuras...
+      </p>
+    </div>
+
+    <div class="qualify-block">
+      <div class="qualify-col qualify-yes">
+        <h4>Es para ti si</h4>
+        <div class="qitem">✓ Tu bebé solo duerme en brazos o pecho</div>
+        <div class="qitem">✓ Tiene despertares nocturnos frecuentes</div>
+        <div class="qitem">✓ Sientes que ya probaste de todo</div>
+      </div>
+      <div class="qualify-col qualify-no">
+        <h4>No es para ti si</h4>
+        <div class="qitem">✕ Buscas una solución mágica de una noche</div>
+        <div class="qitem">✕ No quieres aplicar ninguna rutina</div>
+      </div>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>
+
+      <div class="value-stack">
+        <div class="value-row"><span>Diagnóstico personalizado (ya lo tienes)</span><span>Gratis</span></div>
+        <div class="value-row"><span>Método Sueño a Medida — protocolo de 14 días</span><span>$19</span></div>
+        <div class="value-row"><span>🎁 Bono: Checklist rápido de rutina nocturna</span><span>$6</span></div>
+        <div class="value-row total"><span>Valor total</span><span>$25</span></div>
+      </div>
+
+      <div class="price-row">
+        <span class="price-old">$25</span>
+        <span class="price-new">$14.90</span>
+      </div>
+      <div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 7 días</div>
+      <div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local, según el tipo de cambio del día.</div>
+
+      <button class="btn-offer" onclick="triggerCheckout()">
+        Sí, lo quiero ahora →
+      </button>
+
+      <div class="offer-microrow">
+        <span>📲 Recibes el acceso al instante en tu email</span>
+        <span>🔒 Compra 100% segura</span>
+      </div>
+
+      <div class="global-row">
+        <div class="global-label">Disponible y adaptado para:</div>
+        <div class="flags-row">
+          <img src="https://flagcdn.com/w40/mx.png" class="flag-img" alt="México" title="México">
+          <img src="https://flagcdn.com/w40/co.png" class="flag-img" alt="Colombia" title="Colombia">
+          <img src="https://flagcdn.com/w40/ar.png" class="flag-img" alt="Argentina" title="Argentina">
+          <img src="https://flagcdn.com/w40/cl.png" class="flag-img" alt="Chile" title="Chile">
+          <img src="https://flagcdn.com/w40/pe.png" class="flag-img" alt="Perú" title="Perú">
+          <img src="https://flagcdn.com/w40/ec.png" class="flag-img" alt="Ecuador" title="Ecuador">
+          <img src="https://flagcdn.com/w40/ve.png" class="flag-img" alt="Venezuela" title="Venezuela">
+          <img src="https://flagcdn.com/w40/es.png" class="flag-img" alt="España" title="España">
+          <img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="Estados Unidos" title="Estados Unidos">
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>
+
+    <div class="footer-note">
+      Este plan es una guía educativa y no sustituye la valoración de un pediatra.<br>
+      Enviamos tu resultado a ${state.email || 'tu correo'}.
+    </div>
+  `;
+}
+
+function restart(){
+  state.step = 0;
+  state.answers = {};
+  state.email = '';
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>

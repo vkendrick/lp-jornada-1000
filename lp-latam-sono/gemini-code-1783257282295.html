@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Checklist - Rutina Nocturna</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF8F5; /* Crema suave anti-deslumbramiento */
+            color: #1A2530; /* Azul noche muy oscuro, mejor que negro puro */
+            line-height: 1.5;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 800px;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #EBE7E0;
+        }
+
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #F3EFE9;
+            padding-bottom: 24px;
+        }
+
+        .icon {
+            font-size: 32px;
+            color: #D4AF37; /* Oro suave */
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #718096;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #0F172A;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .intro {
+            font-size: 14px;
+            color: #4A5568;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* Secciones del Checklist */
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1E3A8A; /* Azul corporativo/relajante */
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #E2E8F0;
+        }
+
+        /* Lista de verificación */
+        .checkbox-group {
+            display: grid;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            background: #F8FAFC;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+
+        /* Cuadrado del Check optimizado visualmente */
+        .box {
+            min-width: 20px;
+            height: 20px;
+            border: 2px solid #CBD5E1;
+            border-radius: 6px;
+            margin-right: 14px;
+            background: #FFFFFF;
+            position: relative;
+            top: 1px;
+        }
+
+        .text {
+            font-size: 15px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .text strong {
+            color: #0F172A;
+        }
+
+        /* Footer / Nota Importante */
+        .footer-note {
+            background: #EEF2F6;
+            border-left: 4px solid #1E3A8A;
+            padding: 16px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 36px;
+        }
+
+        .footer-note p {
+            font-size: 13px;
+            color: #334155;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    
+    <div class="header">
+        <div class="icon">☽</div>
+        <div class="subtitle">Checklist Rápido</div>
+        <h1>Rutina nocturna en 4 pasos</h1>
+        <p class="intro">Imprime esta hoja y pégala cerca de la cuna. En las noches de piloto automático, esta lista hace el trabajo de pensar por ti.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Antes de empezar</div>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Cuarto a temperatura de <strong>20–22°C</strong></div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Luces bajas <strong>30 minutos antes</strong> de la rutina</div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Pantallas apagadas (celular, TV) en la habitación</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Los 4 pasos (Siempre en el mismo orden)</div>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text"><strong>1.</strong> Baño o cambio de pañal <span style="color: #64748B; font-size: 14px;">(señal de transición)</span></div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text"><strong>2.</strong> Pijama + alimentación <span style="color: #64748B; font-size: 14px;">(si corresponde a su edad)</span></div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text"><strong>3.</strong> Cuento corto o canción, <strong>siempre la misma</strong></div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text"><strong>4.</strong> A la cuna <strong>despierto</strong>, no dormido</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Antes de salir del cuarto</div>
+        <div class="checkbox-group">
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Frase de calma dicha en voz baja, <strong>siempre igual</strong></div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Ruido blanco encendido, si lo usas</div>
+            </div>
+            <div class="checkbox-item">
+                <div class="box"></div>
+                <div class="text">Verifica: colchón firme, sin objetos sueltos en la cuna</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p><strong>💡 Regla de oro:</strong> La rutina completa no debería tomar más de <strong>15–20 minutos</strong>. Más tiempo puede sobreestimular; menos tiempo puede no ser suficiente señal para el cerebro de tu bebé.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

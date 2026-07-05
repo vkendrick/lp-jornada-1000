@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Protocolo de Siestas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #FAF8F5; color: #1A2530; padding: 40px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 800px; background: #FFFFFF; padding: 40px; border-radius: 16px; border: 1px solid #EBE7E0; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .header { text-align: center; margin-bottom: 32px; border-bottom: 2px solid #F3EFE9; padding-bottom: 24px; }
+        .subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #718096; font-weight: 700; margin-bottom: 6px; }
+        h1 { font-size: 26px; color: #0F172A; font-weight: 700; margin-bottom: 8px; }
+        .badge { display: inline-block; background: #E2E8F0; color: #475569; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+        .intro-box { background: #F8FAFC; border-left: 4px solid #D4AF37; padding: 16px; margin-bottom: 32px; border-radius: 0 8px 8px 0; font-size: 14px; color: #334155; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 14px; }
+        th { background: #1E3A8A; color: #FFFFFF; text-align: left; padding: 12px 16px; font-weight: 600; }
+        th:first-child { border-radius: 6px 0 0 6px; }
+        th:last-child { border-radius: 0 6px 6px 0; }
+        td { padding: 14px 16px; border-bottom: 1px solid #E2E8F0; color: #334155; }
+        tr:hover td { background-color: #F8FAFC; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .card { background: #FFFDF9; border: 1px solid #F3EFE9; padding: 16px; border-radius: 12px; }
+        .card h4 { font-size: 14px; color: #0F172A; margin-bottom: 8px; display: flex; gap: 8px; }
+        .card p { font-size: 12.5px; color: #64748B; }
+        .timeline { display: flex; flex-direction: column; gap: 12px; }
+        .timeline-step { display: flex; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: 10px; }
+        .step-day { min-width: 90px; font-weight: 700; color: #1E3A8A; font-size: 13px; text-transform: uppercase; }
+        .step-desc { font-size: 13.5px; color: #334155; }
+        .footer { border-top: 1px solid #E2E8F0; padding-top: 20px; margin-top: 36px; text-align: center; font-size: 12px; color: #94A3B8; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="subtitle">Complemento · Para usar junto al protocolo principal</div>
+        <h1>Protocolo de Siestas</h1>
+        <div class="badge">Producto digital · Uso personal</div>
+    </div>
+    
+    <div class="intro-box">
+        <strong>¿Por qué las siestas son tan difíciles?</strong> Un bebé que duerme bien de noche pero tiene siestas cortas o inconsistentes no tiene un problema distinto — tiene el mismo problema en otro momento del día, con más luz y más estímulo[cite: 2].
+    </div>
+
+    <h3 style="font-size: 15px; text-transform: uppercase; color: #1E3A8A; margin-bottom: 16px;">Ventanas y estructura de siestas por edad</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Edad</th>
+                <th>N.º siestas/día</th>
+                <th>Duración ideal</th>
+                <th>Última siesta debe terminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>0–3 meses</strong></td><td>4–6</td><td>30–90 min</td><td>No aplica</td></tr>
+            <tr><td><strong>4–6 meses</strong></td><td>3–4</td><td>45 min – 2h</td><td>4 horas antes de acostarse</td></tr>
+            <tr><td><strong>7–12 meses</strong></td><td>2</td><td>1–2h cada una</td><td>3 horas antes de acostarse</td></tr>
+            <tr><td><strong>13–24 meses</strong></td><td>1 <span style="font-size:11px; color:#64748B;">(en transición)</span></td><td>1.5–3h</td><td>3–4 horas antes de acostarse</td></tr>
+        </tbody>
+    </table>
+
+    <h3 style="font-size: 15px; text-transform: uppercase; color: #1E3A8A; margin-bottom: 16px;">Los 3 errores más comunes</h3>
+    <div class="grid-3">
+        <div class="card">
+            <h4><span style="color:#D4AF37;">1.</span> A demanda</h4>
+            <p>Sin un horario aproximado, el cuerpo no anticipa el sueño[cite: 2].</p>
+        </div>
+        <div class="card">
+            <h4><span style="color:#D4AF37;">2.</span> Tarde</h4>
+            <p>Reduce la presión de sueño nocturna y genera despertares tempranos[cite: 2].</p>
+        </div>
+        <div class="card">
+            <h4><span style="color:#D4AF37;">3.</span> Ambiente distinto</h4>
+            <p>Señales contradictorias sobre qué tipo de sueño es cada uno[cite: 2].</p>
+        </div>
+    </div>
+
+    <h3 style="font-size: 15px; text-transform: uppercase; color: #1E3A8A; margin-bottom: 16px;">Protocolo de ajuste — 7 días</h3>
+    <div class="timeline">
+        <div class="timeline-step">
+            <div class="step-day">Días 1–2</div>
+            <div class="step-desc"><strong>Diagnóstico:</strong> Anota el horario real de cada siesta usando tu planilla. Oscurece el cuarto igual que el de la noche[cite: 2].</div>
+        </div>
+        <div class="timeline-step">
+            <div class="step-day">Días 3–5</div>
+            <div class="step-desc"><strong>Ventanas fijas:</strong> Fija horarios aproximados según la tabla (±20 min). Aplica una mini-rutina: bajar luces + frase de calma[cite: 2].</div>
+        </div>
+        <div class="timeline-step">
+            <div class="step-day">Días 6–7</div>
+            <div class="step-desc"><strong>Consolidación:</strong> Si dura menos de 45 min, da 5–10 min de oportunidad antes de terminar. Ajusta la última siesta al margen[cite: 2].</div>
+        </div>
+    </div>
+
+    <p style="font-size: 13px; color: #64748B; margin-top: 16px; font-style: italic;">💡 Las siestas maduran más lento que el sueño nocturno — es normal que tome 1–2 semanas más[cite: 2].</p>
+
+    <div class="footer">
+        Gracias por confiar en este proceso. Vuelve al "Protocolo de Siestas" cada vez que necesites recalibrar[cite: 2].
+    </div>
+</div>
+</body>
+</html>
