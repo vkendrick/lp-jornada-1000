@@ -655,7 +655,7 @@ function nextStep(){
   render();
 }
 
-const SHEET_WEBHOOK_URL = '';
+const SHEET_WEBHOOK_URL = 'https://docs.google.com/spreadsheets/d/1wACnaEVN0tmsVyQasI7X7pZRfBxA3UwUZQBCtGtP_1k/edit?gid=0#gid=0';
 
 function sendToSheet(data){
   if(!SHEET_WEBHOOK_URL) return;
@@ -696,7 +696,9 @@ function triggerCheckout(){
   // Otimização para tráfego pago (Pixel - Iniciou Checkout)
   if(window.fbq) fbq('track', 'InitiateCheckout');
   
-  alert('Aquí conectas tu checkout (Hotmart / Kiwify / Stripe).');
+  //alert('Aquí conectas tu checkout (Hotmart / Kiwify / Stripe).');
+  onclick="window.location.href='https://pay.hotmart.com/L106617918K?checkoutMode=10'";
+
 }
 
 function renderResult(card){
@@ -782,7 +784,7 @@ function renderResult(card){
         <span class="price-new">$14.90</span>
       </div>
       <div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 7 días</div>
-      <div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local, según el tipo de cambio del día.</div>
+      <div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local.</div>
 
       <button class="btn-offer" onclick="triggerCheckout()">
         Sí, lo quiero ahora →
