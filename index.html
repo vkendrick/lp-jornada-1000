@@ -655,7 +655,7 @@ function nextStep(){
   render();
 }
 
-const SHEET_WEBHOOK_URL = 'https://docs.google.com/spreadsheets/d/1wACnaEVN0tmsVyQasI7X7pZRfBxA3UwUZQBCtGtP_1k/edit?gid=0#gid=0';
+const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx8h3D0HlMNjF71q9RH-Tn_AP99yW8ebqBENAT_vpIXXEiQmAkOOWmrIeAtJGkNVgcp/exec';
 
 function sendToSheet(data){
   if(!SHEET_WEBHOOK_URL) return;
@@ -692,13 +692,12 @@ function submitEmail(){
   nextStep();
 }
 
-function triggerCheckout(){
+function triggerCheckout() {
   // Otimização para tráfego pago (Pixel - Iniciou Checkout)
-  if(window.fbq) fbq('track', 'InitiateCheckout');
+  if (window.fbq) fbq('track', 'InitiateCheckout');
   
-  //alert('Aquí conectas tu checkout (Hotmart / Kiwify / Stripe).');
-  onclick="window.location.href='https://pay.hotmart.com/L106617918K?checkoutMode=10'";
-
+  // Executa o redirecionamento direto usando a URL da Hotmart
+  window.location.href = 'https://pay.hotmart.com/L106617918K?checkoutMode=10';
 }
 
 function renderResult(card){
