@@ -427,56 +427,6 @@
     padding:5px 11px; border-radius:999px;
   }
 
-  /* --- Novos estilos para depoimentos, FAQ, etc. --- */
-  .testimonial-grid{
-    display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0;
-  }
-  .testimonial{
-    background: rgba(245,243,238,0.04); border: 1px solid rgba(245,243,238,0.08);
-    border-radius: 14px; padding: 16px;
-    display:flex; flex-direction:column; gap:6px;
-  }
-  .testimonial .avatar{
-    width:40px; height:40px; border-radius:50%; background: var(--moon-gold-soft);
-    display:flex; align-items:center; justify-content:center; font-weight:700; color: var(--ink-deep);
-    font-size:18px;
-  }
-  .testimonial .text{ font-size:13.5px; color: var(--paper-dim); line-height:1.5; }
-  .testimonial .author{ font-size:12px; font-weight:600; color: var(--moon-gold-soft); }
-  .testimonial .stars{ color: var(--moon-gold); letter-spacing:2px; font-size:14px; }
-  @media (max-width:480px){ .testimonial-grid{ grid-template-columns:1fr; } }
-
-  .faq-block{
-    margin: 24px 0 10px;
-    border-top:1px solid rgba(245,243,238,0.08); padding-top:20px;
-  }
-  .faq-item{
-    margin-bottom:14px;
-  }
-  .faq-item h4{
-    font-size:14px; font-weight:600; color: var(--moon-gold-soft); margin:0 0 4px;
-  }
-  .faq-item p{
-    font-size:13.5px; color: var(--paper-dim); margin:0; line-height:1.5;
-  }
-
-  .urgent-badge{
-    display:inline-block; background: #D97757; color: #fff;
-    font-size:12px; font-weight:800; padding:4px 12px; border-radius:999px;
-    margin-left:8px; animation: pulseGlow 1.2s ease-in-out infinite;
-  }
-  .countdown{
-    font-weight:700; color: var(--paper); background: rgba(0,0,0,0.3);
-    padding:4px 10px; border-radius:999px; font-size:14px;
-  }
-
-  .guarantee-badge{
-    display:inline-flex; align-items:center; gap:6px;
-    background: rgba(127,168,143,0.15); border:1px solid var(--good);
-    border-radius:999px; padding:4px 14px; font-size:12px; color: var(--good);
-    font-weight:600; margin-top:6px;
-  }
-
   @media (max-width: 480px){
     .card{ padding: 30px 22px; }
   }
@@ -556,7 +506,7 @@ const questions = [
   {
     key: 'lugar',
     title: '¿Dónde duerme tu bebé?',
-    lede: 'El entorno de sueño es la mitad del trabajo — literalmente.',
+    lede: 'El entorno de sueño es la mitad del trabalho — literalmente.',
     options: [
       {v:'cuarto-propio', l:'Cuna en su propio cuarto'},
       {v:'cuarto-padres', l:'Cuna en el cuarto de los padres'},
@@ -598,15 +548,13 @@ function buildPlan(a){
     siestas: 'estabilizar las siestas diurnas para que el sueño nocturno no se descompense',
   }[a.problema];
 
+  // Adicionado copy dinâmica e ultra-personalizada para agitar a dor de acordo com o problema do lead
   const pasDinamica = {
     despertares: '<strong>Los despertares constantes están fragmentando tu propio descanso.</strong> No es solo que tu bebé se despierte; es que tú llevas meses sin dormir más de dos horas seguidas. El cansancio acumulado afecta tu paciencia, tu energía diaria y te hace sentir que estás operando en piloto automático.',
     tarda: '<strong>Esas horas eternas intentando que se duerma te están robando la noche.</strong> Entrar a la habitación sabiendo que te espera una batalla de una o dos horas genera una ansiedad silenciosa antes de empezar. Terminas el día agotada, frustrada y sin un solo minuto libre para ti.',
     brazos: '<strong>Estar atrapada siendo la única forma en que tu bebé duerme es físicamente agotador.</strong> El miedo a moverte y que se despierte al segundo de tocar la cuna te obliga a quedarte en posiciones incómodas. Tu cuerpo duele, tu espalda sufre y sientes que tu bebé depende al 100% de tu agotamiento físico.',
     siestas: '<strong>Un día sin siestas previsibles se convierte en un caos impredecible.</strong> Al no poder planificar nada porque no sabes cuándo ni cuánto dormirá, vives en un estado de alerta constante. Llegar a la noche con un bebé sobrecansado solo empeora la situación familiar.'
   }[a.problema] || '<strong>No son solo las noches difíciles.</strong> Es el cansancio acumulado, la falta de energía, la sensación de que ya probaste de todo y nada funciona.';
-
-  // Añadir línea de esperanza inmediata
-  const esperanza = 'Pero la buena noticia es que, con el enfoque correcto —no genérico, ajustado a tu bebé— esto se puede ordenar en días, no en meses.';
 
   const alimentacionTxt = {
     pecho: 'mantendremos las tomas necesarias por edad, distinguiendo hambre real de hábito de succión para dormir',
@@ -626,7 +574,7 @@ function buildPlan(a){
     rapido: 'ritmo acelerado, priorizando resultados en los primeros días',
   }[a.tolerancia];
 
-  return { edadTxt, ventana, enfoquePrincipal, alimentacionTxt, lugarTxt, ritmoTxt, pasDinamica, esperanza };
+  return { edadTxt, ventana, enfoquePrincipal, alimentacionTxt, lugarTxt, ritmoTxt, pasDinamica };
 }
 
 /* ---------- Render ---------- */
@@ -675,26 +623,11 @@ function render(){
       </svg>
       <div class="welcome-note">👋 Hola, mamá. Sabemos que llegar hasta aquí ya fue un esfuerzo — vamos a resolver esto juntas.</div>
       <div class="eyebrow">Diagnóstico gratuito · 2 minutos</div>
-      <h1>¿Cansada de pasar noches en vela sin saber cómo ayudarlo a dormir?</h1>
-      <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde 5 preguntas y obtén un plan inicial ajustado a su edad, alimentación y temperamento. <strong>Sin métodos genéricos ni copiados.</strong></p>
+      <h1>¿Tu bebé sigue despertándose<br>varias veces cada noche?</h1>
+      <p class="lede">Responde 5 preguntas y descubre tu plan inicial del <strong>Método Sueño a Medida</strong> — ajustado a la edad, alimentación y temperamento de tu bebé. No genérico, no copiado.</p>
 
-      <button class="btn-primary" onclick="nextStep()">Quiero mi plan personalizado ahora →</button>
+      <button class="btn-primary" onclick="nextStep()">Empezar mi diagnóstico →</button>
       <div class="btn-microcopy">⏱️ Toma 2 minutos · Sin registro, sin compromiso</div>
-
-      <!-- Depoimentos (prova social) -->
-      <div class="testimonial-grid">
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div>
-          <div class="author">— Ana, madre de Valentina (7 meses)</div>
-        </div>
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div>
-          <div class="author">— Laura, madre de Mateo (14 meses)</div>
-        </div>
-      </div>
-      <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;">+12.000 mamás ya han mejorado el sueño de sus bebés</div>
 
       <div class="pillars-row">
         <span class="pillar">🕐 Ritmo</span>
@@ -814,18 +747,6 @@ function renderResult(card){
   const a = state.answers;
   const plan = buildPlan(a);
 
-  // Contador regressivo (simulado)
-  const now = new Date();
-  const end = new Date(now);
-  end.setHours(now.getHours() + 23);
-  end.setMinutes(59 - now.getMinutes());
-  end.setSeconds(59 - now.getSeconds());
-  const diff = Math.floor((end - now) / 1000);
-  const hours = Math.floor(diff / 3600);
-  const minutes = Math.floor((diff % 3600) / 60);
-  const seconds = diff % 60;
-  const countdownStr = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-
   card.innerHTML = `
     <div class="result-banner">
       <div class="result-banner-icon">🎉</div>
@@ -875,15 +796,15 @@ function renderResult(card){
 
     <div class="pas-block">
       <p>${plan.pasDinamica}</p>
-      <p style="font-weight:600; color:var(--moon-gold-soft);">${plan.esperanza}</p>
+      <p>La buena noticia: con el enfoque correcto —no genérico, ajustado a tu bebé— esto se puede ordenar en días, no en meses.</p>
     </div>
 
     <div class="locked">
       <span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span>
       <p class="blur-text">
-        Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.<br>
-        Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.<br>
-        Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.<br>
+        Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.
+        Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.
+        Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.
         Día 10–14: mantenimiento y plan para regresiones futuras...
       </p>
     </div>
@@ -905,33 +826,22 @@ function renderResult(card){
     <div class="offer-card">
       <div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>
 
-      <!-- Contador de urgência -->
-      <div style="text-align:center; margin-bottom:16px; font-size:14px;">
-        ⏳ Oferta especial por tiempo limitado: <span class="countdown" id="countdownDisplay">${countdownStr}</span>
-      </div>
-
       <div class="value-stack">
         <div class="value-row"><span>Diagnóstico personalizado (ya lo tienes)</span><span>Gratis</span></div>
         <div class="value-row"><span>Método Sueño a Medida — protocolo de 14 días</span><span>$19</span></div>
-        <div class="value-row"><span>🎁 Bono: Guía imprimible "Rutina nocturna en 5 pasos"</span><span>$6</span></div>
-        <div class="value-row"><span>🎁 Bono extra: Plan de regresiones del sueño (0-24 meses)</span><span>$8</span></div>
-        <div class="value-row total"><span>Valor total</span><span>$33</span></div>
+        <div class="value-row"><span>🎁 Bono: Checklist rápido de rutina nocturna</span><span>$6</span></div>
+        <div class="value-row total"><span>Valor total</span><span>$25</span></div>
       </div>
 
       <div class="price-row">
-        <span class="price-old">$33</span>
+        <span class="price-old">$25</span>
         <span class="price-new">$14.90</span>
       </div>
-      <div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 30 días</div>
+      <div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 7 días</div>
       <div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local.</div>
 
-      <!-- Sello de garantía -->
-      <div style="text-align:center; margin-bottom:12px;">
-        <span class="guarantee-badge">🔒 Garantía de devolución 100% — 30 días</span>
-      </div>
-
       <button class="btn-offer" onclick="triggerCheckout()">
-        Sí, quiero mi plan ahora →
+        Sí, lo quiero ahora →
       </button>
 
       <div class="offer-microrow">
@@ -955,23 +865,6 @@ function renderResult(card){
       </div>
     </div>
 
-    <!-- FAQ para derrubar objeções -->
-    <div class="faq-block">
-      <h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>
-      <div class="faq-item">
-        <h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4>
-        <p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p>
-      </div>
-      <div class="faq-item">
-        <h4>❓ ¿Tengo que dejarlo llorar solo?</h4>
-        <p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p>
-      </div>
-      <div class="faq-item">
-        <h4>❓ Ya probé de todo, ¿por qué esto sería diferente?</h4>
-        <p>Porque no es un método genérico. Se construye a partir de las respuestas de tu bebé y tu estilo de crianza, no al revés.</p>
-      </div>
-    </div>
-
     <button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>
 
     <div class="footer-note">
@@ -979,37 +872,12 @@ function renderResult(card){
       Enviamos tu resultado a ${state.email || 'tu correo'}.
     </div>
   `;
-
-  // Iniciar contador regressivo
-  startCountdown();
-}
-
-// Contador regressivo (simples)
-let countdownInterval;
-function startCountdown() {
-  const el = document.getElementById('countdownDisplay');
-  if (!el) return;
-  let seconds = 23 * 3600 + 59 * 60 + 59; // 23h59m59s
-  if (countdownInterval) clearInterval(countdownInterval);
-  countdownInterval = setInterval(() => {
-    if (seconds <= 0) {
-      clearInterval(countdownInterval);
-      el.textContent = '00:00:00';
-      return;
-    }
-    seconds--;
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    el.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-  }, 1000);
 }
 
 function restart(){
   state.step = 0;
   state.answers = {};
   state.email = '';
-  if (countdownInterval) clearInterval(countdownInterval);
   render();
 }
 
