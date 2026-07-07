@@ -1,0 +1,12 @@
+{
+  "name": "primeiros-1000-dias",
+  "version": "1.0.0",
+  "description": "Landing page — Os Primeiros 1000 Dias",
+  "main": "workers-site/index.js",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
