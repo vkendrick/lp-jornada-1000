@@ -266,6 +266,49 @@
     animation: spin 1s linear infinite;
     margin-bottom: 16px;
   }
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.author {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--paper);
+}
+.author-sub {
+  font-size: 12px;
+  color: var(--paper-dim);
+  margin-top: 2px;
+}
+.testimonial .stars {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--moon-gold);
+}
+.testimonial .text {
+  font-size: 13.5px;
+  color: var(--paper-dim);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
 </style>
 </head>
 <body>
@@ -397,10 +440,35 @@ function render(){
       <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial personalizado al instante. <strong>Sin registros, sin correos.</strong></p>
       <button class="btn-primary" onclick="nextStep()">Quiero mi plan personalizado ahora →</button>
       <div class="btn-microcopy">⏱️ Toma 1 minuto · Sin registro · Resultado inmediato</div>
-      <div class="testimonial-grid">
-        <div class="testimonial"><div class="stars">★★★★★</div><div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div><div class="author">— Ana, madre de Valentina (7 meses)</div></div>
-        <div class="testimonial"><div class="stars">★★★★★</div><div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div><div class="author">— Laura, madre de Mateo (14 meses)</div></div>
+
+<div class="testimonial-grid">
+  <div class="testimonial">
+    <div class="testimonial-header">
+<div class="avatar" style="background-image: url('img/ana.webp'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>
+      <div>
+        <div class="author">Ana V.</div>
+        <div class="stars">★★★★★</div>
       </div>
+    </div>
+    <div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div>
+    <div class="author-sub">Madre de Valentina (7 meses)</div>
+  </div>
+  <div class="testimonial">
+    <div class="testimonial-header">
+<div class="avatar" style="background-image: url('img/laura.webp'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>      <div>
+        <div class="author">Laura M.</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div>
+    <div class="author-sub">Madre de Mateo (14 meses)</div>
+  </div>
+</div>
+
       <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;">+12.000 mamás ya han mejorado el sueño de sus bebés</div>
       <div class="pillars-row"><span class="pillar">🕐 Ritmo</span><span class="pillar">🌙 Entorno</span><span class="pillar">👀 Lectura de señales</span><span class="pillar">🔁 Constancia</span></div>
       <div class="badge-row"><span class="badge">Sin dejar llorar solo, si tú lo prefieres</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
