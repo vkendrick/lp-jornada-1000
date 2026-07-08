@@ -70,8 +70,8 @@
     --ink-deep: #1B2138;
     --ink-plum: #2D2A4A;
     --ink-plum-soft: #37345A;
-    --moon-gold: #E8B769;
-    --moon-gold-soft: #F2CD8F;
+    --moon-gold: #f7f5be;
+    --moon-gold-soft: #C6E869;
     --paper: #F5F3EE;
     --paper-dim: #D1CFDB;
     --muted: #8B8FA3;
@@ -125,7 +125,7 @@
   .opt:focus-visible{ outline: 2px solid var(--moon-gold); outline-offset:2px; }
   .opt.selected{ border-color: var(--moon-gold); background: rgba(232,183,105,0.14); }
   .welcome-note{ font-size: 13.5px; color: var(--paper-dim); background: rgba(245,243,238,0.05); border: 1px solid rgba(245,243,238,0.1); border-radius: 12px; padding: 10px 16px; margin-bottom: 20px; line-height:1.5; }
-  .btn-primary{ display:flex; align-items:center; justify-content:center; gap:8px; background: linear-gradient(180deg, var(--moon-gold-soft), var(--moon-gold)); color: var(--ink-deep); border:none; padding: 19px 28px; border-radius: 14px; font-family: var(--font-body); font-weight:800; font-size:17px; cursor:pointer; width:100%; box-shadow: 0 10px 26px -8px rgba(232,183,105,0.55); transition: transform .15s ease; }
+  .btn-primary{ display:flex; align-items:center; justify-content:center; gap:8px; background: linear-gradient(180deg, var(--moon-gold-soft), var(--moon-gold)); color: var(--ink-deep); border:none; padding: 19px 28px; border-radius: 14px; font-family: var(--font-body); font-weight:800; font-size:17px; cursor:pointer; width:100%; box-shadow: 0 10px 26px -8px rgba(198,232,105,0.55); transition: transform .15s ease; }
   .btn-primary:hover{ transform: translateY(-2px); }
   .btn-primary:focus-visible{ outline: 2px solid var(--paper); outline-offset:2px; }
   .btn-ghost{ background:none; border:none; color: var(--muted); font-family: var(--font-body); font-size:13px; cursor:pointer; margin-top:24px; text-align:center; width:100%; text-decoration: underline; text-underline-offset:3px; opacity: 0.6; }
@@ -287,6 +287,17 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+.avatar2 {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 .author {
   font-weight: 700;
   font-size: 14px;
@@ -434,10 +445,11 @@ function render(){
         <path d="M90 98 Q95 102 100 98" stroke="#2D2A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
         <g opacity="0.8"><circle cx="46" cy="34" r="1.6" fill="#C9C6D6"/><circle cx="222" cy="70" r="1.6" fill="#C9C6D6"/><circle cx="60" cy="20" r="1.2" fill="#C9C6D6"/><circle cx="240" cy="40" r="1.2" fill="#C9C6D6"/></g>
       </svg>
-      <div class="welcome-note">👋 Hola, mamá. Sabemos que llegar hasta aquí ya fue un esfuerzo — vamos a resolver esto juntas.</div>
+
+      <div class="welcome-note">👋 Hola, mamá. Si llegar hasta aquí fue un esfuerzo — vamos a resolver esto juntas!</div>
       <div class="eyebrow">Diagnóstico gratuito · 1 minuto</div>
       <h1>¿Cansada de pasar noches en vela sin saber cómo ayudarlo a dormir?</h1>
-      <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial personalizado al instante. <strong>Sin registros, sin correos.</strong></p>
+      <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial <strong>personalizado</strong> al instante. </p>
       <button class="btn-primary" onclick="nextStep()">Quiero mi plan personalizado ahora →</button>
       <div class="btn-microcopy">⏱️ Toma 1 minuto · Sin registro · Resultado inmediato</div>
 
@@ -469,9 +481,9 @@ function render(){
   </div>
 </div>
 
-      <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;">+12.000 mamás ya han mejorado el sueño de sus bebés</div>
+      <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;"><strong>+12.000 mamás</strong> ya han mejorado el sueño de sus bebés</div>
       <div class="pillars-row"><span class="pillar">🕐 Ritmo</span><span class="pillar">🌙 Entorno</span><span class="pillar">👀 Lectura de señales</span><span class="pillar">🔁 Constancia</span></div>
-      <div class="badge-row"><span class="badge">Sin dejar llorar solo, si tú lo prefieres</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
+      <div class="badge-row"><span class="badge">Sin dejar llorar solo</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
       <div class="before-after">
         <div class="ba-col"><div class="ba-label ba-before">Antes</div><div class="ba-item">Despertares constantes</div><div class="ba-item">Dependencia de brazos o pecho</div><div class="ba-item">Cansancio acumulado</div></div>
         <div class="ba-col"><div class="ba-label ba-after">Después</div><div class="ba-item">Rutina previsible</div><div class="ba-item">Bebé durmiéndose por sí mismo</div><div class="ba-item">Más energía para toda la familia</div></div>
@@ -587,7 +599,6 @@ function renderResult(card){
     <div class="plan-grid"><div class="plan-card"><span class="plan-icon">🎯</span><h3>Foco principal</h3><p>${plan.enfoquePrincipal}.</p></div><div class="plan-card"><span class="plan-icon">🍼</span><h3>Alimentación</h3><p>El plan se ajusta a tu tipo de alimentación (pecho, biberón o mixta).</p></div><div class="plan-card"><span class="plan-icon">🌙</span><h3>Entorno de sueño</h3><p>Ajustaremos el entorno (luz, ruido, temperatura) según tu espacio.</p></div><div class="plan-card"><span class="plan-icon">🔁</span><h3>Ritmo del plan</h3><p>Elegiste un ${plan.ritmoTxt}.</p></div></div>
     <div class="pas-block"><p>${plan.pasDinamica}</p><p style="font-weight:600; color:var(--moon-gold-soft);">${plan.esperanza}</p></div>
     <div class="locked"><span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span><p class="blur-text">Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.<br>Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.<br>Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.<br>Día 10–14: mantenimiento y plan para regresiones futuras...</p></div>
-    <div class="qualify-block"><div class="qualify-col qualify-yes"><h4>Es para ti si</h4><div class="qitem">✓ Tu bebé solo duerme en brazos o pecho</div><div class="qitem">✓ Tiene despertares nocturnos frecuentes</div><div class="qitem">✓ Sientes que ya probaste de todo</div></div><div class="qualify-col qualify-no"><h4>No es para ti si</h4><div class="qitem">✕ Buscas una solución mágica de una noche</div><div class="qitem">✕ No quieres aplicar ninguna rutina</div></div></div>
     <div class="offer-card">
       <div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>
       <div style="text-align:center; margin-bottom:16px; font-size:14px;">⏳ Oferta especial por tiempo limitado: <span class="countdown" id="countdownDisplay">${countdownStr}</span></div>
@@ -610,6 +621,34 @@ function renderResult(card){
         <img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="Estados Unidos" title="Estados Unidos" loading="lazy">
       </div></div>
     </div>
+
+ <div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">
+  
+  <!-- Coluna da Esquerda: Conteúdo de Qualificação -->
+  <div class="qualify-block" style="flex: 1;">
+    <div class="qualify-col qualify-yes" style="margin-bottom: 20px;">
+      <h4>É para você se</h4>
+      <div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div>
+      <div class="qitem">✓ Ele tem despertares noturnos frequentes</div>
+      <div class="qitem">✓ Você sente que já tentou de tudo</div>
+    </div>
+    
+    <div class="qualify-col qualify-no">
+      <h4>Não é para você se</h4>
+      <div class="qitem">✕ Você busca uma solução mágica de uma noite</div>
+      <div class="qitem">✕ Você não quer aplicar nenhuma rotina</div>
+    </div>
+  </div>
+
+  <!-- Coluna da Direita: Link para a Foto -->
+  <div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">
+<div class="avatar2" style="background-image: url('img/valeria.png'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>
+ </div>
+
+</div>
+
     <div class="faq-block"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>
       <div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>
       <div class="faq-item"><h4>❓ ¿Tengo que dejarlo llorar solo?</h4><p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p></div>
