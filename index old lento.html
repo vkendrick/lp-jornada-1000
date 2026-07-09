@@ -55,17 +55,13 @@
   window.addEventListener('load',function(){setTimeout(_loadGtag,1000);});
 </script>
 
-<!-- ============ MICROSOFT CLARITY (cargado con retraso) ============ -->
+<!-- ============ MICROSOFT CLARITY ============ -->
 <script type="text/javascript">
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "w4g1dbeei0");
-    }, 2000);
-  });
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "w4g1dbeei0");
 </script>
 
 <style>
@@ -331,91 +327,33 @@
 <div class="app">
   <div class="moon-track" id="moonTrack"></div>
   <div class="card" id="card">
-    <!-- ============================================================ -->
-    <!-- CONTENIDO ESTÁTICO DEL PASO 0 (se muestra al cargar la página) -->
-    <!-- ============================================================ -->
-    <svg class="hero-illust" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs><radialGradient id="glow" cx="50%" cy="35%" r="65%"><stop offset="0%" stop-color="#E8B769" stop-opacity="0.35"/><stop offset="100%" stop-color="#E8B769" stop-opacity="0"/></radialGradient></defs>
-      <circle cx="140" cy="55" r="70" fill="url(#glow)"/>
-      <circle cx="196" cy="30" r="17" fill="#F2CD8F"/>
-      <circle cx="190" cy="24" r="14" fill="#2D2A4A"/>
-      <path d="M40 118 Q60 78 100 78 Q140 78 150 110 Q152 118 145 118 Z" fill="#37345A"/>
-      <circle cx="95" cy="88" r="26" fill="#F5F3EE"/>
-      <path d="M74 82 Q95 66 116 82 Q116 74 95 70 Q74 74 74 82 Z" fill="#8B5E3C"/>
-      <circle cx="86" cy="90" r="2.4" fill="#2D2A4A"/>
-      <circle cx="104" cy="90" r="2.4" fill="#2D2A4A"/>
-      <path d="M90 98 Q95 102 100 98" stroke="#2D2A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <g opacity="0.8"><circle cx="46" cy="34" r="1.6" fill="#C9C6D6"/><circle cx="222" cy="70" r="1.6" fill="#C9C6D6"/><circle cx="60" cy="20" r="1.2" fill="#C9C6D6"/><circle cx="240" cy="40" r="1.2" fill="#C9C6D6"/></g>
-    </svg>
-
-    <div class="welcome-note">👋 Hola, mamá. Si llegar hasta aquí fue un esfuerzo — vamos a resolver esto juntas!</div>
-    <div class="eyebrow">Diagnóstico gratuito · 1 minuto</div>
-    <h1>¿Cansada de pasar noches en vela sin saber cómo ayudarlo a dormir?</h1>
-    <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial <strong>personalizado</strong> al instante. </p>
-    <button class="btn-primary" onclick="nextStep()">Quiero mi plan personalizado ahora →</button>
-    <div class="btn-microcopy">⏱️ Toma 1 minuto · Sin registro · Resultado inmediato</div>
-
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        <div class="testimonial-header">
-          <div class="avatar" style="background-image: url('img/ana.webp'); background-size: cover; background-position: center; background-color: transparent;"></div>
-          <div>
-            <div class="author">Ana V.</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div>
-        <div class="author-sub">Madre de Valentina (10 meses)</div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-header">
-          <div class="avatar" style="background-image: url('img/laura.webp'); background-size: cover; background-position: center; background-color: transparent;"></div>
-          <div>
-            <div class="author">Laura M.</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-        <div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div>
-        <div class="author-sub">Madre de Mateo (5 meses)</div>
-      </div>
-    </div>
-
-    <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;"><strong>+12.000 mamás</strong> ya han mejorado el sueño de sus bebés</div>
-    <div class="pillars-row"><span class="pillar">🕐 Ritmo</span><span class="pillar">🌙 Entorno</span><span class="pillar">👀 Lectura de señales</span><span class="pillar">🔁 Constancia</span></div>
-    <div class="badge-row"><span class="badge">Sin dejar llorar solo</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
-    <div class="before-after">
-      <div class="ba-col"><div class="ba-label ba-before">Antes</div><div class="ba-item">Despertares constantes</div><div class="ba-item">Dependencia de brazos o pecho</div><div class="ba-item">Cansancio acumulado</div></div>
-      <div class="ba-col"><div class="ba-label ba-after">Después</div><div class="ba-item">Rutina previsible</div><div class="ba-item">Bebé durmiéndose por sí mismo</div><div class="ba-item">Más energía para toda la familia</div></div>
+    <!-- Contenido estático inicial para garantizar FCP -->
+    <div class="initial-loader">
+      <div class="spinner"></div>
+      <div>Cargando tu diagnóstico...</div>
     </div>
   </div>
 </div>
 
 <script data-cfasync="false">
-/* ========== STARFIELD (criação diferida com requestIdleCallback) ========== */
-function createStars() {
-  const starsEl = document.getElementById('stars');
-  if (!starsEl) return;
-  for(let i=0;i<40;i++){
-    const s = document.createElement('div');
-    s.className='star';
-    s.style.left = Math.random()*100+'%';
-    s.style.top = Math.random()*100+'%';
-    s.style.animationDelay = (Math.random()*4)+'s';
-    starsEl.appendChild(s);
-  }
-  // Añadir animaciones a los botones (solo si existen)
-  document.querySelectorAll('.btn-primary, .btn-offer').forEach(el => {
-    el.style.animation = 'pulseBtn 2.4s ease-in-out infinite';
-  });
-  document.querySelector('.offer-glow-badge')?.style.setProperty('animation', 'pulseGlow 1.8s ease-in-out infinite');
-}
-
-// Usar requestIdleCallback si está disponible, si no, setTimeout
-if ('requestIdleCallback' in window) {
-  requestIdleCallback(createStars, { timeout: 1000 });
-} else {
-  setTimeout(createStars, 300);
-}
+/* ========== STARFIELD (criação diferida) ========== */
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    const starsEl = document.getElementById('stars');
+    for(let i=0;i<40;i++){
+      const s = document.createElement('div');
+      s.className='star';
+      s.style.left = Math.random()*100+'%';
+      s.style.top = Math.random()*100+'%';
+      s.style.animationDelay = (Math.random()*4)+'s';
+      starsEl.appendChild(s);
+    }
+    document.querySelectorAll('.btn-primary, .btn-offer').forEach(el => {
+      el.style.animation = 'pulseBtn 2.4s ease-in-out infinite';
+    });
+    document.querySelector('.offer-glow-badge')?.style.setProperty('animation', 'pulseGlow 1.8s ease-in-out infinite');
+  }, 100);
+});
 
 /* ========== STATE ========== */
 const state = { step: 0, answers: {} };
@@ -473,6 +411,7 @@ function renderMoons(){
   for(let i=0;i<TOTAL_MOON_STEPS;i++){
     const m = document.createElement('div');
     m.className = 'moon' + (i < shown ? ' done' : '') + (i === shown && state.step < 4 ? ' active' : '');
+    // Si estamos en el paso 4 (loading) o 5 (resultado), la última luna se marca como activa/done
     if (state.step >= 4 && i === 3) {
       m.className = 'moon active';
     }
@@ -489,9 +428,67 @@ function render(){
   renderMoons();
   const card = document.getElementById('card');
 
-  // --- STEP 0: ya está en el HTML estático, no hacemos nada.
+  // --- STEP 0: INICIO ---
   if(state.step === 0){
-    // No reemplazar el contenido estático
+    if(window.fbq) fbq('trackCustom', 'QuizStarted');
+    card.innerHTML = `
+      <svg class="hero-illust" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><radialGradient id="glow" cx="50%" cy="35%" r="65%"><stop offset="0%" stop-color="#E8B769" stop-opacity="0.35"/><stop offset="100%" stop-color="#E8B769" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="140" cy="55" r="70" fill="url(#glow)"/>
+        <circle cx="196" cy="30" r="17" fill="#F2CD8F"/>
+        <circle cx="190" cy="24" r="14" fill="#2D2A4A"/>
+        <path d="M40 118 Q60 78 100 78 Q140 78 150 110 Q152 118 145 118 Z" fill="#37345A"/>
+        <circle cx="95" cy="88" r="26" fill="#F5F3EE"/>
+        <path d="M74 82 Q95 66 116 82 Q116 74 95 70 Q74 74 74 82 Z" fill="#8B5E3C"/>
+        <circle cx="86" cy="90" r="2.4" fill="#2D2A4A"/>
+        <circle cx="104" cy="90" r="2.4" fill="#2D2A4A"/>
+        <path d="M90 98 Q95 102 100 98" stroke="#2D2A4A" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <g opacity="0.8"><circle cx="46" cy="34" r="1.6" fill="#C9C6D6"/><circle cx="222" cy="70" r="1.6" fill="#C9C6D6"/><circle cx="60" cy="20" r="1.2" fill="#C9C6D6"/><circle cx="240" cy="40" r="1.2" fill="#C9C6D6"/></g>
+      </svg>
+
+      <div class="welcome-note">👋 Hola, mamá. Si llegar hasta aquí fue un esfuerzo — vamos a resolver esto juntas!</div>
+      <div class="eyebrow">Diagnóstico gratuito · 1 minuto</div>
+      <h1>¿Cansada de pasar noches en vela sin saber cómo ayudarlo a dormir?</h1>
+      <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial <strong>personalizado</strong> al instante. </p>
+      <button class="btn-primary" onclick="nextStep()">Quiero mi plan personalizado ahora →</button>
+      <div class="btn-microcopy">⏱️ Toma 1 minuto · Sin registro · Resultado inmediato</div>
+
+<div class="testimonial-grid">
+  <div class="testimonial">
+    <div class="testimonial-header">
+<div class="avatar" style="background-image: url('img/ana.webp'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>
+      <div>
+        <div class="author">Ana V.</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div>
+    <div class="author-sub">Madre de Valentina (10 meses)</div>
+  </div>
+  <div class="testimonial">
+    <div class="testimonial-header">
+<div class="avatar" style="background-image: url('img/laura.webp'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>      <div>
+        <div class="author">Laura M.</div>
+        <div class="stars">★★★★★</div>
+      </div>
+    </div>
+    <div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div>
+    <div class="author-sub">Madre de Mateo (5 meses)</div>
+  </div>
+</div>
+
+      <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;"><strong>+12.000 mamás</strong> ya han mejorado el sueño de sus bebés</div>
+      <div class="pillars-row"><span class="pillar">🕐 Ritmo</span><span class="pillar">🌙 Entorno</span><span class="pillar">👀 Lectura de señales</span><span class="pillar">🔁 Constancia</span></div>
+      <div class="badge-row"><span class="badge">Sin dejar llorar solo</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
+      <div class="before-after">
+        <div class="ba-col"><div class="ba-label ba-before">Antes</div><div class="ba-item">Despertares constantes</div><div class="ba-item">Dependencia de brazos o pecho</div><div class="ba-item">Cansancio acumulado</div></div>
+        <div class="ba-col"><div class="ba-label ba-after">Después</div><div class="ba-item">Rutina previsible</div><div class="ba-item">Bebé durmiéndose por sí mismo</div><div class="ba-item">Más energía para toda la familia</div></div>
+      </div>
+    `;
     return;
   }
 
@@ -559,11 +556,8 @@ function selectOption(key, value){
 }
 
 function nextStep(){
-  // Solo se llama desde el botón del paso 0
-  if (state.step === 0) {
-    state.step = 1;
-    render(); // ahora reemplaza el contenido estático con la primera pregunta
-  }
+  state.step++;
+  render();
 }
 
 /* ========== CONTADOR ========== */
@@ -628,24 +622,32 @@ function renderResult(card){
       </div></div>
     </div>
 
-    <div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">
-      <div class="qualify-block" style="flex: 1;">
-        <div class="qualify-col qualify-yes" style="margin-bottom: 20px;">
-          <h4>É para você se</h4>
-          <div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div>
-          <div class="qitem">✓ Ele tem despertares noturnos frequentes</div>
-          <div class="qitem">✓ Você sente que já tentou de tudo</div>
-        </div>
-        <div class="qualify-col qualify-no">
-          <h4>Não é para você se</h4>
-          <div class="qitem">✕ Você busca uma solução mágica de uma noite</div>
-          <div class="qitem">✕ Você não quer aplicar nenhuma rotina</div>
-        </div>
-      </div>
-      <div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">
-        <div class="avatar2" style="background-image: url('img/valeria.png'); background-size: cover; background-position: center; background-color: transparent;"></div>
-      </div>
+ <div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">
+  
+  <!-- Coluna da Esquerda: Conteúdo de Qualificação -->
+  <div class="qualify-block" style="flex: 1;">
+    <div class="qualify-col qualify-yes" style="margin-bottom: 20px;">
+      <h4>É para você se</h4>
+      <div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div>
+      <div class="qitem">✓ Ele tem despertares noturnos frequentes</div>
+      <div class="qitem">✓ Você sente que já tentou de tudo</div>
     </div>
+    
+    <div class="qualify-col qualify-no">
+      <h4>Não é para você se</h4>
+      <div class="qitem">✕ Você busca uma solução mágica de uma noite</div>
+      <div class="qitem">✕ Você não quer aplicar nenhuma rotina</div>
+    </div>
+  </div>
+
+  <!-- Coluna da Direita: Link para a Foto -->
+  <div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">
+<div class="avatar2" style="background-image: url('img/valeria.png'); background-size: cover; background-position: center; background-color: transparent;">
+  <!-- sem texto -->
+</div>
+ </div>
+
+</div>
 
     <div class="faq-block"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>
       <div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>
@@ -663,21 +665,12 @@ function restart(){
   state.answers = {};
   if (loadingTimer) clearTimeout(loadingTimer);
   if (countdownInterval) clearInterval(countdownInterval);
-  render(); // Esto restaurará el contenido estático (no hará nada porque step=0)
-  // Pero debemos volver a mostrar el contenido estático original.
-  // Como lo tenemos en el HTML, simplemente recargamos la página o lo recuperamos.
-  // Para no recargar, podemos almacenar el HTML original en una variable y restaurarlo.
-  // O mejor: reiniciar recargando la página (sencillo).
-  location.reload();
+  render();
 }
 
 /* ========== INICIO ========== */
 document.addEventListener('DOMContentLoaded', function() {
-  // No llamamos a render() para el paso 0, ya que el contenido está en el HTML.
-  // Solo renderizamos las lunas (estado inicial)
-  renderMoons();
-  // Aseguramos que el estado step=0
-  state.step = 0;
+  render();
 });
 </script>
 </body>
