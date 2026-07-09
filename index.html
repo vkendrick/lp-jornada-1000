@@ -579,6 +579,8 @@ function renderResult(card){
     '<div class="plan-grid"><div class="plan-card"><span class="plan-icon">🎯</span><h3>Foco principal</h3><p>'+plan.enfoquePrincipal+'.</p></div><div class="plan-card"><span class="plan-icon">🍼</span><h3>Alimentación</h3><p>El plan se ajusta a tu tipo de alimentación ('+a.alimentacion+').</p></div><div class="plan-card"><span class="plan-icon">🌙</span><h3>Entorno de sueño</h3><p>Ajustaremos el entorno (luz, ruido, temperatura) según tu espacio.</p></div><div class="plan-card"><span class="plan-icon">🔁</span><h3>Ritmo del plan</h3><p>Elegiste un '+plan.ritmoTxt+'.</p></div></div>' +
     '<div class="pas-block"><p>'+plan.pasDinamica+'</p><p style="font-weight:600; color:var(--moon-gold-soft);">'+plan.esperanza+'</p></div>' +
     '<div class="locked"><span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span><p class="blur-text">Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.<br>Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.<br>Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.<br>Día 10–14: mantenimiento y plan para regresiones futuras...</p></div>' +
+
+
     '<div class="offer-card">' +
       '<div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>' +
       '<div style="text-align:center; margin-bottom:16px; font-size:14px;">⏳ Oferta especial por tiempo limitado: <span class="countdown" id="countdownDisplay">'+countdownStr+'</span></div>' +
@@ -600,34 +602,50 @@ function renderResult(card){
         '<img src="https://flagcdn.com/w40/es.png" class="flag-img" alt="España" loading="lazy">' +
         '<img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="Estados Unidos" loading="lazy">' +
       '</div></div></div>' +
-    '<div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">' +
-      '<div class="qualify-block" style="flex: 1;">' +
-        '<div class="qualify-col qualify-yes" style="margin-bottom: 20px;"><h4>É para você se</h4><div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div><div class="qitem">✓ Ele tem despertares noturnos frequentes</div><div class="qitem">✓ Você sente que já tentou de tudo</div></div>' +
-        '<div class="qualify-col qualify-no"><h4>Não é para você se</h4><div class="qitem">✕ Você busca uma solução mágica de uma noite</div><div class="qitem">✕ Você não quer aplicar nenhuma rotina</div></div>' +
+
+
+    '<div class="container-split" style="display: flex; flex-direction: column; gap: 30px; width: 100%; box-sizing: border-box;">' +
+
+      '<!-- 1. FILA DEL VIDEO (ARRIBA) -->' +
+      '<div class="video-row" style="width: 100%;">' +
+        '<div class="image-col" style="text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px; box-sizing: border-box;">' +
+          '<div style="padding:56.25% 0 0 0; position:relative; width:100%; max-width:800px; margin: 0 auto;">' +
+            '<iframe src="https://player.vimeo.com/video/1208554471?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1" ' +
+              'frameborder="0" ' +
+              'allow="autoplay; fullscreen; picture-in-picture" ' +
+              'style="position:absolute; top:0; left:0; width:100%; height:100%;" ' +
+              'title="JornadaMaternal">' +
+            '</iframe>' +
+          '</div>' +
+        '</div>' +
       '</div>' +
-     
 
-'<div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">' +
-  '<div style="padding:76.25% 0 0 0; position:relative; width:100%; max-width:800px; margin: 0 auto;">' +
-    '<iframe src="https://player.vimeo.com/video/1208554471?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1" ' +
-      'frameborder="0" ' +
-      'allow="autoplay; fullscreen; picture-in-picture" ' +
-      'style="position:absolute; top:0; left:0; width:100%; height:100%;" ' +
-      'title="JornadaMaternal">' +
-    '</iframe>' +
-  '</div>' +
-'</div>' +
+      '<!-- 2. FILA DE LAS COLUMNAS (ABAJO DEL VIDEO) -->' +
+      '<div class="qualify-block" style="display: flex; gap: 20px; width: 100%; box-sizing: border-box;">' +
+        '<div class="qualify-col qualify-yes" style="flex: 1;">' +
+          '<h4>Es para ti si</h4>' +
+          '<div class="qitem">✓ Tu bebé solo se duerme en brazos o al pecho</div>' +
+          '<div class="qitem">✓ Tiene despertares nocturnos frecuentes</div>' +
+          '<div class="qitem">✓ Sientes que ya lo has intentado todo</div>' +
+        '</div>' +
+        '<div class="qualify-col qualify-no" style="flex: 1;">' +
+          '<h4>No es para ti si</h4>' +
+          '<div class="qitem">✕ Buscas una solución mágica de una sola noche</div>' +
+          '<div class="qitem">✕ No quieres implementar ninguna rutina</div>' +
+        '</div>' +
+      '</div>' +
 
+      '<!-- 3. BLOQUE DE PREGUNTAS FRECUENTES -->' +
+      '<div class="faq-block" style="width: 100%; box-sizing: border-box;"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>' +
+        '<div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>' +
+        '<div class="faq-item"><h4>❓ ¿Tengo que dejarlo llorar solo?</h4><p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p></div>' +
+        '<div class="faq-item"><h4>❓ Ya probé de todo, ¿por qué esto sería diferente?</h4><p>Porque no es un método genérico. Se construye a partir de las respuestas de tu bebé y tu estilo de crianza, no al revés.</p></div>' +
+      '</div>' +
 
+      '<button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>' +
+      '<div class="footer-note">Este plan es una guía educativa y no sustituye la valoración de un pediatra.</div>' +
 
-    '</div>' +
-    '<div class="faq-block"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>' +
-      '<div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>' +
-      '<div class="faq-item"><h4>❓ ¿Tengo que dejarlo llorar solo?</h4><p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p></div>' +
-      '<div class="faq-item"><h4>❓ Ya probé de todo, ¿por qué esto sería diferente?</h4><p>Porque no es un método genérico. Se construye a partir de las respuestas de tu bebé y tu estilo de crianza, no al revés.</p></div>' +
-    '</div>' +
-    '<button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>' +
-    '<div class="footer-note">Este plan es una guía educativa y no sustituye la valoración de un pediatra.</div>';
+    '</div>'; // Cierre correcto de container-split
   startCountdownResult();
 }
 
