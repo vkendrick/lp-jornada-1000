@@ -5,22 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Método Sueño a Medida — Diagnóstico personalizado</title>
 
-<!-- ============ INSTRUCCIONES DE CACHÉ PARA CLOUDFLARE / SERVIDOR ============ -->
+<!-- ============ INSTRUCCIONES DE CACHÉ (Cloudflare) ============ -->
 <!--
-  Para resolver el cache de 249 KB y las imágenes, agrega estas reglas en Cloudflare (Page Rules) o en .htaccess:
-
-  1. Regla de página (Cloudflare): *jornadamaternal.com/*
-     - Cache Level: Cache Everything
-     - Edge Cache TTL: 1 day
-     - Browser Cache TTL: 1 hour
-
-  2. Para imágenes (Cloudflare o .htaccess):
-     <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg)$">
-       Header set Cache-Control "max-age=31536000, public, immutable"
-     </FilesMatch>
+  Asegúrate de tener estas reglas en Cloudflare (Page Rules):
+  1. *jornadamaternal.com/* → Cache Everything, Edge TTL 1 día, Browser TTL 1 hora
+  2. *jornadamaternal.com/img/* → Browser TTL 1 mes
 -->
 
-<!-- ============ OTIMIZACIÓN DE FUENTES (sin bloqueo) ============ -->
+<!-- ============ FUENTES (sin bloqueo) ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -28,16 +20,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </noscript>
 
-<!-- ============ FACEBOOK PIXEL (SOLO INICIALIZACIÓN - SIN DESCARGA DEL SCRIPT PESADO) ============ -->
+<!-- ============ PRECARGA DE IMÁGENES CRÍTICAS ============ -->
+<link rel="preload" as="image" href="img/ana.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/laura.webp" fetchpriority="high">
+
+<!-- ============ FACEBOOK PIXEL (INICIALIZACIÓN LIVIANA) ============ -->
 <script>
-  // Inicialización liviana (no bloquea)
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
   fbq('init', '1019837753974051');
-  // El script fbevents.js se cargará SOLO cuando el usuario haga clic en el botón (ver loadTrackers())
 </script>
-<!-- Píxel de imagen (noscript) para PageView sin JS, mantiene el tracking inicial -->
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1019837753974051&ev=PageView&noscript=1"/></noscript>
 
 <!-- ============ GOOGLE ANALYTICS (INICIALIZACIÓN LIVIANA) ============ -->
@@ -48,12 +41,10 @@
   var _gtag_orig=gtag;
   gtag=function(){window._gtag_q.push(arguments);};
   window._gtag_loaded=false;
-  // El script gtag.js se cargará SOLO cuando el usuario haga clic en el botón (ver loadTrackers())
 </script>
 
 <!-- ============ MICROSOFT CLARITY (INICIALIZACIÓN DIFERIDA) ============ -->
 <script>
-  // La función de Clarity se cargará SOLO cuando el usuario haga clic en el botón (ver loadTrackers())
   window._clarity_load = function() {
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -64,7 +55,7 @@
 </script>
 
 <style>
-  /* ===== ESTILOS (com animação rise eliminada para evitar reflow) ===== */
+  /* ===== ESTILOS (completos, igual que antes) ===== */
   :root{
     --ink-deep: #1B2138;
     --ink-plum: #2D2A4A;
@@ -90,10 +81,7 @@
     align-items:center;
     padding: 32px 16px 64px;
   }
-  .app{
-    width:100%;
-    max-width: 640px;
-  }
+  .app{ width:100%; max-width: 640px; }
   .stars{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
   .star{ position:absolute; width:2px; height:2px; background: var(--paper-dim); border-radius:50%; opacity:0.35; animation: twinkle 4s ease-in-out infinite; }
   @keyframes twinkle{ 0%,100%{opacity:.15;} 50%{opacity:.7;} }
@@ -209,117 +197,32 @@
   @media (max-width: 480px){ .card{ padding: 30px 22px; } }
   @media (prefers-reduced-motion: reduce){ *{ animation: none !important; transition: none !important; } }
 
-  /* ===== SPINNER PARA EL LOADING ===== */
-  .loader-container {
-    text-align: center;
-    padding: 30px 0;
-  }
-  .loader-spinner {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border: 6px solid rgba(255,255,255,0.1);
-    border-top-color: var(--moon-gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 24px;
-  }
+  .loader-container { text-align: center; padding: 30px 0; }
+  .loader-spinner { display: inline-block; width: 60px; height: 60px; border: 6px solid rgba(255,255,255,0.1); border-top-color: var(--moon-gold); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 24px; }
   @keyframes spin { to { transform: rotate(360deg); } }
-  .loader-text {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--paper);
-    margin-bottom: 8px;
-  }
-  .loader-sub {
-    font-size: 15px;
-    color: var(--paper-dim);
-    opacity: 0.8;
-  }
-  .loader-dots::after {
-    content: '';
-    animation: dots 1.5s steps(4, end) infinite;
-  }
-  @keyframes dots {
-    0% { content: ''; }
-    25% { content: '.'; }
-    50% { content: '..'; }
-    75% { content: '...'; }
-    100% { content: ''; }
-  }
+  .loader-text { font-size: 20px; font-weight: 600; color: var(--paper); margin-bottom: 8px; }
+  .loader-sub { font-size: 15px; color: var(--paper-dim); opacity: 0.8; }
+  .loader-dots::after { content: ''; animation: dots 1.5s steps(4, end) infinite; }
+  @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } 100% { content: ''; } }
 
-  /* Spinner inicial (contenido estático) */
-  .initial-loader {
-    text-align: center;
-    color: var(--paper-dim);
-    font-size: 18px;
-    padding: 40px 0;
-  }
-  .initial-loader .spinner {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255,255,255,0.1);
-    border-top-color: var(--moon-gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 16px;
-  }
+  .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: #fff; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .avatar2 { width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .author { font-weight: 700; font-size: 14px; color: var(--paper); }
+  .author-sub { font-size: 12px; color: var(--paper-dim); margin-top: 2px; }
+  .testimonial .stars { font-size: 13px; letter-spacing: 1px; color: var(--moon-gold); }
+  .testimonial .text { font-size: 13.5px; color: var(--paper-dim); line-height: 1.5; margin-top: 4px; }
 
-.testimonial-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-.avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 16px;
-  color: #fff;
-  flex-shrink: 0;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.avatar2 {
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  flex-shrink: 0;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.author {
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--paper);
-}
-.author-sub {
-  font-size: 12px;
-  color: var(--paper-dim);
-  margin-top: 2px;
-}
-.testimonial .stars {
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--moon-gold);
-}
-.testimonial .text {
-  font-size: 13.5px;
-  color: var(--paper-dim);
-  line-height: 1.5;
-  margin-top: 4px;
-}
-
-/* Ocultar inicialmente el contenido del paso 0 si JS falla, pero como es estático, se ve bien */
+  /* Nuevos estilos para beneficios y urgencia */
+  .benefits-row{ display:flex; gap:12px; margin: 18px 0 24px; flex-wrap:wrap; justify-content:center; }
+  .benefit-item{ flex:1; min-width:100px; text-align:center; background: rgba(245,243,238,0.03); border-radius:12px; padding:12px 8px; border:1px solid rgba(245,243,238,0.06); }
+  .benefit-item .icon{ font-size:24px; display:block; margin-bottom:4px; }
+  .benefit-item .label{ font-size:13px; font-weight:600; color: var(--paper); }
+  .benefit-item .desc{ font-size:11.5px; color: var(--paper-dim); }
+  .urgency-bar{ background: rgba(232,183,105,0.12); border:1px solid rgba(232,183,105,0.25); border-radius:12px; padding:10px 16px; text-align:center; margin-bottom:20px; font-size:14px; color: var(--moon-gold-soft); }
+  .urgency-bar strong{ color: var(--paper); }
+  .credibility-block{ background: rgba(255,255,255,0.02); border-left:3px solid var(--moon-gold); padding:12px 16px; border-radius:8px; margin: 12px 0 20px; font-size:14px; color: var(--paper-dim); line-height:1.5; }
+  .credibility-block strong{ color: var(--moon-gold-soft); }
 </style>
 </head>
 <body>
@@ -328,7 +231,7 @@
   <div class="moon-track" id="moonTrack"></div>
   <div class="card" id="card">
     <!-- ============================================================ -->
-    <!-- CONTENIDO ESTÁTICO DEL PASO 0 (se muestra al cargar la página) -->
+    <!-- NUEVO PASO 0 CON COPY ALINEADO A LOS CREATIVOS                -->
     <!-- ============================================================ -->
     <svg class="hero-illust" viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fetchpriority="high">
       <defs><radialGradient id="glow" cx="50%" cy="35%" r="65%"><stop offset="0%" stop-color="#E8B769" stop-opacity="0.35"/><stop offset="100%" stop-color="#E8B769" stop-opacity="0"/></radialGradient></defs>
@@ -344,42 +247,63 @@
       <g opacity="0.8"><circle cx="46" cy="34" r="1.6" fill="#C9C6D6"/><circle cx="222" cy="70" r="1.6" fill="#C9C6D6"/><circle cx="60" cy="20" r="1.2" fill="#C9C6D6"/><circle cx="240" cy="40" r="1.2" fill="#C9C6D6"/></g>
     </svg>
 
-    <div class="welcome-note">👋 Hola, mamá. Si llegar hasta aquí fue un esfuerzo — vamos a resolver esto juntas!</div>
-    <div class="eyebrow">Diagnóstico gratuito · 1 minuto</div>
-    <h1>¿Cansada de pasar noches en vela sin saber cómo ayudarlo a dormir?</h1>
-    <p class="lede">El <strong>Método Sueño a Medida</strong> se adapta a tu bebé, no al revés. Responde <strong>3 preguntas rápidas</strong> y obtén tu plan inicial <strong>personalizado</strong> al instante. </p>
-    <!-- Botón principal: al hacer clic, carga los trackers y avanza al paso 1 -->
-    <button class="btn-primary" onclick="loadTrackers(); nextStep();">Quiero mi plan personalizado ahora →</button>
-    <div class="btn-microcopy">⏱️ Toma 1 minuto · Sin registro · Resultado inmediato</div>
+    <!-- Urgencia visible desde el inicio -->
+    <div class="urgency-bar">
+      ⏳ Oferta especial por tiempo limitado: <strong><span id="countdownDisplayTop">23:59:59</span></strong>
+    </div>
 
+    <div class="welcome-note">🌙 3 de la mañana. Otra vez despierto. Otra vez tú.</div>
+    <div class="eyebrow">Diagnóstico gratuito · 5 preguntas · 1 minuto</div>
+    <h1>Ya probaste de todo — y sigues sin dormir.</h1>
+    <p class="lede">
+      Este <strong>Método Sueño a Medida</strong> no es una receta genérica. Es un <strong>sistema automático</strong> que se adapta a las respuestas reales de <strong>tu</strong> bebé. 
+      Responde <strong>5 preguntas rápidas</strong> y recibe un plan de sueño personalizado — no copiado, no genérico.
+    </p>
+
+    <!-- Beneficios visuales -->
+    <div class="benefits-row">
+      <div class="benefit-item"><span class="icon">🌙</span><div class="label">Menos despertares</div><div class="desc">Nocturnos reducidos</div></div>
+      <div class="benefit-item"><span class="icon">📋</span><div class="label">Rutinas adaptadas</div><div class="desc">A tu bebé y a ti</div></div>
+      <div class="benefit-item"><span class="icon">💤</span><div class="label">Más descanso</div><div class="desc">Para toda la familia</div></div>
+    </div>
+
+    <!-- Bloque de credibilidad (C2) -->
+    <div class="credibility-block">
+      <strong>No soy pediatra.</strong> Y por eso este plan no depende de mí. <br>
+      No necesitas confiar en una influencer — necesitas un <strong>sistema que se adapte a tu bebé</strong>, basado en respuestas reales, no en una fórmula única para todos.
+    </div>
+
+    <button class="btn-primary" onclick="loadTrackers(); nextStep();">👉 Prueba tu diagnóstico ahora</button>
+    <div class="btn-microcopy">Rápido, claro y 100% personalizado · Sin registro · Resultado inmediato</div>
+
+    <div style="text-align:center; font-size:13px; color:var(--muted); margin:10px 0 16px;"><strong>+12.000 mamás</strong> ya mejoraron el sueño de sus bebés</div>
+
+    <!-- Testimonios (prueba social) -->
     <div class="testimonial-grid">
       <div class="testimonial">
         <div class="testimonial-header">
-          <div class="avatar" style="background-image: url('img/ana.webp'); background-size: cover; background-position: center; background-color: transparent; width:44px; height:44px;" loading="lazy"></div>
-          <div>
-            <div class="author">Ana V.</div>
-            <div class="stars">★★★★★</div>
-          </div>
+          <div class="avatar" style="background-image: url('img/ana.webp'); background-size: cover; background-position: center; background-color: transparent; width:44px; height:44px;" loading="eager"></div>
+          <div><div class="author">Ana V.</div><div class="stars">★★★★★</div></div>
         </div>
         <div class="text">“En 3 días mi bebé empezó a dormir 6 horas seguidas. Nunca creí que fuera posible sin dejarlo llorar.”</div>
         <div class="author-sub">Madre de Valentina (10 meses)</div>
       </div>
       <div class="testimonial">
         <div class="testimonial-header">
-          <div class="avatar" style="background-image: url('img/laura.webp'); background-size: cover; background-position: center; background-color: transparent; width:44px; height:44px;" loading="lazy"></div>
-          <div>
-            <div class="author">Laura M.</div>
-            <div class="stars">★★★★★</div>
-          </div>
+          <div class="avatar" style="background-image: url('img/laura.webp'); background-size: cover; background-position: center; background-color: transparent; width:44px; height:44px;" loading="eager"></div>
+          <div><div class="author">Laura M.</div><div class="stars">★★★★★</div></div>
         </div>
         <div class="text">“El plan se ajustó perfecto a nuestra rutina de colecho. Ya no paso la noche despierta.”</div>
         <div class="author-sub">Madre de Mateo (5 meses)</div>
       </div>
     </div>
 
-    <div style="text-align:center; font-size:13px; color:var(--muted); margin:-6px 0 20px;"><strong>+12.000 mamás</strong> ya han mejorado el sueño de sus bebés</div>
-    <div class="pillars-row"><span class="pillar">🕐 Ritmo</span><span class="pillar">🌙 Entorno</span><span class="pillar">👀 Lectura de señales</span><span class="pillar">🔁 Constancia</span></div>
-    <div class="badge-row"><span class="badge">Sin dejar llorar solo</span><span class="badge">Ajustado a la alimentación de tu bebé</span><span class="badge">Resultado inmediato</span></div>
+    <!-- Más sellos -->
+    <div class="badge-row">
+      <span class="badge">Sin dejar llorar solo</span>
+      <span class="badge">Ajustado a la alimentación</span>
+      <span class="badge">Resultado inmediato</span>
+    </div>
     <div class="before-after">
       <div class="ba-col"><div class="ba-label ba-before">Antes</div><div class="ba-item">Despertares constantes</div><div class="ba-item">Dependencia de brazos o pecho</div><div class="ba-item">Cansancio acumulado</div></div>
       <div class="ba-col"><div class="ba-label ba-after">Después</div><div class="ba-item">Rutina previsible</div><div class="ba-item">Bebé durmiéndose por sí mismo</div><div class="ba-item">Más energía para toda la familia</div></div>
@@ -387,38 +311,31 @@
   </div>
 </div>
 
-<script data-cfasync="false">
+<script data-cfasync="false" defer>
 /* ============================================================
-   FUNCIÓN QUE CARGA TODOS LOS RASTREADORES EN EL PRIMER CLIC
+   FUNCIÓN QUE CARGA TODOS LOS RASTREADORES (ahora con PageView automático)
    ============================================================ */
 var trackersLoaded = false;
 function loadTrackers() {
   if (trackersLoaded) return;
   trackersLoaded = true;
 
-  // 1. FACEBOOK PIXEL (fbevents.js)
+  // 1. FACEBOOK
   var fbScript = document.createElement('script');
   fbScript.async = true;
   fbScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
-  fbScript.onload = function() {
-    if (window.fbq) {
-      fbq('track', 'PageView');
-      // Si ya se disparó el quiz, podemos trackearlo después, pero se dispara en el paso 4.
-    }
-  };
+  fbScript.onload = function() { if (window.fbq) fbq('track', 'PageView'); };
   document.head.appendChild(fbScript);
 
-  // 2. GOOGLE ANALYTICS (gtag.js)
+  // 2. GOOGLE ANALYTICS
   var gaScript = document.createElement('script');
   gaScript.async = true;
   gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-7WKFW0D82N';
   gaScript.onload = function() {
     window._gtag_loaded = true;
-    // Restaurar la función gtag original
     window.gtag = window._gtag_orig || function(){};
     gtag('js', new Date());
     gtag('config', 'G-7WKFW0D82N', { send_page_view: true });
-    // Procesar eventos encolados
     if (window._gtag_q) {
       window._gtag_q.forEach(function(a){ gtag.apply(null, a); });
       window._gtag_q = [];
@@ -426,71 +343,95 @@ function loadTrackers() {
   };
   document.head.appendChild(gaScript);
 
-  // 3. MICROSOFT CLARITY
-  if (typeof window._clarity_load === 'function') {
-    window._clarity_load();
-  }
+  // 3. CLARITY
+  if (typeof window._clarity_load === 'function') window._clarity_load();
 }
 
-/* ========== STARFIELD (criação diferida com requestIdleCallback) ========== */
+// Disparar trackers automáticamente al cargar la página (con delay para no perjudicar LCP)
+window.addEventListener('load', function() {
+  setTimeout(loadTrackers, 800);
+});
+
+// También cargar si el usuario hace clic en cualquier lugar (por si el load no se dispara)
+document.addEventListener('click', function() {
+  loadTrackers();
+});
+
+/* ========== CONTADOR DE URGENCIA (topo) ========== */
+var countdownIntervalTop;
+function startCountdownTop() {
+  var el = document.getElementById('countdownDisplayTop');
+  if (!el) return;
+  var seconds = 23 * 3600 + 59 * 60 + 59;
+  if (countdownIntervalTop) clearInterval(countdownIntervalTop);
+  countdownIntervalTop = setInterval(function() {
+    if (seconds <= 0) { clearInterval(countdownIntervalTop); el.textContent = '00:00:00'; return; }
+    seconds--;
+    var h = Math.floor(seconds / 3600);
+    var m = Math.floor((seconds % 3600) / 60);
+    var s = seconds % 60;
+    el.textContent = (h.toString().padStart(2,'0')+':'+m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0'));
+  }, 1000);
+}
+startCountdownTop();
+
+/* ========== STARFIELD (diferido) ========== */
 function createStars() {
-  const starsEl = document.getElementById('stars');
+  var starsEl = document.getElementById('stars');
   if (!starsEl) return;
-  for(let i=0;i<40;i++){
-    const s = document.createElement('div');
+  for(var i=0;i<40;i++){
+    var s = document.createElement('div');
     s.className='star';
     s.style.left = Math.random()*100+'%';
     s.style.top = Math.random()*100+'%';
     s.style.animationDelay = (Math.random()*4)+'s';
     starsEl.appendChild(s);
   }
-  // Añadir animaciones a los botones (solo si existen)
-  document.querySelectorAll('.btn-primary, .btn-offer').forEach(el => {
-    el.style.animation = 'pulseBtn 2.4s ease-in-out infinite';
-  });
-  document.querySelector('.offer-glow-badge')?.style.setProperty('animation', 'pulseGlow 1.8s ease-in-out infinite');
 }
-
-// Usar requestIdleCallback si está disponible, si no, setTimeout
 if ('requestIdleCallback' in window) {
   requestIdleCallback(createStars, { timeout: 1000 });
 } else {
   setTimeout(createStars, 300);
 }
 
-/* ========== STATE ========== */
-const state = { step: 0, answers: {} };
-const TOTAL_MOON_STEPS = 4;
+/* ========== STATE (5 preguntas) ========== */
+var state = { step: 0, answers: {} };
+var TOTAL_MOON_STEPS = 5; // Ahora 5 preguntas + resultado
 
-const icons = {
-  edad: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="26" stroke="#E8B769" stroke-width="2" opacity="0.4"/><path d="M28 14v14l9 6" stroke="#F2CD8F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-  problema: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 10c-8 0-14 7-14 15 0 6 3 9 5 12h18c2-3 5-6 5-12 0-8-6-15-14-15Z" stroke="#F2CD8F" stroke-width="2.2"/><path d="M23 44h10M25 48h6" stroke="#E8B769" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  tolerancia: `<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 44c9-6 16-13 16-21a10 10 0 0 0-16-8 10 10 0 0 0-16 8c0 8 7 15 16 21Z" stroke="#F2CD8F" stroke-width="2.2" stroke-linejoin="round"/></svg>`,
+var icons = {
+  edad: '<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="26" stroke="#E8B769" stroke-width="2" opacity="0.4"/><path d="M28 14v14l9 6" stroke="#F2CD8F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  problema: '<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 10c-8 0-14 7-14 15 0 6 3 9 5 12h18c2-3 5-6 5-12 0-8-6-15-14-15Z" stroke="#F2CD8F" stroke-width="2.2"/><path d="M23 44h10M25 48h6" stroke="#E8B769" stroke-width="2.2" stroke-linecap="round"/></svg>',
+  tolerancia: '<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 44c9-6 16-13 16-21a10 10 0 0 0-16-8 10 10 0 0 0-16 8c0 8 7 15 16 21Z" stroke="#F2CD8F" stroke-width="2.2" stroke-linejoin="round"/></svg>',
+  alimentacion: '<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 30c0-6 4-11 10-11s10 5 10 11c0 3-1 6-3 8v4h-14v-4c-2-2-3-5-3-8z" stroke="#F2CD8F" stroke-width="2.2"/><path d="M26 19v-5M30 19v-3" stroke="#E8B769" stroke-width="2" stroke-linecap="round"/></svg>',
+  regresiones: '<svg class="q-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 44c4-2 12-8 12-16a10 10 0 0 0-16-8 10 10 0 0 0-16 8c0 8 8 14 12 16" stroke="#F2CD8F" stroke-width="2.2"/><circle cx="28" cy="24" r="4" stroke="#E8B769" stroke-width="2"/></svg>'
 };
 
-const questions = [
+var questions = [
   { key: 'edad', title: '¿Qué edad tiene tu bebé?', lede: 'Cada etapa tiene ventanas de sueño distintas — por eso empezamos por aquí.', options: [{v:'0-3',l:'0 a 3 meses'},{v:'4-6',l:'4 a 6 meses'},{v:'7-12',l:'7 a 12 meses'},{v:'13-24',l:'13 a 24 meses'}] },
   { key: 'problema', title: '¿Cuál es el mayor problema ahora mismo?', lede: 'Sé específica — esto define qué parte del protocolo priorizamos primero.', options: [{v:'despertares',l:'Se despierta muchas veces por la noche'},{v:'tarda',l:'Tarda horas en quedarse dormido'},{v:'brazos',l:'Solo duerme en brazos o pecho'},{v:'siestas',l:'Duerme bien de noche, pero las siestas son un caos'}] },
   { key: 'tolerancia', title: '¿Qué tan cómoda te sientes dejándolo protestar un poco mientras aprende?', lede: 'No hay respuesta incorrecta — esto solo ajusta el ritmo del plan a tu estilo.', options: [{v:'nada',l:'Nada cómoda, prefiero un método sin llanto'},{v:'poco',l:'Un poco está bien, si es breve y acompañado'},{v:'rapido',l:'Prefiero resultados rápidos, aunque proteste más'}] },
+  { key: 'alimentacion', title: '¿Cómo estás alimentando a tu bebé?', lede: 'La alimentación influye directamente en el sueño, así que lo tenemos en cuenta.', options: [{v:'pecho',l:'Exclusivamente pecho'},{v:'biberon',l:'Biberón (leche de fórmula)'},{v:'mixta',l:'Mixta (pecho y biberón)'}] },
+  { key: 'regresiones', title: '¿Has notado alguna regresión del sueño recientemente?', lede: 'Los saltos de desarrollo suelen alterar el sueño. Esto nos ayuda a ajustar las expectativas.', options: [{v:'si',l:'Sí, está pasando ahora'},{v:'hace',l:'Pasó hace poco (menos de 1 mes)'},{v:'no',l:'No, nunca he notado regresiones'}] }
 ];
 
+/* ========== FUNCIONES DEL PLAN (idénticas, solo se actualiza el número de preguntas) ========== */
 function buildPlan(a){
-  const edadTxt = { '0-3':'recién nacido en formación de ritmo circadiano','4-6':'en plena consolidación de rutina de sueño','7-12':'con capacidad real de aprender a dormir de forma independiente','13-24':'en edad de transición hacia rutinas más estables' }[a.edad] || 'de una edad clave para el aprendizaje del sueño';
-  const ventana = { '0-3':'45–90 minutos','4-6':'1h 30–2h 15','7-12':'2h 30–3h 30','13-24':'4–6 horas (siesta única en transición)' }[a.edad] || 'ajustada a su etapa';
-  const enfoquePrincipal = { despertares:'reducir los despertares nocturnos ajustando las asociaciones de sueño', tarda:'acortar el tiempo para conciliar el sueño trabajando la ventana de sueño exacta', brazos:'hacer la transición gradual de brazos/pecho a la cuna sin sobresaltos', siestas:'estabilizar las siestas diurnas para que el sueño nocturno no se descompense' }[a.problema] || 'ordenar la rutina de sueño';
-  const pasDinamica = {
+  var edadTxt = { '0-3':'recién nacido en formación de ritmo circadiano','4-6':'en plena consolidación de rutina de sueño','7-12':'con capacidad real de aprender a dormir de forma independiente','13-24':'en edad de transición hacia rutinas más estables' }[a.edad] || 'de una edad clave para el aprendizaje del sueño';
+  var ventana = { '0-3':'45–90 minutos','4-6':'1h 30–2h 15','7-12':'2h 30–3h 30','13-24':'4–6 horas (siesta única en transición)' }[a.edad] || 'ajustada a su etapa';
+  var enfoquePrincipal = { despertares:'reducir los despertares nocturnos ajustando las asociaciones de sueño', tarda:'acortar el tiempo para conciliar el sueño trabajando la ventana de sueño exacta', brazos:'hacer la transición gradual de brazos/pecho a la cuna sin sobresaltos', siestas:'estabilizar las siestas diurnas para que el sueño nocturno no se descompense' }[a.problema] || 'ordenar la rutina de sueño';
+  var pasDinamica = {
     despertares: '<strong>Los despertares constantes están fragmentando tu propio descanso.</strong> No es solo que tu bebé se despierte; es que tú llevas meses sin dormir más de dos horas seguidas. El cansancio acumulado afecta tu paciencia, tu energía diaria y te hace sentir que estás operando en piloto automático.',
     tarda: '<strong>Esas horas eternas intentando que se duerma te están robando la noche.</strong> Entrar a la habitación sabiendo que te espera una batalla de una o dos horas genera una ansiedad silenciosa antes de empezar. Terminas el día agotada, frustrada y sin un solo minuto libre para ti.',
     brazos: '<strong>Estar atrapada siendo la única forma en que tu bebé duerme es físicamente agotador.</strong> El miedo a moverte y que se despierte al segundo de tocar la cuna te obliga a quedarte en posiciones incómodas. Tu cuerpo duele, tu espalda sufre y sientes que tu bebé depende al 100% de tu agotamiento físico.',
     siestas: '<strong>Un día sin siestas previsibles se convierte en un caos impredecible.</strong> Al no poder planificar nada porque no sabes cuándo ni cuánto dormirá, vives en un estado de alerta constante. Llegar a la noche con un bebé sobrecansado solo empeora la situación familiar.'
   }[a.problema] || '<strong>No son solo las noches difíciles.</strong> Es el cansancio acumulado, la falta de energía, la sensación de que ya probaste de todo y nada funciona.';
-  const esperanza = 'Pero la buena noticia es que, con el enfoque correcto —no genérico, ajustado a tu bebé— esto se puede ordenar en días, no en meses.';
-  const ritmoTxt = { nada:'ritmo gradual, sin dejarlo llorar solo, con acompañamiento progresivo', poco:'ritmo intermedio, con protestas breves acompañadas de cerca', rapido:'ritmo acelerado, priorizando resultados en los primeros días' }[a.tolerancia] || 'ritmo adaptado a tu estilo';
+  var esperanza = 'Pero la buena noticia es que, con el enfoque correcto —no genérico, ajustado a tu bebé— esto se puede ordenar en días, no en meses.';
+  var ritmoTxt = { nada:'ritmo gradual, sin dejarlo llorar solo, con acompañamiento progresivo', poco:'ritmo intermedio, con protestas breves acompañadas de cerca', rapido:'ritmo acelerado, priorizando resultados en los primeros días' }[a.tolerancia] || 'ritmo adaptado a tu estilo';
   return { edadTxt, ventana, enfoquePrincipal, ritmoTxt, pasDinamica, esperanza };
 }
 
-/* ========== GOOGLE SHEETS (sin email) ========== */
-const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx8h3D0HlMNjF71q9RH-Tn_AP99yW8ebqBENAT_vpIXXEiQmAkOOWmrIeAtJGkNVgcp/exec';
+/* ========== GOOGLE SHEETS ========== */
+var SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx8h3D0HlMNjF71q9RH-Tn_AP99yW8ebqBENAT_vpIXXEiQmAkOOWmrIeAtJGkNVgcp/exec';
 function sendToSheet(data){
   if(!SHEET_WEBHOOK_URL) return;
   fetch(SHEET_WEBHOOK_URL, {
@@ -498,11 +439,10 @@ function sendToSheet(data){
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
-  }).catch(() => {});
+  }).catch(function(){});
 }
 
 function triggerCheckout() {
-  // Asegurar que los trackers estén cargados antes del checkout
   loadTrackers();
   if (window.fbq) fbq('track', 'InitiateCheckout');
   window.location.href = 'https://pay.hotmart.com/L106617918K?checkoutMode=10';
@@ -510,83 +450,73 @@ function triggerCheckout() {
 
 /* ========== RENDER ========== */
 function renderMoons(){
-  const track = document.getElementById('moonTrack');
+  var track = document.getElementById('moonTrack');
   track.innerHTML = '';
-  const shown = Math.min(state.step, TOTAL_MOON_STEPS);
-  for(let i=0;i<TOTAL_MOON_STEPS;i++){
-    const m = document.createElement('div');
-    m.className = 'moon' + (i < shown ? ' done' : '') + (i === shown && state.step < 4 ? ' active' : '');
-    if (state.step >= 4 && i === 3) {
+  var shown = Math.min(state.step, TOTAL_MOON_STEPS);
+  for(var i=0;i<TOTAL_MOON_STEPS;i++){
+    var m = document.createElement('div');
+    m.className = 'moon' + (i < shown ? ' done' : '') + (i === shown && state.step < 5 ? ' active' : '');
+    if (state.step >= 5 && i === 4) {
       m.className = 'moon active';
     }
-    if (state.step >= 5 && i === 3) {
+    if (state.step >= 6 && i === 4) {
       m.className = 'moon done';
     }
     track.appendChild(m);
   }
 }
 
-let loadingTimer = null;
+var loadingTimer = null;
 
 function render(){
   renderMoons();
-  const card = document.getElementById('card');
+  var card = document.getElementById('card');
 
-  // --- STEP 0: ya está en el HTML estático, no hacemos nada.
   if(state.step === 0){
-    return;
+    return; // contenido estático ya está
   }
 
-  // --- STEPS 1, 2, 3: PREGUNTAS ---
   if(state.step >= 1 && state.step <= questions.length){
-    const q = questions[state.step - 1];
-    card.innerHTML = `
-      ${icons[q.key]}
-      <div class="eyebrow">Pregunta ${state.step} de ${questions.length}</div>
-      <h2>${q.title}</h2>
-      <p class="lede">${q.lede}</p>
-      <div class="options">
-        ${q.options.map(o => `<button class="opt" onclick="selectOption('${q.key}','${o.v}')">${o.l}</button>`).join('')}
-      </div>
-    `;
+    var q = questions[state.step - 1];
+    card.innerHTML = 
+      icons[q.key] +
+      '<div class="eyebrow">Pregunta '+state.step+' de '+questions.length+'</div>' +
+      '<h2>'+q.title+'</h2>' +
+      '<p class="lede">'+q.lede+'</p>' +
+      '<div class="options">' +
+        q.options.map(function(o){ return '<button class="opt" onclick="selectOption(\''+q.key+'\',\''+o.v+'\')">'+o.l+'</button>'; }).join('') +
+      '</div>';
     return;
   }
 
-  // --- STEP 4: LOADING / PROCESANDO ---
-  if(state.step === 4){
-    // Asegurar trackers cargados (por si acaso)
+  if(state.step === questions.length + 1){ // paso de loading
     loadTrackers();
-
-    // Enviar datos anónimos a Google Sheets
     sendToSheet({
       edad: state.answers.edad || '',
       problema: state.answers.problema || '',
       tolerancia: state.answers.tolerancia || '',
+      alimentacion: state.answers.alimentacion || '',
+      regresiones: state.answers.regresiones || '',
       fecha: new Date().toISOString()
     });
-
-    // Disparar evento de conversión (Lead) al completar el quiz
     if(window.fbq) fbq('track', 'Lead');
 
-    card.innerHTML = `
-      <div class="loader-container">
-        <div class="loader-spinner"></div>
-        <div class="loader-text">Analizando las respuestas de tu bebé<span class="loader-dots"></span></div>
-        <div class="loader-sub">Creando tu plan personalizado...</div>
-      </div>
-    `;
+    card.innerHTML = 
+      '<div class="loader-container">' +
+        '<div class="loader-spinner"></div>' +
+        '<div class="loader-text">Analizando las respuestas de tu bebé<span class="loader-dots"></span></div>' +
+        '<div class="loader-sub">Creando tu plan personalizado...</div>' +
+      '</div>';
 
-    // Auto-avanzar al resultado después de 2.5 segundos
     if (loadingTimer) clearTimeout(loadingTimer);
-    loadingTimer = setTimeout(() => {
-      state.step = 5;
+    loadingTimer = setTimeout(function() {
+      state.step = questions.length + 2;
       render();
     }, 2500);
     return;
   }
 
-  // --- STEP 5: RESULTADO + OFERTA ---
-  if(state.step === 5){
+  if(state.step === questions.length + 2){ // resultado
     renderResult(card);
     return;
   }
@@ -595,7 +525,7 @@ function render(){
 function selectOption(key, value){
   state.answers[key] = value;
   if (state.step === questions.length) {
-    state.step = 4;
+    state.step = questions.length + 1;
   } else {
     state.step++;
   }
@@ -603,7 +533,6 @@ function selectOption(key, value){
 }
 
 function nextStep(){
-  // Cargar trackers (por si el clic no lo hizo, ej: si se llama desde otro lugar)
   loadTrackers();
   if (state.step === 0) {
     state.step = 1;
@@ -611,104 +540,91 @@ function nextStep(){
   }
 }
 
-/* ========== CONTADOR ========== */
-let countdownInterval;
-function startCountdown() {
-  const el = document.getElementById('countdownDisplay');
+/* ========== CONTADOR RESULTADO ========== */
+var countdownIntervalResult;
+function startCountdownResult() {
+  var el = document.getElementById('countdownDisplay');
   if (!el) return;
-  let seconds = 23 * 3600 + 59 * 60 + 59;
-  if (countdownInterval) clearInterval(countdownInterval);
-  countdownInterval = setInterval(() => {
-    if (seconds <= 0) { clearInterval(countdownInterval); el.textContent = '00:00:00'; return; }
+  var seconds = 23 * 3600 + 59 * 60 + 59;
+  if (countdownIntervalResult) clearInterval(countdownIntervalResult);
+  countdownIntervalResult = setInterval(function() {
+    if (seconds <= 0) { clearInterval(countdownIntervalResult); el.textContent = '00:00:00'; return; }
     seconds--;
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
-    el.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    var h = Math.floor(seconds / 3600);
+    var m = Math.floor((seconds % 3600) / 60);
+    var s = seconds % 60;
+    el.textContent = (h.toString().padStart(2,'0')+':'+m.toString().padStart(2,'0')+':'+s.toString().padStart(2,'0'));
   }, 1000);
 }
 
 function renderResult(card){
-  const a = state.answers;
-  const plan = buildPlan(a);
-  const now = new Date();
-  const end = new Date(now);
+  var a = state.answers;
+  var plan = buildPlan(a);
+  var now = new Date();
+  var end = new Date(now);
   end.setHours(now.getHours() + 23);
   end.setMinutes(59 - now.getMinutes());
   end.setSeconds(59 - now.getSeconds());
-  const diff = Math.floor((end - now) / 1000);
-  const hours = Math.floor(diff / 3600);
-  const minutes = Math.floor((diff % 3600) / 60);
-  const seconds = diff % 60;
-  const countdownStr = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+  var diff = Math.floor((end - now) / 1000);
+  var hours = Math.floor(diff / 3600);
+  var minutes = Math.floor((diff % 3600) / 60);
+  var seconds = diff % 60;
+  var countdownStr = (hours.toString().padStart(2,'0')+':'+minutes.toString().padStart(2,'0')+':'+seconds.toString().padStart(2,'0'));
 
-  card.innerHTML = `
-    <div class="result-banner"><div class="result-banner-icon">🎉</div><div class="result-banner-text"><div class="result-banner-label">¡Aquí está tu resultado!</div><div class="result-banner-sub">Preparado especialmente para tu bebé</div></div></div>
-    <h2>Plan inicial para un bebé ${plan.edadTxt}</h2>
-    <div class="stat-eyebrow">🎯 Calculado según tus respuestas</div>
-    <div class="stat-row"><div class="stat"><span class="icon">⏱️</span><div class="num">${plan.ventana}</div><div class="lbl">Ventana de sueño estimada</div></div><div class="stat"><span class="icon">📅</span><div class="num">14 días</div><div class="lbl">Duración típica del ajuste</div></div></div>
-    <div class="plan-grid"><div class="plan-card"><span class="plan-icon">🎯</span><h3>Foco principal</h3><p>${plan.enfoquePrincipal}.</p></div><div class="plan-card"><span class="plan-icon">🍼</span><h3>Alimentación</h3><p>El plan se ajusta a tu tipo de alimentación (pecho, biberón o mixta).</p></div><div class="plan-card"><span class="plan-icon">🌙</span><h3>Entorno de sueño</h3><p>Ajustaremos el entorno (luz, ruido, temperatura) según tu espacio.</p></div><div class="plan-card"><span class="plan-icon">🔁</span><h3>Ritmo del plan</h3><p>Elegiste un ${plan.ritmoTxt}.</p></div></div>
-    <div class="pas-block"><p>${plan.pasDinamica}</p><p style="font-weight:600; color:var(--moon-gold-soft);">${plan.esperanza}</p></div>
-    <div class="locked"><span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span><p class="blur-text">Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.<br>Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.<br>Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.<br>Día 10–14: mantenimiento y plan para regresiones futuras...</p></div>
-    <div class="offer-card">
-      <div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>
-      <div style="text-align:center; margin-bottom:16px; font-size:14px;">⏳ Oferta especial por tiempo limitado: <span class="countdown" id="countdownDisplay">${countdownStr}</span></div>
-      <div class="value-stack"><div class="value-row"><span>Diagnóstico personalizado (ya lo tienes)</span><span>Gratis</span></div><div class="value-row"><span>Método Sueño a Medida — protocolo de 14 días</span><span>$19</span></div><div class="value-row"><span>🎁 Bono: Guía imprimible "Rutina nocturna en 5 pasos"</span><span>$6</span></div><div class="value-row"><span>🎁 Bono extra: Plan de regresiones del sueño (0-24 meses)</span><span>$8</span></div><div class="value-row total"><span>Valor total</span><span>$33</span></div></div>
-      <div class="price-row"><span class="price-old">$33</span><span class="price-new">$9.90</span></div>
-      <div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 30 días</div>
-      <div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local.</div>
-      <div style="text-align:center; margin-bottom:12px;"><span class="guarantee-badge">🔒 Garantía de devolución 100% — 30 días</span></div>
-      <button class="btn-offer" onclick="triggerCheckout()">Sí, quiero mi plan ahora →</button>
-      <div class="offer-microrow"><span>📲 Recibes el acceso al instante en tu email</span><span>🔒 Compra 100% segura</span></div>
-      <div class="global-row"><div class="global-label">Disponible y adaptado para:</div><div class="flags-row">
-        <img src="https://flagcdn.com/w40/mx.png" class="flag-img" alt="México" title="México" loading="lazy">
-        <img src="https://flagcdn.com/w40/co.png" class="flag-img" alt="Colombia" title="Colombia" loading="lazy">
-        <img src="https://flagcdn.com/w40/ar.png" class="flag-img" alt="Argentina" title="Argentina" loading="lazy">
-        <img src="https://flagcdn.com/w40/cl.png" class="flag-img" alt="Chile" title="Chile" loading="lazy">
-        <img src="https://flagcdn.com/w40/pe.png" class="flag-img" alt="Perú" title="Perú" loading="lazy">
-        <img src="https://flagcdn.com/w40/ec.png" class="flag-img" alt="Ecuador" title="Ecuador" loading="lazy">
-        <img src="https://flagcdn.com/w40/ve.png" class="flag-img" alt="Venezuela" title="Venezuela" loading="lazy">
-        <img src="https://flagcdn.com/w40/es.png" class="flag-img" alt="España" title="España" loading="lazy">
-        <img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="Estados Unidos" title="Estados Unidos" loading="lazy">
-      </div></div>
-    </div>
-
-    <div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">
-      <div class="qualify-block" style="flex: 1;">
-        <div class="qualify-col qualify-yes" style="margin-bottom: 20px;">
-          <h4>É para você se</h4>
-          <div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div>
-          <div class="qitem">✓ Ele tem despertares noturnos frequentes</div>
-          <div class="qitem">✓ Você sente que já tentou de tudo</div>
-        </div>
-        <div class="qualify-col qualify-no">
-          <h4>Não é para você se</h4>
-          <div class="qitem">✕ Você busca uma solução mágica de uma noite</div>
-          <div class="qitem">✕ Você não quer aplicar nenhuma rotina</div>
-        </div>
-      </div>
-      <div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">
-        <div class="avatar2" style="background-image: url('img/valeria.png'); background-size: cover; background-position: center; background-color: transparent; width:300px; height:300px;" loading="lazy"></div>
-      </div>
-    </div>
-
-    <div class="faq-block"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>
-      <div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>
-      <div class="faq-item"><h4>❓ ¿Tengo que dejarlo llorar solo?</h4><p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p></div>
-      <div class="faq-item"><h4>❓ Ya probé de todo, ¿por qué esto sería diferente?</h4><p>Porque no es un método genérico. Se construye a partir de las respuestas de tu bebé y tu estilo de crianza, no al revés.</p></div>
-    </div>
-    <button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>
-    <div class="footer-note">Este plan es una guía educativa y no sustituye la valoración de un pediatra.</div>
-  `;
-  startCountdown();
+  card.innerHTML = 
+    '<div class="result-banner"><div class="result-banner-icon">🎉</div><div class="result-banner-text"><div class="result-banner-label">¡Aquí está tu resultado!</div><div class="result-banner-sub">Preparado especialmente para tu bebé</div></div></div>' +
+    '<h2>Plan inicial para un bebé '+plan.edadTxt+'</h2>' +
+    '<div class="stat-eyebrow">🎯 Calculado según tus respuestas</div>' +
+    '<div class="stat-row"><div class="stat"><span class="icon">⏱️</span><div class="num">'+plan.ventana+'</div><div class="lbl">Ventana de sueño estimada</div></div><div class="stat"><span class="icon">📅</span><div class="num">14 días</div><div class="lbl">Duración típica del ajuste</div></div></div>' +
+    '<div class="plan-grid"><div class="plan-card"><span class="plan-icon">🎯</span><h3>Foco principal</h3><p>'+plan.enfoquePrincipal+'.</p></div><div class="plan-card"><span class="plan-icon">🍼</span><h3>Alimentación</h3><p>El plan se ajusta a tu tipo de alimentación ('+a.alimentacion+').</p></div><div class="plan-card"><span class="plan-icon">🌙</span><h3>Entorno de sueño</h3><p>Ajustaremos el entorno (luz, ruido, temperatura) según tu espacio.</p></div><div class="plan-card"><span class="plan-icon">🔁</span><h3>Ritmo del plan</h3><p>Elegiste un '+plan.ritmoTxt+'.</p></div></div>' +
+    '<div class="pas-block"><p>'+plan.pasDinamica+'</p><p style="font-weight:600; color:var(--moon-gold-soft);">'+plan.esperanza+'</p></div>' +
+    '<div class="locked"><span class="lock-badge">🔒 Método Sueño a Medida — Protocolo completo</span><p class="blur-text">Día 1: horario exacto de siestas y hora de acostar según su edad y ventana de sueño.<br>Día 2–4: ajuste de asociaciones de sueño según lo que respondiste sobre brazos y alimentación.<br>Día 5–9: consolidación nocturna con guión palabra por palabra para las protestas.<br>Día 10–14: mantenimiento y plan para regresiones futuras...</p></div>' +
+    '<div class="offer-card">' +
+      '<div class="offer-glow-badge">⚡ ACCESO INMEDIATO — EMPIEZA ESTA NOCHE</div>' +
+      '<div style="text-align:center; margin-bottom:16px; font-size:14px;">⏳ Oferta especial por tiempo limitado: <span class="countdown" id="countdownDisplay">'+countdownStr+'</span></div>' +
+      '<div class="value-stack"><div class="value-row"><span>Diagnóstico personalizado (ya lo tienes)</span><span>Gratis</span></div><div class="value-row"><span>Método Sueño a Medida — protocolo de 14 días</span><span>$19</span></div><div class="value-row"><span>🎁 Bono: Guía imprimible "Rutina nocturna en 5 pasos"</span><span>$6</span></div><div class="value-row"><span>🎁 Bono extra: Plan de regresiones del sueño (0-24 meses)</span><span>$8</span></div><div class="value-row total"><span>Valor total</span><span>$33</span></div></div>' +
+      '<div class="price-row"><span class="price-old">$33</span><span class="price-new">$9.90</span></div>' +
+      '<div class="price-note">Sin llanto forzado · Sin métodos extremos · Pago único · Garantía de 30 días</div>' +
+      '<div class="currency-note">💱 Precio de referencia en USD. En el checkout verás el valor exacto en tu moneda local.</div>' +
+      '<div style="text-align:center; margin-bottom:12px;"><span class="guarantee-badge">🔒 Garantía de devolución 100% — 30 días</span></div>' +
+      '<button class="btn-offer" onclick="triggerCheckout()">Sí, quiero mi plan ahora →</button>' +
+      '<div class="offer-microrow"><span>📲 Recibes el acceso al instante en tu email</span><span>🔒 Compra 100% segura</span></div>' +
+      '<div class="global-row"><div class="global-label">Disponible y adaptado para:</div><div class="flags-row">' +
+        '<img src="https://flagcdn.com/w40/mx.png" class="flag-img" alt="México" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/co.png" class="flag-img" alt="Colombia" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/ar.png" class="flag-img" alt="Argentina" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/cl.png" class="flag-img" alt="Chile" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/pe.png" class="flag-img" alt="Perú" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/ec.png" class="flag-img" alt="Ecuador" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/ve.png" class="flag-img" alt="Venezuela" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/es.png" class="flag-img" alt="España" loading="lazy">' +
+        '<img src="https://flagcdn.com/w40/us.png" class="flag-img" alt="Estados Unidos" loading="lazy">' +
+      '</div></div></div>' +
+    '<div class="container-split" style="display: flex; gap: 20px; align-items: flex-start;">' +
+      '<div class="qualify-block" style="flex: 1;">' +
+        '<div class="qualify-col qualify-yes" style="margin-bottom: 20px;"><h4>É para você se</h4><div class="qitem">✓ Seu bebê só dorme no colo ou no peito</div><div class="qitem">✓ Ele tem despertares noturnos frequentes</div><div class="qitem">✓ Você sente que já tentou de tudo</div></div>' +
+        '<div class="qualify-col qualify-no"><h4>Não é para você se</h4><div class="qitem">✕ Você busca uma solução mágica de uma noite</div><div class="qitem">✕ Você não quer aplicar nenhuma rotina</div></div>' +
+      '</div>' +
+      '<div class="image-col" style="flex: 1; text-align: center; border: 1px dashed #ccc; padding: 20px; border-radius: 8px;">' +
+        '<div class="avatar2" style="background-image: url(\'img/valeria.png\'); background-size: cover; background-position: center; background-color: transparent; width:300px; height:300px;" loading="lazy"></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="faq-block"><h3 style="font-family:var(--font-display); font-size:18px; margin-top:0;">Preguntas frecuentes</h3>' +
+      '<div class="faq-item"><h4>❓ ¿Y si mi bebé es muy pequeño (menos de 3 meses)?</h4><p>El método se ajusta a cada edad. Para recién nacidos, el enfoque es en rutinas suaves y respetuosas, sin presión.</p></div>' +
+      '<div class="faq-item"><h4>❓ ¿Tengo que dejarlo llorar solo?</h4><p>No. El plan se adapta a tu tolerancia (tú misma lo elegiste en el diagnóstico). Hay versiones sin llanto, con acompañamiento progresivo.</p></div>' +
+      '<div class="faq-item"><h4>❓ Ya probé de todo, ¿por qué esto sería diferente?</h4><p>Porque no es un método genérico. Se construye a partir de las respuestas de tu bebé y tu estilo de crianza, no al revés.</p></div>' +
+    '</div>' +
+    '<button class="btn-ghost" onclick="restart()">Volver a empezar el diagnóstico</button>' +
+    '<div class="footer-note">Este plan es una guía educativa y no sustituye la valoración de un pediatra.</div>';
+  startCountdownResult();
 }
 
 function restart(){
   state.step = 0;
   state.answers = {};
   if (loadingTimer) clearTimeout(loadingTimer);
-  if (countdownInterval) clearInterval(countdownInterval);
-  location.reload(); // Recargar para restaurar el estado estático limpio
+  if (countdownIntervalResult) clearInterval(countdownIntervalResult);
+  location.reload();
 }
 
 /* ========== INICIO ========== */
